@@ -213,16 +213,25 @@ body {
 
 /* Fallback for browsers that don't support backdrop-filter */
 @supports not (backdrop-filter: blur(1px)) {
-  .glass,
-  .glass-subtle {
+  .glass {
     background: var(--color-surface-1);
     border: 1px solid var(--color-border);
+  }
+  
+  .glass-subtle {
+    background: var(--color-surface-1);
+    /* No border for subtle variant to maintain consistency */
   }
 }
 
 /* Accessibility - Reduced transparency for users who prefer it */
 @media (prefers-reduced-transparency: reduce) {
-  .glass,
+  .glass {
+    background: var(--color-surface-1);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  
   .glass-subtle {
     background: var(--color-surface-1);
     backdrop-filter: none;
