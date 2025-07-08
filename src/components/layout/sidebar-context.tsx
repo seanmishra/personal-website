@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { useIsomorphicLayoutEffect } from '@/lib/hooks/use-isomorphic-layout-effect';
 
 interface SidebarContextType {
@@ -24,7 +24,7 @@ interface SidebarProviderProps {
 }
 
 export function SidebarProvider({ children }: SidebarProviderProps) {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true); // Default to collapsed
 
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
@@ -33,8 +33,15 @@ export function SidebarProvider({ children }: SidebarProviderProps) {
   useIsomorphicLayoutEffect(() => {
     // Check if sidebar should be collapsed based on screen size
     const checkScreenSize = () => {
-      const shouldCollapse = window.innerWidth <= 1024;
-      setIsCollapsed(shouldCollapse);
+      // Use standard Tailwind breakpoints
+      // sm: 640px+, md: 768px+, lg: 1024px+, xl: 1280px+
+      const isDesktop = window.innerWidth >= 1280; // xl breakpoint
+      
+      if (isDesktop) {
+        setIsCollapsed(false); // Expanded on desktop (xl+)
+      } else {
+        setIsCollapsed(true); // Collapsed on mobile/tablet (< xl)
+      }
     };
 
     checkScreenSize();

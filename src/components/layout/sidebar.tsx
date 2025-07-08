@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { Home, User, Briefcase, PenTool, Menu, X } from 'lucide-react';
+import { Home, User, Briefcase, PenTool } from 'lucide-react';
 import { useSidebar } from './sidebar-context';
 
 interface SidebarProps {
@@ -21,35 +21,41 @@ export function Sidebar({ className = '' }: SidebarProps) {
   ];
 
   return (
-    <aside
-      className={`fixed left-0 top-0 h-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-r border-gray-200/50 dark:border-gray-800/50 transition-all duration-300 ${sidebarWidth} ${className}`}
-    >
+    <>
+      {/* Mobile backdrop overlay - show when sidebar is expanded on small screens */}
+      {!isCollapsed && (
+        <div 
+          className="fixed inset-0 bg-black/60 z-40 xl:hidden backdrop-blur-sm touch-none"
+          onClick={toggleSidebar}
+          onTouchStart={(e) => e.preventDefault()}
+          aria-hidden="true"
+        />
+      )}
+      
+      <aside
+        className={`fixed left-0 top-0 h-full z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-r border-gray-200/50 dark:border-gray-800/50 transition-all duration-300 ${sidebarWidth} ${
+          // Hide sidebar completely on small screens when collapsed
+          isCollapsed ? 'xl:block hidden' : 'block'
+        } ${className}`}
+      >
       <div className="flex flex-col h-full">
         {/* Header */}
         <div className="p-4 border-b border-gray-200/50 dark:border-gray-800/50">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">S</span>
-              </div>
-              {!isCollapsed && (
-                <div className="flex flex-col">
-                  <span className="text-sm font-semibold text-gray-900 dark:text-white">Sean Mishra</span>
-                  <span className="text-xs text-gray-500 dark:text-gray-400">Designer & Developer</span>
-                </div>
-              )}
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-sm">S</span>
             </div>
-            <button
-              onClick={toggleSidebar}
-              className="p-1 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors lg:hidden"
-            >
-              {isCollapsed ? <Menu size={16} /> : <X size={16} />}
-            </button>
+            {!isCollapsed && (
+              <div className="flex flex-col">
+                <span className="text-sm font-semibold text-gray-900 dark:text-white">Sean Mishra</span>
+                <span className="text-xs text-gray-500 dark:text-gray-400">Designer & Developer</span>
+              </div>
+            )}
           </div>
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 p-4">
+        <nav className="flex-1 p-4 overflow-y-auto">
           <ul className="space-y-2">
             {navigationItems.map((item) => {
               const isActive = pathname === item.href;
@@ -59,12 +65,18 @@ export function Sidebar({ className = '' }: SidebarProps) {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 group hover:scale-[1.02] ${
+                    className={`flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 group hover:scale-[1.02] ${
                       isActive
                         ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
                         : 'hover:bg-gray-50 dark:hover:bg-gray-800/50 text-gray-700 dark:text-gray-300'
                     }`}
                     title={isCollapsed ? item.label : undefined}
+                    onClick={() => {
+                      // Close sidebar on mobile after navigation
+                      if (window.innerWidth < 1280) {
+                        toggleSidebar();
+                      }
+                    }}
                   >
                     <IconComponent size={20} className="flex-shrink-0" />
                     {!isCollapsed && (
@@ -80,5 +92,6 @@ export function Sidebar({ className = '' }: SidebarProps) {
         </nav>
       </div>
     </aside>
+    </>
   );
 }

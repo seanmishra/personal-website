@@ -12,7 +12,10 @@ export function ResponsiveLayout({ children }: ResponsiveLayoutProps) {
   return (
     <div 
       className={`min-h-screen flex flex-col transition-all duration-300 ${
-        isCollapsed ? 'lg:ml-16' : 'lg:ml-64'
+        // Only add margin on xl screens when sidebar is visible
+        isCollapsed 
+          ? 'ml-0 xl:ml-16' 
+          : 'ml-0 xl:ml-64'
       }`}
     >
       {children}
