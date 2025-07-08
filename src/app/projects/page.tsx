@@ -23,10 +23,10 @@ export default function Projects() {
   return (
     <div className="space-y-8">
       <header className="text-center mb-16">
-        <h1 className="text-4xl font-display font-bold text-neutral-900 dark:text-neutral-100 mb-4">
+        <h1 className="text-4xl font-sans font-bold text-neutral-900 dark:text-neutral-100 mb-4">
           Projects
         </h1>
-        <p className="text-lg font-body text-neutral-700 dark:text-neutral-300 max-w-2xl mx-auto">
+        <p className="text-lg font-sans text-neutral-700 dark:text-neutral-300 max-w-2xl mx-auto">
           A collection of projects I&apos;ve worked on, from web applications to design systems.
         </p>
       </header>
@@ -35,7 +35,7 @@ export default function Projects() {
         {projects.map((project, index) => (
           <div key={index} className="card p-6 hover:scale-105 transition-all duration-300">
             <div className="mb-4">
-              <h3 className="text-xl font-display font-semibold text-neutral-900 dark:text-neutral-100 mb-2">{project.title}</h3>
+              <h3 className="text-xl font-sans font-semibold text-neutral-900 dark:text-neutral-100 mb-2">{project.title}</h3>
               <span className="px-2 py-1 bg-blue-500 text-white rounded text-xs font-medium">
                 {project.status}
               </span>

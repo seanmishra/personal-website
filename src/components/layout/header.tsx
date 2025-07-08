@@ -27,7 +27,7 @@ export function Header({ className = '' }: HeaderProps) {
             <Menu size={20} className="text-neutral-600 dark:text-neutral-400" />
           </button>
           
-          <h1 className="text-lg font-display font-semibold text-neutral-900 dark:text-neutral-50">
+          <h1 className="text-lg font-sans font-semibold text-neutral-900 dark:text-neutral-50">
             Sean Mishra
           </h1>
         </div>
