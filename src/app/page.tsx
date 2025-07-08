@@ -1,19 +1,57 @@
+'use client';
+
+import { Layout } from '@/components/layout';
+import { motion } from 'motion/react';
+
 export default function Home() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'spring' as const,
+        stiffness: 300,
+        damping: 30,
+      },
+    },
+  };
+
   return (
-    <div className="min-h-screen bg-surface-0 p-8">
-      <div className="max-w-4xl mx-auto spacing-section">
-        <header className="text-center mb-16">
+    <Layout>
+      <motion.div 
+        className="spacing-section"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.header className="text-center mb-16" variants={itemVariants}>
           <h1 className="text-display-xl text-primary mb-4">
             Design System Demo
           </h1>
           <p className="text-body-lg text-muted">
             Showcasing the color tokens, typography, and spacing utilities
           </p>
-        </header>
+        </motion.header>
 
-        <div className="grid gap-8 md:grid-cols-2">
+        <motion.div className="grid gap-8 md:grid-cols-2" variants={itemVariants}>
           {/* Typography Section */}
-          <div className="glass spacing-card rounded-lg">
+          <motion.div 
+            className="glass spacing-card rounded-lg"
+            whileHover={{ scale: 1.02, y: -4 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          >
             <h2 className="text-display-md text-primary mb-6">Typography</h2>
             <div className="space-y-4">
               <div>
@@ -39,10 +77,14 @@ export default function Home() {
                 <p className="text-caption text-muted mt-1">JetBrains Mono</p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Color Section */}
-          <div className="glass spacing-card rounded-lg">
+          <motion.div 
+            className="glass spacing-card rounded-lg"
+            whileHover={{ scale: 1.02, y: -4 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          >
             <h2 className="text-display-md text-primary mb-6">Color Tokens</h2>
             <div className="space-y-4">
               <div className="grid grid-cols-3 gap-3">
@@ -65,10 +107,14 @@ export default function Home() {
                 <p className="text-body-md text-accent">Accent text color</p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Glass Effects */}
-          <div className="bg-surface-1 spacing-card rounded-lg">
+          <motion.div 
+            className="bg-surface-1 spacing-card rounded-lg"
+            whileHover={{ scale: 1.02, y: -4 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          >
             <h2 className="text-display-md text-primary mb-6">Glass Effects</h2>
             <div className="space-y-4">
               <div className="glass spacing-element rounded-lg">
@@ -80,10 +126,14 @@ export default function Home() {
                 <p className="text-caption text-muted">8px blur, lighter background</p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Spacing Section */}
-          <div className="glass spacing-card rounded-lg">
+          <motion.div 
+            className="glass spacing-card rounded-lg"
+            whileHover={{ scale: 1.02, y: -4 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          >
             <h2 className="text-display-md text-primary mb-6">Spacing Scale</h2>
             <div className="space-y-4">
               <div className="bg-surface-1 rounded" style={{ padding: 'var(--spacing-section)' }}>
@@ -99,18 +149,18 @@ export default function Home() {
                 <p className="text-caption text-muted mt-2">Card spacing (24px)</p>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div className="mt-16 text-center">
+        <motion.div className="mt-16 text-center" variants={itemVariants}>
           <p className="text-body-lg text-muted">
             Design system successfully implemented! 🎨
           </p>
           <p className="text-caption text-muted mt-2">
             Light/dark mode support • Accessibility ready • Glass effects
           </p>
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </Layout>
   );
 }
