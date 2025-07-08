@@ -3,7 +3,6 @@
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Home, User, Briefcase, PenTool, Menu, X } from 'lucide-react';
-import { ThemeToggle } from './theme-toggle';
 import { useSidebar } from './sidebar-context';
 
 interface SidebarProps {
@@ -79,13 +78,6 @@ export function Sidebar({ className = '' }: SidebarProps) {
             })}
           </ul>
         </nav>
-
-        {/* Footer */}
-        <div className="p-4 border-t border-gray-200/50 dark:border-gray-800/50">
-          <div className="flex items-center justify-center">
-            <ThemeToggle />
-          </div>
-        </div>
       </div>
     </aside>
   );

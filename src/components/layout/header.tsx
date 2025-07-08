@@ -1,3 +1,5 @@
+import { ThemeToggle } from './theme-toggle';
+
 interface HeaderProps {
   className?: string;
 }
@@ -15,9 +17,9 @@ export function Header({ className = '' }: HeaderProps) {
           </h1>
         </div>
         
-        {/* Additional header actions */}
+        {/* Header actions */}
         <div className="flex items-center gap-4">
-          {/* Status indicator or other elements */}
+          <ThemeToggle />
         </div>
       </div>
     </header>
