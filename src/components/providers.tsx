@@ -33,8 +33,12 @@ function ThemeProvider({ children }: ThemeProviderProps) {
   // Initialize theme from localStorage on mount
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as Theme;
-    if (savedTheme && ['light', 'dark', 'system'].includes(savedTheme)) {
+    if (savedTheme && ['light', 'dark'].includes(savedTheme)) {
+      // Only use saved preference if it's light or dark
       setTheme(savedTheme);
+    } else {
+      // Use system preference as fallback
+      setTheme('system');
     }
     setIsHydrated(true);
   }, []);
@@ -62,9 +66,9 @@ function ThemeProvider({ children }: ThemeProviderProps) {
     }
   }, [theme, isHydrated]);
 
-  // Save theme to localStorage
+  // Save theme to localStorage (but not 'system')
   useEffect(() => {
-    if (isHydrated) {
+    if (isHydrated && theme !== 'system') {
       localStorage.setItem('theme', theme);
     }
   }, [theme, isHydrated]);
