@@ -85,12 +85,26 @@
   }
 }
 
+/* Prevent flash of white content during theme loading */
+html {
+  background-color: #0E0F12;
+}
+
+html.light {
+  background-color: #FAFAFB;
+}
+
+html.dark {
+  background-color: #0E0F12;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body);
   line-height: var(--line-height-relaxed);
   font-weight: 400;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Additional Utility Classes */
@@ -201,13 +215,72 @@ body {
   border: 1px solid var(--glass-border);
   backdrop-filter: var(--glass-backdrop);
   -webkit-backdrop-filter: var(--glass-backdrop);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 }
 
 .glass-subtle {
   background: var(--glass-bg);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
 }
+
+/* Enhanced card styles */
+.card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Improved button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--color-accent-main);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(65, 83, 255, 0.3);
+}
+
+.btn-secondary {
+  background: var(--color-surface-1);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+  background: var(--color-surface-0);
+  transform: translateY(-1px);
+}
+
+/* Enhanced spacing utilities */
+.spacing-hero { padding: 128px 0; }
+.spacing-section-lg { padding: 96px 0; }
+.spacing-section-md { padding: 64px 0; }
+.spacing-section-sm { padding: 48px 0; }
 
 /* Fallback for browsers that don't support backdrop-filter */
 @supports not (backdrop-filter: blur(1px)) {

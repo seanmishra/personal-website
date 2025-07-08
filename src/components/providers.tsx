@@ -27,47 +27,55 @@ interface ThemeProviderProps {
 function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>('system');
   const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
+  const [isHydrated, setIsHydrated] = useState(false);
 
+  // Initialize theme from localStorage on mount
   useEffect(() => {
-    // Get theme from localStorage on mount
     const savedTheme = localStorage.getItem('theme') as Theme;
-    if (savedTheme) {
+    if (savedTheme && ['light', 'dark', 'system'].includes(savedTheme)) {
       setTheme(savedTheme);
     }
+    setIsHydrated(true);
+  }, []);
 
-    // Check system preference
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const updateSystemTheme = () => {
+  // Update resolved theme when theme changes
+  useEffect(() => {
+    if (!isHydrated) return;
+
+    const updateResolvedTheme = () => {
       if (theme === 'system') {
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
         setResolvedTheme(mediaQuery.matches ? 'dark' : 'light');
+      } else {
+        setResolvedTheme(theme);
       }
     };
 
-    updateSystemTheme();
-    mediaQuery.addEventListener('change', updateSystemTheme);
+    updateResolvedTheme();
 
-    return () => mediaQuery.removeEventListener('change', updateSystemTheme);
-  }, [theme]);
-
-  useEffect(() => {
-    // Save theme to localStorage
-    localStorage.setItem('theme', theme);
-    
-    // Update resolved theme
+    // Listen for system theme changes only if theme is 'system'
     if (theme === 'system') {
       const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      setResolvedTheme(mediaQuery.matches ? 'dark' : 'light');
-    } else {
-      setResolvedTheme(theme);
+      mediaQuery.addEventListener('change', updateResolvedTheme);
+      return () => mediaQuery.removeEventListener('change', updateResolvedTheme);
     }
-  }, [theme]);
+  }, [theme, isHydrated]);
 
+  // Save theme to localStorage
   useEffect(() => {
-    // Apply theme to document
-    const root = document.documentElement;
-    root.classList.remove('light', 'dark');
-    root.classList.add(resolvedTheme);
-  }, [resolvedTheme]);
+    if (isHydrated) {
+      localStorage.setItem('theme', theme);
+    }
+  }, [theme, isHydrated]);
+
+  // Apply theme to document
+  useEffect(() => {
+    if (isHydrated) {
+      const root = document.documentElement;
+      root.classList.remove('light', 'dark');
+      root.classList.add(resolvedTheme);
+    }
+  }, [resolvedTheme, isHydrated]);
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme, resolvedTheme }}>
