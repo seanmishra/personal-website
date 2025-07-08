@@ -1,72 +1,151 @@
 @import "tailwindcss";
 
-:root {
-  /* Color Tokens - Light Mode */
-  --color-surface-0: #FAFAFB;
-  --color-surface-1: #F0F1F3;
-  --color-border: #E5E6EA;
-  --color-text-primary: #1B1C1F;
-  --color-text-muted: #6E6F77;
-  --color-accent-main: #4153FF;
-  
-  /* Legacy support */
-  --background: var(--color-surface-0);
-  --foreground: var(--color-text-primary);
+/* Font Variables */
+@theme inline {
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+  --font-display: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
+/* Custom Theme - Clean Design System */
+@theme {
+  /* Neutral Scale */
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f5f5f7;
+  --color-neutral-200: #f2f2f7;
+  --color-neutral-300: #e5e5ea;
+  --color-neutral-400: #d1d1d6;
+  --color-neutral-500: #c7c7cc;
+  --color-neutral-600: #8e8e93;
+  --color-neutral-700: #636366;
+  --color-neutral-800: #48484a;
+  --color-neutral-900: #3a3a3c;
+  --color-neutral-950: #2c2c2e;
+  
+  /* Primary Brand Colors */
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #5ac8fa;
+  --color-primary-500: #007aff;
+  --color-primary-600: #0051d0;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+  --color-primary-950: #172554;
+  
+  /* Secondary Colors */
+  --color-secondary-50: #f8fafc;
+  --color-secondary-100: #f1f5f9;
+  --color-secondary-200: #e2e8f0;
+  --color-secondary-300: #cbd5e1;
+  --color-secondary-400: #94a3b8;
+  --color-secondary-500: #64748b;
+  --color-secondary-600: #475569;
+  --color-secondary-700: #334155;
+  --color-secondary-800: #1e293b;
+  --color-secondary-900: #0f172a;
+  --color-secondary-950: #020617;
+  
+  /* Semantic Colors */
+  --color-success-50: #f0fdf4;
+  --color-success-100: #dcfce7;
+  --color-success-500: #30d158;
+  --color-success-600: #16a34a;
+  --color-success-700: #15803d;
+  
+  --color-warning-50: #fffbeb;
+  --color-warning-100: #fef3c7;
+  --color-warning-500: #ff9500;
+  --color-warning-600: #d97706;
+  --color-warning-700: #b45309;
+  
+  --color-error-50: #fef2f2;
+  --color-error-100: #fee2e2;
+  --color-error-500: #ff3b30;
+  --color-error-600: #dc2626;
+  --color-error-700: #b91c1c;
+  
+  /* Background System */
+  --color-background: var(--color-white);
+  --color-background-secondary: var(--color-neutral-50);
+  --color-background-tertiary: var(--color-neutral-100);
+  --color-background-elevated: var(--color-white);
+  
+  /* Text System */
+  --color-foreground: #1c1c1e;
+  --color-foreground-secondary: var(--color-neutral-700);
+  --color-foreground-tertiary: var(--color-neutral-600);
+  --color-foreground-muted: var(--color-neutral-500);
+  
+  /* Border System */
+  --color-border: var(--color-neutral-300);
+  --color-border-secondary: var(--color-neutral-400);
+  --color-border-muted: var(--color-neutral-200);
+  
+  /* Enhanced Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark mode support */
 @media (prefers-color-scheme: dark) {
-  :root {
-    /* Color Tokens - Dark Mode */
-    --color-surface-0: #0E0F12;
-    --color-surface-1: #16171D;
-    --color-border: rgba(255, 255, 255, 0.08);
-    --color-text-primary: #E9EAEE;
-    --color-text-muted: #8E9098;
-    --color-accent-main: #5970FF;
+  @theme {
+    /* Dark mode backgrounds */
+    --color-background: #1c1c1e;
+    --color-background-secondary: var(--color-neutral-950);
+    --color-background-tertiary: var(--color-neutral-900);
+    --color-background-elevated: var(--color-neutral-950);
     
-    /* Legacy support */
-    --background: var(--color-surface-0);
-    --foreground: var(--color-text-primary);
+    /* Dark mode text */
+    --color-foreground: var(--color-white);
+    --color-foreground-secondary: var(--color-neutral-400);
+    --color-foreground-tertiary: var(--color-neutral-500);
+    --color-foreground-muted: var(--color-neutral-600);
+    
+    /* Dark mode borders */
+    --color-border: var(--color-neutral-800);
+    --color-border-secondary: var(--color-neutral-700);
+    --color-border-muted: var(--color-neutral-900);
+    
+    /* Enhanced dark shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.6);
+    --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.7);
   }
 }
 
-/* Prevent flash of white content during theme loading */
-html {
-  background-color: #0E0F12;
-}
-
-html.light {
-  background-color: #FAFAFB;
-}
-
-html.dark {
-  background-color: #0E0F12;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-inter);
-  line-height: 1.5;
-  font-weight: 400;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Dark mode class support */
-.dark {
-  --color-surface-0: #0E0F12;
-  --color-surface-1: #16171D;
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-text-primary: #E9EAEE;
-  --color-text-muted: #8E9098;
-  --color-accent-main: #5970FF;
-}
-
-.light {
-  --color-surface-0: #FAFAFB;
-  --color-surface-1: #F0F1F3;
-  --color-border: #E5E6EA;
-  --color-text-primary: #1B1C1F;
-  --color-text-muted: #6E6F77;
-  --color-accent-main: #4153FF;
+/* Custom component styles */
+@layer components {
+  .card {
+    @apply bg-background-elevated border border-border shadow-md rounded-lg;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-lg font-medium transition-colors shadow-sm;
+  }
+  
+  .btn-secondary {
+    @apply bg-background-secondary hover:bg-background-tertiary text-foreground border border-border px-4 py-2 rounded-lg font-medium transition-colors;
+  }
+  
+  .text-primary {
+    @apply text-foreground;
+  }
+  
+  .text-secondary {
+    @apply text-foreground-secondary;
+  }
+  
+  .text-muted {
+    @apply text-foreground-muted;
+  }
 }
