@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
-import { Layout } from "@/components/layout";
+import { Sidebar } from "@/components/layout/sidebar";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
+import { ResponsiveLayout } from "@/components/layout/responsive-layout";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -56,9 +59,21 @@ export default function RootLayout({
         className={`${spaceGrotesk.variable} ${inter.variable} ${jetBrainsMono.variable} antialiased`}
       >
         <Providers>
-          <Layout>
-            {children}
-          </Layout>
+          <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+            <Sidebar />
+            
+            <ResponsiveLayout>
+              <Header />
+              
+              <main className="flex-1 p-6">
+                <div className="max-w-7xl mx-auto">
+                  {children}
+                </div>
+              </main>
+              
+              <Footer />
+            </ResponsiveLayout>
+          </div>
         </Providers>
       </body>
     </html>

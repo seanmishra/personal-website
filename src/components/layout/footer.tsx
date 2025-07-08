@@ -1,6 +1,4 @@
-'use client';
-
-import { motion } from 'motion/react';
+import Link from 'next/link';
 
 interface FooterProps {
   className?: string;
@@ -16,106 +14,78 @@ export function Footer({ className = '' }: FooterProps) {
   ];
 
   return (
-    <motion.footer
-      className={`glass border-t border-border ${className}`}
-      initial={{ y: 100 }}
-      animate={{ y: 0 }}
-      transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-      style={{
-        backdropFilter: 'var(--glass-backdrop)',
-        backgroundColor: 'var(--glass-bg)',
-        boxShadow: '0 -2px 16px rgba(0, 0, 0, 0.05)',
-      }}
+    <footer
+      className={`bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-t border-gray-200/50 dark:border-gray-800/50 ${className}`}
     >
-      <div className="max-w-7xl mx-auto px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div className="max-w-7xl mx-auto px-6 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
-          <motion.div 
-            className="flex flex-col gap-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-          >
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-accent-main rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-sm">S</span>
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded-md flex items-center justify-center">
+                <span className="text-white font-bold text-xs">S</span>
               </div>
-              <span className="text-heading-md font-semibold text-text-primary">
+              <span className="text-lg font-semibold text-gray-900 dark:text-white">
                 Sean Mishra
               </span>
             </div>
-            <p className="text-body-sm text-text-muted max-w-sm leading-relaxed">
-              Designer & Developer crafting digital experiences with attention to detail and a passion for clean, functional design.
+            <p className="text-sm text-gray-500 dark:text-gray-400 max-w-sm">
+              Designer & Developer crafting digital experiences with attention to detail.
             </p>
-          </motion.div>
+          </div>
 
           {/* Quick Links */}
-          <motion.div 
-            className="flex flex-col gap-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
-            <h3 className="text-heading-md font-semibold text-text-primary">
+          <div className="flex flex-col gap-4">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
               Quick Links
             </h3>
-            <nav className="flex flex-col gap-3">
-              {['Home', 'About', 'Projects', 'Writing'].map((item) => (
-                <motion.a
-                  key={item}
-                  href={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`}
-                  className="text-body-sm text-text-muted hover:text-text-primary transition-colors inline-flex items-center gap-2"
-                  whileHover={{ x: 6 }}
-                  transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+            <nav className="flex flex-col gap-2">
+              {[
+                { name: 'Home', href: '/' },
+                { name: 'About', href: '/about' },
+                { name: 'Projects', href: '/projects' },
+                { name: 'Writing', href: '/writing' }
+              ].map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors hover:translate-x-1"
                 >
-                  <span>→</span>
-                  {item}
-                </motion.a>
+                  {item.name}
+                </Link>
               ))}
             </nav>
-          </motion.div>
+          </div>
 
           {/* Social Links */}
-          <motion.div 
-            className="flex flex-col gap-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            <h3 className="text-heading-md font-semibold text-text-primary">
+          <div className="flex flex-col gap-4">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
               Connect
             </h3>
-            <div className="flex gap-3">
+            <div className="flex gap-4">
               {socialLinks.map((link) => (
-                <motion.a
+                <a
                   key={link.label}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 bg-surface-1 rounded-xl flex items-center justify-center hover:bg-accent-main hover:text-white transition-all border border-border"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.9 }}
+                  className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center hover:bg-blue-500 hover:text-white transition-all hover:scale-110"
                   title={link.label}
                 >
-                  <span className="text-lg">{link.icon}</span>
-                </motion.a>
+                  <span className="text-sm">{link.icon}</span>
+                </a>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Copyright */}
-        <motion.div 
-          className="mt-12 pt-8 border-t border-border"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-        >
-          <p className="text-body-sm text-text-muted text-center">
-            © {currentYear} Sean Mishra. Crafted with care and attention to detail.
+        <div className="mt-8 pt-6 border-t border-gray-200/50 dark:border-gray-800/50">
+          <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
+            © {currentYear} Sean Mishra. All rights reserved.
           </p>
-        </motion.div>
+        </div>
       </div>
-    </motion.footer>
+    </footer>
   );
 }

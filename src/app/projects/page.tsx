@@ -21,27 +21,27 @@ export default function Projects() {
   ];
 
   return (
-    <div className="spacing-section">
+    <div className="space-y-8">
       <header className="text-center mb-16">
-        <h1 className="text-display-xl text-primary mb-4">
+        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
           Projects
         </h1>
-        <p className="text-body-lg text-muted max-w-2xl mx-auto">
+        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
           A collection of projects I&apos;ve worked on, from web applications to design systems.
         </p>
       </header>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project, index) => (
-          <div key={index} className="glass spacing-card rounded-lg">
+          <div key={index} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-xl p-6 border border-gray-200/50 dark:border-gray-700/50 hover:scale-105 transition-all duration-300">
             <div className="mb-4">
-              <h3 className="text-heading-xl text-primary mb-2">{project.title}</h3>
-              <span className="px-2 py-1 bg-accent-main text-white rounded text-caption">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{project.title}</h3>
+              <span className="px-2 py-1 bg-blue-500 text-white rounded text-xs">
                 {project.status}
               </span>
             </div>
             
-            <p className="text-body-md text-muted mb-4">
+            <p className="text-gray-600 dark:text-gray-300 mb-4">
               {project.description}
             </p>
             
@@ -49,7 +49,7 @@ export default function Projects() {
               {project.tech.map((tech) => (
                 <span
                   key={tech}
-                  className="px-2 py-1 bg-surface-1 text-text-primary rounded text-body-sm"
+                  className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded text-xs"
                 >
                   {tech}
                 </span>

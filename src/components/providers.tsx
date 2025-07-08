@@ -1,6 +1,7 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState } from 'react';
+import { SidebarProvider } from '@/components/layout/sidebar-context';
 
 type Theme = 'light' | 'dark' | 'system';
 
@@ -91,7 +92,9 @@ interface ProvidersProps {
 export function Providers({ children }: ProvidersProps) {
   return (
     <ThemeProvider>
-      {children}
+      <SidebarProvider>
+        {children}
+      </SidebarProvider>
     </ThemeProvider>
   );
 }
