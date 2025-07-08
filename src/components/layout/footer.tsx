@@ -22,9 +22,6 @@ export function Footer({ className = '' }: FooterProps) {
           {/* Brand */}
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded-md flex items-center justify-center">
-                <span className="text-white font-bold text-xs">S</span>
-              </div>
               <span className="text-lg font-semibold text-gray-900 dark:text-white">
                 Sean Mishra
               </span>

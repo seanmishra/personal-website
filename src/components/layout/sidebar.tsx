@@ -2,8 +2,9 @@
 
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { Home, User, Briefcase, PenTool } from 'lucide-react';
+import { Home, User, Briefcase, PenTool, Clock } from 'lucide-react';
 import { useSidebar } from './sidebar-context';
+import { useState, useEffect } from 'react';
 
 interface SidebarProps {
   className?: string;
@@ -12,6 +13,54 @@ interface SidebarProps {
 export function Sidebar({ className = '' }: SidebarProps) {
   const pathname = usePathname();
   const { isCollapsed, toggleSidebar, sidebarWidth } = useSidebar();
+  
+  // Current time and status
+  const [currentTime, setCurrentTime] = useState(new Date());
+  const [status, setStatus] = useState<'available' | 'busy' | 'away'>('available');
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    // Set status based on time (just as an example)
+    const hour = new Date().getHours();
+    if (hour >= 9 && hour <= 17) {
+      setStatus('available');
+    } else if (hour >= 18 && hour <= 22) {
+      setStatus('busy');
+    } else {
+      setStatus('away');
+    }
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (date: Date) => {
+    return date.toLocaleTimeString('en-US', { 
+      hour: '2-digit', 
+      minute: '2-digit',
+      timeZoneName: 'short'
+    });
+  };
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'available': return 'bg-green-500';
+      case 'busy': return 'bg-yellow-500';
+      case 'away': return 'bg-gray-500';
+      default: return 'bg-gray-500';
+    }
+  };
+
+  const getStatusText = (status: string) => {
+    switch (status) {
+      case 'available': return 'Available';
+      case 'busy': return 'Busy';
+      case 'away': return 'Away';
+      default: return 'Away';
+    }
+  };
 
   const navigationItems = [
     { href: '/', label: 'Home', icon: Home },
@@ -39,23 +88,33 @@ export function Sidebar({ className = '' }: SidebarProps) {
         } ${className}`}
       >
       <div className="flex flex-col h-full">
-        {/* Header */}
-        <div className="p-4 border-b border-gray-200/50 dark:border-gray-800/50">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">S</span>
+        {/* Navigation */}
+        <nav className="flex-1 p-4 overflow-y-auto">
+          {/* Status Section */}
+          <div className="mb-6 p-3 bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-gray-200 dark:border-gray-700">
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
+                <div className={`w-2 h-2 rounded-full ${getStatusColor(status)} animate-pulse`} />
+                {!isCollapsed && (
+                  <span className="text-xs font-medium text-gray-700 dark:text-gray-300">
+                    {getStatusText(status)}
+                  </span>
+                )}
+              </div>
+              {!isCollapsed && (
+                <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400 ml-auto">
+                  <Clock size={12} />
+                  <span>{formatTime(currentTime)}</span>
+                </div>
+              )}
             </div>
             {!isCollapsed && (
-              <div className="flex flex-col">
-                <span className="text-sm font-semibold text-gray-900 dark:text-white">Sean Mishra</span>
-                <span className="text-xs text-gray-500 dark:text-gray-400">Designer & Developer</span>
+              <div className="mt-2 text-xs text-gray-500 dark:text-gray-400">
+                Currently building something awesome ✨
               </div>
             )}
           </div>
-        </div>
 
-        {/* Navigation */}
-        <nav className="flex-1 p-4 overflow-y-auto">
           <ul className="space-y-2">
             {navigationItems.map((item) => {
               const isActive = pathname === item.href;
