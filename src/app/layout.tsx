@@ -36,30 +36,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var theme = localStorage.getItem('theme');
-                  var systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-                  var resolvedTheme = theme === 'system' ? systemTheme : theme || systemTheme;
-                  document.documentElement.classList.add(resolvedTheme);
-                } catch (e) {
-                  document.documentElement.classList.add('light');
-                }
-              })()
-            `,
-          }}
-        />
-      </head>
+    <html lang="en" className="dark">
       <body
-        className={`${spaceGrotesk.variable} ${inter.variable} ${jetBrainsMono.variable} antialiased`}
+        className={`${spaceGrotesk.variable} ${inter.variable} ${jetBrainsMono.variable} font-body antialiased`}
       >
         <Providers>
-          <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+          <div className="min-h-screen bg-neutral-100 dark:bg-neutral-900">
             <Sidebar />
             
             <ResponsiveLayout>

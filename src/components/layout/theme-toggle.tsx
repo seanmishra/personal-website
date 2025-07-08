@@ -13,13 +13,13 @@ export function ThemeToggle() {
   return (
     <motion.button
       onClick={toggleTheme}
-      className="relative w-12 h-6 bg-gray-200 dark:bg-gray-700 rounded-full p-1 border border-gray-300 dark:border-gray-600 transition-colors hover:bg-gray-300 dark:hover:bg-gray-600"
+      className="relative w-12 h-6 bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 rounded-full p-1 transition-colors hover:bg-neutral-200 dark:hover:bg-neutral-700"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       aria-label="Toggle theme"
     >
       <motion.div
-        className="w-4 h-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full shadow-sm flex items-center justify-center"
+        className="w-4 h-4 bg-gradient-to-br from-primary-500 to-secondary-600 rounded-full shadow-sm flex items-center justify-center"
         animate={{
           x: resolvedTheme === 'dark' ? 24 : 0,
         }}

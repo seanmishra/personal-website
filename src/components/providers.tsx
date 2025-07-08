@@ -3,7 +3,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { SidebarProvider } from '@/components/layout/sidebar-context';
 
-type Theme = 'light' | 'dark' | 'system';
+type Theme = 'light' | 'dark';
 
 interface ThemeContextType {
   theme: Theme;
@@ -26,19 +26,18 @@ interface ThemeProviderProps {
 }
 
 function ThemeProvider({ children }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>('system');
-  const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
+  const [theme, setTheme] = useState<Theme>('dark'); // Default to dark
+  const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('dark');
   const [isHydrated, setIsHydrated] = useState(false);
 
   // Initialize theme from localStorage on mount
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as Theme;
     if (savedTheme && ['light', 'dark'].includes(savedTheme)) {
-      // Only use saved preference if it's light or dark
       setTheme(savedTheme);
     } else {
-      // Use system preference as fallback
-      setTheme('system');
+      // Default to dark instead of system
+      setTheme('dark');
     }
     setIsHydrated(true);
   }, []);
@@ -46,39 +45,27 @@ function ThemeProvider({ children }: ThemeProviderProps) {
   // Update resolved theme when theme changes
   useEffect(() => {
     if (!isHydrated) return;
-
-    const updateResolvedTheme = () => {
-      if (theme === 'system') {
-        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-        setResolvedTheme(mediaQuery.matches ? 'dark' : 'light');
-      } else {
-        setResolvedTheme(theme);
-      }
-    };
-
-    updateResolvedTheme();
-
-    // Listen for system theme changes only if theme is 'system'
-    if (theme === 'system') {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      mediaQuery.addEventListener('change', updateResolvedTheme);
-      return () => mediaQuery.removeEventListener('change', updateResolvedTheme);
-    }
+    
+    // For direct light/dark themes, resolved theme is the same as theme
+    setResolvedTheme(theme);
   }, [theme, isHydrated]);
 
-  // Save theme to localStorage (but not 'system')
+  // Save theme to localStorage
   useEffect(() => {
-    if (isHydrated && theme !== 'system') {
+    if (isHydrated) {
       localStorage.setItem('theme', theme);
     }
   }, [theme, isHydrated]);
 
-  // Apply theme to document
+  // Apply theme to document - only manage 'dark' class
   useEffect(() => {
     if (isHydrated) {
       const root = document.documentElement;
-      root.classList.remove('light', 'dark');
-      root.classList.add(resolvedTheme);
+      if (resolvedTheme === 'dark') {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
     }
   }, [resolvedTheme, isHydrated]);
 
