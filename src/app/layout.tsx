@@ -72,10 +72,10 @@ export default function RootLayout({
             
             <ResponsiveLayout>
               <Header />
-
-                <main>
-                  {children}
-                </main>
+              
+              <main className="flex-1">
+                {children}
+              </main>
               
               <Footer />
             </ResponsiveLayout>
