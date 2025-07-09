@@ -1,240 +1,105 @@
 @import "tailwindcss";
 
-:root {
-  /* Color Tokens - Light Mode */
-  --color-surface-0: #FAFAFB;
-  --color-surface-1: #F0F1F3;
-  --color-border: #E5E6EA;
-  --color-text-primary: #1B1C1F;
-  --color-text-muted: #6E6F77;
-  --color-accent-main: #4153FF;
-  
-  /* Legacy support */
-  --background: var(--color-surface-0);
-  --foreground: var(--color-text-primary);
-}
+/* Custom dark variant */
+@custom-variant dark (&:where(.dark, .dark *));
 
+/* Font Variables */
 @theme inline {
-  /* Color System */
-  --color-surface-0: var(--color-surface-0);
-  --color-surface-1: var(--color-surface-1);
-  --color-border: var(--color-border);
-  --color-text-primary: var(--color-text-primary);
-  --color-text-muted: var(--color-text-muted);
-  --color-accent-main: var(--color-accent-main);
+  --font-sans: var(--font-gottak), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: var(--font-source-code-pro), ui-monospace, "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+}
+
+/* Custom Theme - Clean Design System */
+@theme {
+  /* Neutral Scale - Warm Slate Gray */
+  --color-neutral-50: #f9fafb;
+  --color-neutral-100: #f3f4f6;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-300: #d1d5db;
+  --color-neutral-400: #9ca3af;
+  --color-neutral-500: #6b7280;
+  --color-neutral-600: #4b5563;
+  --color-neutral-700: #374151;
+  --color-neutral-800: #1f2937;
+  --color-neutral-900: #0e1422;
+  --color-neutral-950: #050a18;
   
-  /* Typography */
-  --font-display: var(--font-space-grotesk);
-  --font-body: var(--font-inter);
-  --font-mono: var(--font-jetbrains-mono);
+  /* Primary Brand Colors */
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #5ac8fa;
+  --color-primary-500: #007aff;
+  --color-primary-600: #0051d0;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+  --color-primary-950: #172554;
   
-  /* Spacing Scale */
-  --spacing-section: 96px;
-  --spacing-gutter: 32px;
-  --spacing-card: 24px;
-  --spacing-element: 16px;
-  --spacing-tight: 8px;
-  --spacing-xs: 4px;
+  /* Secondary Colors - Warm Accent */
+  --color-secondary-50: #fef7f0;
+  --color-secondary-100: #feecdc;
+  --color-secondary-200: #fcd9bd;
+  --color-secondary-300: #fdba8c;
+  --color-secondary-400: #ff8a4c;
+  --color-secondary-500: #ff5a1f;
+  --color-secondary-600: #ea580c;
+  --color-secondary-700: #c2410c;
+  --color-secondary-800: #9a3412;
+  --color-secondary-900: #7c2d12;
+  --color-secondary-950: #431407;
   
-  /* Glass Effect Utilities */
-  --glass-bg: rgba(255, 255, 255, 0.8);
-  --glass-border: rgba(255, 255, 255, 0.2);
-  --glass-backdrop: blur(14px) saturate(180%);
+  /* Semantic Colors */
+  --color-success-50: #f0fdf4;
+  --color-success-100: #dcfce7;
+  --color-success-500: #30d158;
+  --color-success-600: #16a34a;
+  --color-success-700: #15803d;
   
-  /* Typography Scale */
-  --font-size-display-xl: 4rem;
-  --font-size-display-lg: 3rem;
-  --font-size-display-md: 2.25rem;
-  --font-size-display-sm: 1.875rem;
-  --font-size-heading-xl: 1.5rem;
-  --font-size-heading-lg: 1.25rem;
-  --font-size-heading-md: 1.125rem;
-  --font-size-body-lg: 1.125rem;
-  --font-size-body-md: 1rem;
-  --font-size-body-sm: 0.875rem;
-  --font-size-caption: 0.75rem;
+  --color-warning-50: #fffbeb;
+  --color-warning-100: #fef3c7;
+  --color-warning-500: #ff9500;
+  --color-warning-600: #d97706;
+  --color-warning-700: #b45309;
   
-  /* Line Heights */
-  --line-height-tight: 1.2;
-  --line-height-normal: 1.5;
-  --line-height-relaxed: 1.55;
+  --color-error-50: #fef2f2;
+  --color-error-100: #fee2e2;
+  --color-error-500: #ff3b30;
+  --color-error-600: #dc2626;
+  --color-error-700: #b91c1c;
   
-  /* Letter Spacing */
-  --letter-spacing-tight: -0.02em;
-  --letter-spacing-normal: 0;
-  --letter-spacing-wide: 0.02em;
+  /* Enhanced Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.15);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Color Tokens - Dark Mode */
-    --color-surface-0: #0E0F12;
-    --color-surface-1: #16171D;
-    --color-border: rgba(255, 255, 255, 0.08);
-    --color-text-primary: #E9EAEE;
-    --color-text-muted: #8E9098;
-    --color-accent-main: #5970FF;
-    
-    /* Legacy support */
-    --background: var(--color-surface-0);
-    --foreground: var(--color-text-primary);
-    
-    /* Glass Effect - Dark Mode */
-    --glass-bg: rgba(0, 0, 0, 0.4);
-    --glass-border: rgba(255, 255, 255, 0.1);
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-body);
-  line-height: var(--line-height-relaxed);
-  font-weight: 400;
-}
-
-/* Typography Utility Classes */
-.text-display-xl {
-  font-family: var(--font-display);
-  font-size: var(--font-size-display-xl);
-  font-weight: 600;
-  line-height: var(--line-height-tight);
-  letter-spacing: var(--letter-spacing-tight);
-}
-
-.text-display-lg {
-  font-family: var(--font-display);
-  font-size: var(--font-size-display-lg);
-  font-weight: 600;
-  line-height: var(--line-height-tight);
-  letter-spacing: var(--letter-spacing-tight);
-}
-
-.text-display-md {
-  font-family: var(--font-display);
-  font-size: var(--font-size-display-md);
-  font-weight: 500;
-  line-height: var(--line-height-tight);
-  letter-spacing: var(--letter-spacing-tight);
-}
-
-.text-display-sm {
-  font-family: var(--font-display);
-  font-size: var(--font-size-display-sm);
-  font-weight: 500;
-  line-height: var(--line-height-tight);
-  letter-spacing: var(--letter-spacing-tight);
-}
-
-.text-heading-xl {
-  font-family: var(--font-display);
-  font-size: var(--font-size-heading-xl);
-  font-weight: 600;
-  line-height: var(--line-height-normal);
-}
-
-.text-heading-lg {
-  font-family: var(--font-display);
-  font-size: var(--font-size-heading-lg);
-  font-weight: 600;
-  line-height: var(--line-height-normal);
-}
-
-.text-heading-md {
-  font-family: var(--font-display);
-  font-size: var(--font-size-heading-md);
-  font-weight: 500;
-  line-height: var(--line-height-normal);
-}
-
-.text-body-lg {
-  font-family: var(--font-body);
-  font-size: var(--font-size-body-lg);
-  font-weight: 400;
-  line-height: var(--line-height-relaxed);
-}
-
-.text-body-md {
-  font-family: var(--font-body);
-  font-size: var(--font-size-body-md);
-  font-weight: 400;
-  line-height: var(--line-height-relaxed);
-}
-
-.text-body-sm {
-  font-family: var(--font-body);
-  font-size: var(--font-size-body-sm);
-  font-weight: 400;
-  line-height: var(--line-height-relaxed);
-}
-
-.text-caption {
-  font-family: var(--font-body);
-  font-size: var(--font-size-caption);
-  font-weight: 400;
-  line-height: var(--line-height-normal);
-}
-
-.text-mono {
-  font-family: var(--font-mono);
-}
-
-/* Color Utility Classes */
-.text-primary { color: var(--color-text-primary); }
-.text-muted { color: var(--color-text-muted); }
-.text-accent { color: var(--color-accent-main); }
-
-.bg-surface-0 { background-color: var(--color-surface-0); }
-.bg-surface-1 { background-color: var(--color-surface-1); }
-.bg-accent { background-color: var(--color-accent-main); }
-
-.border-default { border-color: var(--color-border); }
-
-/* Spacing Utility Classes */
-.spacing-section { margin-top: var(--spacing-section); margin-bottom: var(--spacing-section); }
-.spacing-gutter { margin: var(--spacing-gutter); }
-.spacing-card { padding: var(--spacing-card); }
-.spacing-element { padding: var(--spacing-element); }
-.spacing-tight { padding: var(--spacing-tight); }
-
-/* Glass Effect Utility Classes */
-.glass {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: var(--glass-backdrop);
-  -webkit-backdrop-filter: var(--glass-backdrop);
-}
-
-.glass-subtle {
-  background: var(--glass-bg);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-/* Fallback for browsers that don't support backdrop-filter */
-@supports not (backdrop-filter: blur(1px)) {
-  .glass {
-    background: var(--color-surface-1);
-    border: 1px solid var(--color-border);
+/* Custom component styles */
+@layer components {
+  .card {
+    @apply bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 shadow-md rounded-lg;
   }
   
-  .glass-subtle {
-    background: var(--color-surface-1);
-    /* No border for subtle variant to maintain consistency */
-  }
-}
-
-/* Accessibility - Reduced transparency for users who prefer it */
-@media (prefers-reduced-transparency: reduce) {
-  .glass {
-    background: var(--color-surface-1);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+  .btn-primary {
+    @apply bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors shadow-sm;
   }
   
-  .glass-subtle {
-    background: var(--color-surface-1);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+  .btn-secondary {
+    @apply bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-neutral-900 dark:text-neutral-100 border border-neutral-300 dark:border-neutral-700 px-4 py-2 rounded-lg font-medium transition-colors;
+  }
+  
+  .text-primary {
+    @apply text-neutral-900 dark:text-neutral-100;
+  }
+  
+  .text-secondary {
+    @apply text-neutral-700 dark:text-neutral-300;
+  }
+  
+  .text-muted {
+    @apply text-neutral-500 dark:text-neutral-400;
   }
 }
