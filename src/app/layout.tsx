@@ -67,17 +67,15 @@ export default function RootLayout({
         className={`${gottak.variable} ${sourceCodePro.variable} font-sans antialiased`}
       >
         <Providers>
-          <div className="min-h-screen bg-neutral-100 dark:bg-neutral-900">
+          <div className="min-h-screen bg-neutral-50 dark:bg-neutral-900">
             <Sidebar />
             
             <ResponsiveLayout>
               <Header />
-              
-              <main className="flex-1 p-6">
-                <div className="max-w-7xl mx-auto">
+
+                <main>
                   {children}
-                </div>
-              </main>
+                </main>
               
               <Footer />
             </ResponsiveLayout>

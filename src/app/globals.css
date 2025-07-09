@@ -77,29 +77,347 @@
   --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.15);
 }
 
+/* Custom utilities that need to be available for components */
+@utility hover-lift {
+  transition: all 300ms ease;
+  &:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+}
+
+@utility hover-lift-primary {
+  transition: all 300ms ease;
+  &:hover {
+    box-shadow: 0 20px 25px rgba(0, 122, 255, 0.25);
+    transform: translateY(-4px);
+  }
+}
+
+@utility surface-0 {
+  background-color: var(--color-neutral-50);
+  @variant dark {
+    background-color: var(--color-neutral-900);
+  }
+}
+
+@utility surface-1 {
+  background-color: var(--color-neutral-100);
+  @variant dark {
+    background-color: var(--color-neutral-800);
+  }
+}
+
+@utility hover-surface {
+  &:hover {
+    background-color: var(--color-neutral-100);
+    @variant dark {
+      background-color: var(--color-neutral-800);
+    }
+  }
+}
+
 /* Custom component styles */
 @layer components {
   .card {
-    @apply bg-neutral-100 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 shadow-md rounded-lg;
+    background-color: var(--color-neutral-100);
+    border: 1px solid var(--color-neutral-300);
+    box-shadow: var(--shadow-md);
+    border-radius: 0.5rem;
+    @variant dark {
+      background-color: var(--color-neutral-800);
+      border-color: var(--color-neutral-700);
+    }
   }
   
   .btn-primary {
-    @apply bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors shadow-sm;
+    background-color: #3b82f6;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: background-color 0.15s ease;
+    box-shadow: var(--shadow-sm);
+    &:hover {
+      background-color: #2563eb;
+    }
+    @variant dark {
+      background-color: #2563eb;
+      &:hover {
+        background-color: #1d4ed8;
+      }
+    }
   }
   
   .btn-secondary {
-    @apply bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-neutral-900 dark:text-neutral-100 border border-neutral-300 dark:border-neutral-700 px-4 py-2 rounded-lg font-medium transition-colors;
+    background-color: var(--color-neutral-100);
+    color: var(--color-neutral-900);
+    border: 1px solid var(--color-neutral-300);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: background-color 0.15s ease;
+    &:hover {
+      background-color: var(--color-neutral-200);
+    }
+    @variant dark {
+      background-color: var(--color-neutral-800);
+      color: var(--color-neutral-100);
+      border-color: var(--color-neutral-700);
+      &:hover {
+        background-color: var(--color-neutral-700);
+      }
+    }
   }
   
-  .text-primary {
-    @apply text-neutral-900 dark:text-neutral-100;
+  /* Large button variants */
+  .btn-primary-large {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem 2.5rem;
+    background-color: var(--color-primary-500);
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border-radius: 1rem;
+    transition: all 300ms ease;
+    &:hover {
+      background-color: var(--color-primary-600);
+      box-shadow: 0 20px 25px rgba(0, 122, 255, 0.25);
+      transform: translateY(-4px);
+    }
   }
   
-  .text-secondary {
-    @apply text-neutral-700 dark:text-neutral-300;
+  .btn-secondary-large {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem 2.5rem;
+    border: 2px solid var(--color-neutral-300);
+    color: var(--color-neutral-900);
+    font-size: 1.125rem;
+    font-weight: 600;
+    border-radius: 1rem;
+    transition: all 300ms ease;
+    &:hover {
+      border-color: var(--color-primary-500);
+      color: var(--color-primary-500);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+    @variant dark {
+      border-color: var(--color-neutral-700);
+      color: var(--color-neutral-100);
+    }
   }
   
-  .text-muted {
-    @apply text-neutral-500 dark:text-neutral-400;
+  /* Social link button */
+  .social-link {
+    padding: 0.5rem 1rem;
+    background-color: var(--color-neutral-100);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--color-neutral-700);
+    transition: all 0.15s ease;
+    &:hover {
+      background-color: var(--color-primary-500);
+      color: white;
+      transform: scale(1.05);
+    }
+    @variant dark {
+      background-color: var(--color-neutral-800);
+      color: var(--color-neutral-300);
+    }
   }
+  
+  /* Sidebar status card */
+  .sidebar-status-card {
+    padding: 0.75rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    @variant dark {
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
+      border-color: rgba(255, 255, 255, 0.05);
+    }
+  }
+  
+  /* Navigation link */
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    transition: all 200ms ease;
+    color: var(--color-neutral-700);
+    &:hover {
+      transform: scale(1.02);
+      background-color: var(--color-neutral-100);
+    }
+    @variant dark {
+      color: var(--color-neutral-300);
+      &:hover {
+        background-color: var(--color-neutral-800);
+      }
+    }
+  }
+  
+  .nav-link-active {
+    background-color: var(--color-primary-50);
+    color: var(--color-primary-600);
+    @variant dark {
+      background-color: rgba(30, 58, 138, 0.2);
+      color: var(--color-primary-400);
+    }
+  }
+  
+  /* Skill tag */
+  .skill-tag {
+    padding: 0.5rem 1rem;
+    background-color: var(--color-neutral-50);
+    border: 1px solid var(--color-neutral-300);
+    border-radius: 0.5rem;
+    color: var(--color-neutral-600);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.15s ease;
+    cursor: default;
+    &:hover {
+      border-color: var(--color-primary-500);
+      color: var(--color-primary-500);
+    }
+    @variant dark {
+      background-color: var(--color-neutral-900);
+      border-color: var(--color-neutral-700);
+      color: var(--color-neutral-400);
+    }
+  }
+  
+  /* Status badge */
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    background-color: rgba(0, 122, 255, 0.1);
+    color: var(--color-primary-500);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+}
+
+/* Additional custom utilities */
+@utility text-primary {
+  color: var(--color-neutral-900);
+  @variant dark {
+    color: var(--color-neutral-100);
+  }
+}
+
+@utility text-secondary {
+  color: var(--color-neutral-700);
+  @variant dark {
+    color: var(--color-neutral-300);
+  }
+}
+
+@utility text-muted {
+  color: var(--color-neutral-500);
+  @variant dark {
+    color: var(--color-neutral-400);
+  }
+}
+
+@utility border-default {
+  border-color: var(--color-neutral-200);
+  @variant dark {
+    border-color: var(--color-neutral-800);
+  }
+}
+
+@utility gradient-primary {
+  background: linear-gradient(to right, var(--color-primary-500), var(--color-primary-600));
+}
+
+@utility gradient-text-primary {
+  background: linear-gradient(to right, var(--color-primary-500), var(--color-primary-600));
+  background-clip: text;
+  color: transparent;
+}
+
+@utility glass-card {
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  @variant dark {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+}
+
+@utility bg-pattern-dots {
+  background-image: radial-gradient(circle at 50% 50%, rgba(120, 119, 198, 0.1), transparent 50%);
+}
+
+@utility bg-gradient-surface {
+  background: linear-gradient(to bottom right, var(--color-neutral-50), var(--color-neutral-100), var(--color-neutral-50));
+  @variant dark {
+    background: linear-gradient(to bottom right, var(--color-neutral-950), var(--color-neutral-900), var(--color-neutral-950));
+  }
+}
+
+@utility bg-gradient-accent-subtle {
+  background: linear-gradient(to bottom right, rgba(0, 122, 255, 0.05), transparent, rgba(0, 122, 255, 0.05));
+}
+
+@utility bg-surface-seamless {
+  background: var(--color-neutral-50);
+  @variant dark {
+    background: var(--color-neutral-900);
+  }
+}
+
+@utility hero-gradient-headshot {
+  background: linear-gradient(to bottom right, var(--color-neutral-100), var(--color-neutral-50));
+  @variant dark {
+    background: linear-gradient(to bottom right, var(--color-neutral-800), var(--color-neutral-900));
+  }
+}
+
+@utility hero-overlay-gradient {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent, transparent);
+}
+
+@utility floating-decoration-primary {
+  background-color: rgba(0, 122, 255, 0.2);
+  border-radius: 1rem;
+  transform: rotate(12deg);
+  filter: blur(4px);
+}
+
+@utility floating-decoration-secondary {
+  background-color: rgba(0, 122, 255, 0.1);
+  border-radius: 50%;
+  filter: blur(16px);
+}
+
+@utility bg-section-subtle {
+  background-color: rgba(243, 244, 246, 0.3);
+  @variant dark {
+    background-color: rgba(31, 41, 55, 0.3);
+  }
+}
+
+@utility status-available {
+  background-color: var(--color-success-500);
+}
+
+@utility status-busy {
+  background-color: var(--color-warning-500);
+}
+
+@utility status-away {
+  background-color: var(--color-neutral-500);
 }
