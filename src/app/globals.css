@@ -117,6 +117,119 @@
   }
 }
 
+@utility text-primary {
+  color: var(--color-neutral-900);
+  @variant dark {
+    color: var(--color-neutral-100);
+  }
+}
+
+@utility text-secondary {
+  color: var(--color-neutral-700);
+  @variant dark {
+    color: var(--color-neutral-300);
+  }
+}
+
+@utility text-muted {
+  color: var(--color-neutral-500);
+  @variant dark {
+    color: var(--color-neutral-400);
+  }
+}
+
+@utility border-default {
+  border-color: var(--color-neutral-200);
+  @variant dark {
+    border-color: var(--color-neutral-800);
+  }
+}
+
+@utility gradient-primary {
+  background: linear-gradient(to right, var(--color-primary-500), var(--color-primary-600));
+}
+
+@utility gradient-text-primary {
+  background: linear-gradient(to right, var(--color-primary-500), var(--color-primary-600));
+  background-clip: text;
+  color: transparent;
+}
+
+@utility glass-card {
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  @variant dark {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+}
+
+@utility bg-pattern-dots {
+  background-image: radial-gradient(circle at 50% 50%, rgba(120, 119, 198, 0.1), transparent 50%);
+}
+
+@utility bg-gradient-surface {
+  background: linear-gradient(to bottom right, var(--color-neutral-50), var(--color-neutral-100), var(--color-neutral-50));
+  @variant dark {
+    background: linear-gradient(to bottom right, var(--color-neutral-950), var(--color-neutral-900), var(--color-neutral-950));
+  }
+}
+
+@utility bg-gradient-accent-subtle {
+  background: linear-gradient(to bottom right, rgba(0, 122, 255, 0.05), transparent, rgba(0, 122, 255, 0.05));
+}
+
+@utility bg-surface-seamless {
+  background: var(--color-neutral-50);
+  @variant dark {
+    background: var(--color-neutral-900);
+  }
+}
+
+@utility hero-gradient-headshot {
+  background: linear-gradient(to bottom right, var(--color-neutral-100), var(--color-neutral-50));
+  @variant dark {
+    background: linear-gradient(to bottom right, var(--color-neutral-800), var(--color-neutral-900));
+  }
+}
+
+@utility hero-overlay-gradient {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent, transparent);
+}
+
+@utility floating-decoration-primary {
+  background-color: rgba(0, 122, 255, 0.2);
+  border-radius: 1rem;
+  transform: rotate(12deg);
+  filter: blur(4px);
+}
+
+@utility floating-decoration-secondary {
+  background-color: rgba(0, 122, 255, 0.1);
+  border-radius: 50%;
+  filter: blur(16px);
+}
+
+@utility bg-section-subtle {
+  background-color: rgba(243, 244, 246, 0.3);
+  @variant dark {
+    background-color: rgba(31, 41, 55, 0.3);
+  }
+}
+
+@utility status-available {
+  background-color: var(--color-success-500);
+}
+
+@utility status-busy {
+  background-color: var(--color-warning-500);
+}
+
+@utility status-away {
+  background-color: var(--color-neutral-500);
+}
+
 /* Custom component styles */
 @layer components {
   .card {
@@ -307,117 +420,4 @@
     font-size: 0.875rem;
     font-weight: 500;
   }
-}
-
-/* Additional custom utilities */
-@utility text-primary {
-  color: var(--color-neutral-900);
-  @variant dark {
-    color: var(--color-neutral-100);
-  }
-}
-
-@utility text-secondary {
-  color: var(--color-neutral-700);
-  @variant dark {
-    color: var(--color-neutral-300);
-  }
-}
-
-@utility text-muted {
-  color: var(--color-neutral-500);
-  @variant dark {
-    color: var(--color-neutral-400);
-  }
-}
-
-@utility border-default {
-  border-color: var(--color-neutral-200);
-  @variant dark {
-    border-color: var(--color-neutral-800);
-  }
-}
-
-@utility gradient-primary {
-  background: linear-gradient(to right, var(--color-primary-500), var(--color-primary-600));
-}
-
-@utility gradient-text-primary {
-  background: linear-gradient(to right, var(--color-primary-500), var(--color-primary-600));
-  background-clip: text;
-  color: transparent;
-}
-
-@utility glass-card {
-  background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  @variant dark {
-    background-color: rgba(255, 255, 255, 0.05);
-  }
-}
-
-@utility bg-pattern-dots {
-  background-image: radial-gradient(circle at 50% 50%, rgba(120, 119, 198, 0.1), transparent 50%);
-}
-
-@utility bg-gradient-surface {
-  background: linear-gradient(to bottom right, var(--color-neutral-50), var(--color-neutral-100), var(--color-neutral-50));
-  @variant dark {
-    background: linear-gradient(to bottom right, var(--color-neutral-950), var(--color-neutral-900), var(--color-neutral-950));
-  }
-}
-
-@utility bg-gradient-accent-subtle {
-  background: linear-gradient(to bottom right, rgba(0, 122, 255, 0.05), transparent, rgba(0, 122, 255, 0.05));
-}
-
-@utility bg-surface-seamless {
-  background: var(--color-neutral-50);
-  @variant dark {
-    background: var(--color-neutral-900);
-  }
-}
-
-@utility hero-gradient-headshot {
-  background: linear-gradient(to bottom right, var(--color-neutral-100), var(--color-neutral-50));
-  @variant dark {
-    background: linear-gradient(to bottom right, var(--color-neutral-800), var(--color-neutral-900));
-  }
-}
-
-@utility hero-overlay-gradient {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent, transparent);
-}
-
-@utility floating-decoration-primary {
-  background-color: rgba(0, 122, 255, 0.2);
-  border-radius: 1rem;
-  transform: rotate(12deg);
-  filter: blur(4px);
-}
-
-@utility floating-decoration-secondary {
-  background-color: rgba(0, 122, 255, 0.1);
-  border-radius: 50%;
-  filter: blur(16px);
-}
-
-@utility bg-section-subtle {
-  background-color: rgba(243, 244, 246, 0.3);
-  @variant dark {
-    background-color: rgba(31, 41, 55, 0.3);
-  }
-}
-
-@utility status-available {
-  background-color: var(--color-success-500);
-}
-
-@utility status-busy {
-  background-color: var(--color-warning-500);
-}
-
-@utility status-away {
-  background-color: var(--color-neutral-500);
 }
