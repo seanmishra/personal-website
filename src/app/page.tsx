@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section - Full Width */}
-      <section className="relative -mx-6 px-20 py-20 lg:py-32 overflow-hidden">
+      <section className="relative px-20 xl:px-40 py-20 lg:py-32 overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 bg-gradient-surface" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl" />
@@ -23,7 +23,7 @@ export default function Home() {
               </div>
               
               <div className="space-y-8">
-                <h1 className="text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-primary tracking-tight">
+                <h1 className="text-5xl lg:text-6xl 2xl:text-7xl font-display font-bold text-primary tracking-tight">
                 Bold ideas {' '}
                   <span className="gradient-text-primary">
                   belong
@@ -102,9 +102,9 @@ export default function Home() {
       </section>
 
       {/* About & Skills Section */}
-      <section className="py-20 lg:py-32 bg-section-subtle -mx-6 px-6">
+      <section className="py-20 px-40 lg:py-32 bg-section-subtle">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-5 gap-16 items-start">
+          <div className="grid lg:grid-cols-5 gap-20 items-start">
             {/* About Content */}
             <div className="lg:col-span-3 space-y-12">
               <div className="space-y-6">
@@ -113,17 +113,20 @@ export default function Home() {
                   <span className="text-primary-500 font-medium tracking-wider uppercase text-sm">About</span>
                 </div>
                 <h2 className="text-4xl lg:text-5xl font-display font-bold text-primary leading-tight">
-                  Crafting digital experiences that{' '}
-                  <span className="text-primary-500">matter</span>
+                  Design, Code, Ship — {' '}
+                  <span className="text-primary-500">Repeat</span>
                 </h2>
               </div>
               
               <div className="space-y-8 text-xl leading-relaxed text-muted">
                 <p>
-                  I&apos;ve navigated the startup ecosystem, small businesses, and indie projects—building everything from rapid MVPs to robust, production-scale systems. My sweet spot? JavaScript, React, Node.js, and modern cloud platforms, though I&apos;m always excited to explore new tech when innovation calls for it.
+                {`I'm a full-stack software engineer who builds scalable, user-focused web and mobile apps. With strong product sense and an eye for clean design, I blend frontend finesse and backend architecture to ship fast and iterate even faster.`}
                 </p>
                 <p>
-                  Beyond the code, I&apos;m passionate about thoughtful UX, clean design, and creating products that genuinely improve people&apos;s lives. I believe in shipping early, iterating fast, and always hunting for the next meaningful problem to solve.
+                {`I've navigated startups, small businesses and indie projects, building everything from quick MVPs to robust, production-scale systems. While I center around JavaScript, React, Node.js, and modern cloud platforms, I'm always open to exploring new tech when the project calls for it.`}
+                </p>
+                <p>
+                {`Beyond coding, I care deeply about good UX, thoughtful design, and the meaningful impact of the products I create. I'm always shipping, always iterating, and always on the hunt for problems worth solving.`}
                 </p>
               </div>
 
@@ -134,7 +137,7 @@ export default function Home() {
                   <div className="text-muted text-sm">Projects Shipped</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-500">5+</div>
+                  <div className="text-3xl font-bold text-primary-500">12+</div>
                   <div className="text-muted text-sm">Years Experience</div>
                 </div>
                 <div className="text-center">
@@ -145,35 +148,34 @@ export default function Home() {
             </div>
             
             {/* Skills Grid */}
-            <div className="lg:col-span-2 space-y-8">
+            <div className="lg:col-span-2 space-y-8 lg:mt-16">
               <div className="space-y-6">
                 <h3 className="text-2xl font-display font-bold text-primary">
                   Tech Stack
                 </h3>
-                
                 <div className="space-y-6">
-                  {[
-                    { category: 'Frontend', skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'] },
-                    { category: 'Backend', skills: ['Node.js', 'Express', 'PostgreSQL', 'MongoDB'] },
-                    { category: 'Cloud', skills: ['AWS', 'Vercel', 'Docker', 'Kubernetes'] },
-                    { category: 'Tools', skills: ['Git', 'Figma', 'Linear', 'Postman'] }
-                  ].map((group) => (
+                    {[
+                    { category: 'Frontend', skills: ['React', 'Next.js', 'JavaScript', 'TypeScript', 'Tailwind', 'D3', 'Motion', 'GSAP', 'Lottie', 'Storybook'] },
+                    { category: 'Backend', skills: ['Node.js', 'Express', 'MongoDB', 'MySQL', 'Redis', 'Supabase', 'Clerk', 'OAuth2', 'Jest', 'Testing Library'] },
+                    { category: 'DevOps', skills: ['Docker', 'GH Actions', 'CI/CD pipelines', 'Vercel', 'Railway', 'Firebase', 'Heroku', 'AWS (S3, Lambda)'] },
+                    { category: 'Tooling', skills: ['Git', 'VSCode', 'Linear', 'Jira', 'Postman', 'Warp', 'Figma'] }
+                    ].map((group) => (
                     <div key={group.category} className="space-y-3">
                       <h4 className="text-sm font-semibold text-primary-500 uppercase tracking-wider">
-                        {group.category}
+                      {group.category}
                       </h4>
                       <div className="flex flex-wrap gap-2">
-                        {group.skills.map((skill) => (
-                          <span
-                            key={skill}
-                            className="skill-tag"
-                          >
-                            {skill}
-                          </span>
-                        ))}
+                      {group.skills.map((skill) => (
+                        <span
+                        key={skill}
+                        className="skill-tag"
+                        >
+                        {skill}
+                        </span>
+                      ))}
                       </div>
                     </div>
-                  ))}
+                    ))}
                 </div>
               </div>
             </div>
@@ -182,7 +184,7 @@ export default function Home() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="py-20 lg:py-32 relative overflow-hidden -mx-6 px-6">
+      <section className="py-20 lg:py-32 relative overflow-hidden px-6">
         {/* Background Pattern */}
         <div className="absolute inset-0 bg-gradient-accent-subtle" />
         <div className="absolute inset-0 bg-pattern-dots" />
@@ -196,14 +198,14 @@ export default function Home() {
                 <div className="w-12 h-px bg-primary-500" />
               </div>
               <h2 className="text-4xl lg:text-6xl font-display font-bold text-primary leading-tight">
-                Ready to build something{' '}
+                Ready to turn your roadmap into{' '}
                 <span className="gradient-text-primary">
-                  extraordinary
+                  release notes
                 </span>
                 ?
               </h2>
               <p className="text-xl lg:text-2xl text-muted max-w-3xl mx-auto leading-relaxed">
-                I&apos;m always excited to discuss new opportunities, challenging projects, and ways to create meaningful digital experiences that make a real impact.
+                {`I'm always excited to discuss new opportunities, challenging projects, and ways to create meaningful digital experiences that make a real impact.`}
               </p>
             </div>
             
