@@ -9,7 +9,7 @@ interface HeaderProps {
 }
 
 export function Header({ className = '' }: HeaderProps) {
-  const { toggleSidebar } = useSidebar();
+  const { toggleSidebar, isMobileOverlay, isIconsOnly } = useSidebar();
 
   return (
     <header
@@ -18,14 +18,16 @@ export function Header({ className = '' }: HeaderProps) {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Navigation breadcrumb or title */}
         <div className="flex items-center gap-4">
-          {/* Mobile menu button - visible on xs, sm, md, and lg screens */}
-          <button
-            onClick={toggleSidebar}
-            className="p-2 rounded-md hover-surface transition-colors xl:hidden"
-            aria-label="Toggle menu"
-          >
-            <Menu size={20} className="text-muted" />
-          </button>
+          {/* Mobile menu button - visible when in mobile overlay mode or icons-only mode */}
+          {(isMobileOverlay || isIconsOnly) && (
+            <button
+              onClick={toggleSidebar}
+              className="p-2 rounded-md hover-surface transition-colors"
+              aria-label="Toggle menu"
+            >
+              <Menu size={20} className="text-muted" />
+            </button>
+          )}
           
           <h1 className="text-lg font-sans font-semibold text-primary">
             Sean Mishra

@@ -7,7 +7,6 @@ import { Sidebar } from "@/components/layout/sidebar";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { ResponsiveLayout } from "@/components/layout/responsive-layout";
-import { ResizeHandler } from "@/components/resize-handler";
 
 const gottak = localFont({
   src: [
@@ -68,7 +67,6 @@ export default function RootLayout({
         className={`${gottak.variable} ${sourceCodePro.variable} font-sans antialiased`}
       >
         <Providers>
-          <ResizeHandler />
           <div className="min-h-screen bg-neutral-50 dark:bg-neutral-900">
             <Sidebar />
             

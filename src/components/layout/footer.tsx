@@ -13,7 +13,7 @@ export function Footer({ className = '' }: FooterProps) {
 
   return (
     <footer
-      className={`bg-neutral-50/80 dark:bg-neutral-900/80 backdrop-blur-xl border-t border-default ${className}`}
+      className={`bg-neutral-50 dark:bg-neutral-900 border-t border-default ${className}`}
     >
       <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="grid grid-cols-1 md:grid-cols-2 md:gap-16 gap-2">
