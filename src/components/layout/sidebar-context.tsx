@@ -10,6 +10,7 @@ interface SidebarContextType {
   isIconsOnly: boolean;
   isMobileOverlay: boolean;
   shouldShowOverlay: boolean;
+  screenMode: 'mobile' | 'desktop-icons' | 'desktop-full';
 }
 
 const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
@@ -80,8 +81,8 @@ export function SidebarProvider({ children }: SidebarProviderProps) {
 
   const sidebarWidth = getSidebarWidth();
 
-  // Determine if we should show overlay (for lg/xl when expanded or mobile when expanded)
-  const shouldShowOverlay = (isMobileOverlay && !isCollapsed) || (!isMobileOverlay && !isIconsOnly);
+  // Determine if we should show overlay (mobile when expanded OR desktop-icons when expanded)
+  const shouldShowOverlay = (isMobileOverlay && !isCollapsed) || (screenMode === 'desktop-icons' && !isCollapsed);
 
   return (
     <SidebarContext.Provider value={{ 
@@ -90,7 +91,8 @@ export function SidebarProvider({ children }: SidebarProviderProps) {
       sidebarWidth,
       isIconsOnly,
       isMobileOverlay,
-      shouldShowOverlay
+      shouldShowOverlay,
+      screenMode
     }}>
       {children}
     </SidebarContext.Provider>

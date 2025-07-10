@@ -88,7 +88,7 @@ export function Sidebar({ className = '' }: SidebarProps) {
           isMobileOverlay 
             ? (isCollapsed ? 'translate-x-[-100%]' : 'translate-x-0')
             : 'translate-x-0'
-        } ${!isIconsOnly && !isMobileOverlay ? 'lg:shadow-2xl xl:shadow-2xl' : ''} ${className}`}
+        } ${shouldShowOverlay ? 'shadow-2xl' : ''} ${className}`}
       >
       <div className="flex flex-col h-full">
         {/* Navigation */}
@@ -136,8 +136,8 @@ export function Sidebar({ className = '' }: SidebarProps) {
                     } ${isIconsOnly ? 'justify-center' : ''}`}
                     title={isIconsOnly ? item.label : undefined}
                     onClick={() => {
-                      // Close sidebar after navigation for mobile or expanded lg/xl mode
-                      if (isMobileOverlay || (!isIconsOnly && !isMobileOverlay)) {
+                      // Close sidebar after navigation for mobile overlay mode
+                      if (isMobileOverlay) {
                         toggleSidebar();
                       }
                     }}

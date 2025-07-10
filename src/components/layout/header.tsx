@@ -9,7 +9,10 @@ interface HeaderProps {
 }
 
 export function Header({ className = '' }: HeaderProps) {
-  const { toggleSidebar, isMobileOverlay, isIconsOnly } = useSidebar();
+  const { toggleSidebar, isMobileOverlay, screenMode } = useSidebar();
+
+  // Show menu button for mobile or desktop-icons mode (lg/xl breakpoints)
+  const shouldShowMenuButton = isMobileOverlay || screenMode === 'desktop-icons';
 
   return (
     <header
@@ -18,8 +21,8 @@ export function Header({ className = '' }: HeaderProps) {
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Navigation breadcrumb or title */}
         <div className="flex items-center gap-4">
-          {/* Mobile menu button - visible when in mobile overlay mode or icons-only mode */}
-          {(isMobileOverlay || isIconsOnly) && (
+          {/* Mobile menu button - visible when in mobile overlay mode or desktop-icons mode */}
+          {shouldShowMenuButton && (
             <button
               onClick={toggleSidebar}
               className="p-2 rounded-md hover-surface transition-colors"
