@@ -11,7 +11,7 @@ export function ThemeToggle() {
     setTheme(resolvedTheme === 'light' ? 'dark' : 'light');
   };
 
-  const isDark = resolvedTheme === 'dark';
+  const isLight = resolvedTheme === 'light';
 
   return (
     <motion.button
@@ -22,13 +22,13 @@ export function ThemeToggle() {
       }}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      aria-label={isLight ? 'Switch to dark mode' : 'Switch to light mode'}
     >
       {/* Background color animation */}
       <motion.div
         className="absolute inset-0 rounded-full bg-neutral-100 dark:bg-neutral-800"
         animate={{
-          backgroundColor: isDark ? 'var(--color-neutral-800)' : 'var(--color-neutral-100)',
+          backgroundColor: isLight ? 'var(--color-neutral-100)' : 'var(--color-neutral-800)',
         }}
         transition={{ duration: 0.3 }}
       />
@@ -40,9 +40,9 @@ export function ThemeToggle() {
           boxShadow: 'var(--shadow-lg)',
         }}
         animate={{
-          x: isDark ? 28 : 2,
-          backgroundColor: isDark ? 'var(--color-primary-500)' : 'var(--color-secondary-400)',
-          boxShadow: isDark
+          x: isLight ? 28 : 2,
+          backgroundColor: isLight ? 'var(--color-secondary-400)' : 'var(--color-primary-500)',
+          boxShadow: isLight
             ? 'var(--shadow-lg)'
             : 'var(--shadow-lg)',
         }}
@@ -54,21 +54,11 @@ export function ThemeToggle() {
       >
         {/* Icon with rotation animation */}
         <motion.div
-          animate={{ rotate: isDark ? 0 : 180 }}
+          animate={{ rotate: isLight ? 180 : 0 }}
           transition={{ duration: 0.5, ease: 'easeInOut' }}
         >
           <AnimatePresence mode="wait">
-            {isDark ? (
-              <motion.div
-                key="moon"
-                initial={{ opacity: 0, scale: 0.5, rotate: -180 }}
-                animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                exit={{ opacity: 0, scale: 0.5, rotate: 180 }}
-                transition={{ duration: 0.3 }}
-              >
-                <Moon className="w-3 h-3 text-neutral-50" />
-              </motion.div>
-            ) : (
+            {isLight ? (
               <motion.div
                 key="sun"
                 initial={{ opacity: 0, scale: 0.5, rotate: 180 }}
@@ -77,6 +67,16 @@ export function ThemeToggle() {
                 transition={{ duration: 0.3 }}
               >
                 <Sun className="w-3 h-3 text-neutral-50" />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="moon"
+                initial={{ opacity: 0, scale: 0.5, rotate: -180 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                exit={{ opacity: 0, scale: 0.5, rotate: 180 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Moon className="w-3 h-3 text-neutral-50" />
               </motion.div>
             )}
           </AnimatePresence>
@@ -87,26 +87,27 @@ export function ThemeToggle() {
       <div className="absolute inset-0 flex items-center justify-between px-2 pointer-events-none">
         <motion.div
           animate={{ 
-            opacity: isDark ? 0.3 : 0.1,
-            scale: isDark ? 0.8 : 1,
+            opacity: isLight ? 0.4 : 0.1,
+            scale: isLight ? 1 : 0.8,
           }}
           transition={{ duration: 0.3 }}
         >
-          <Sun className="w-3 h-3 text-warning-500" />
+          
+          <Moon className="w-3 h-3 text-neutral-500" />
         </motion.div>
         <motion.div
           animate={{ 
-            opacity: isDark ? 0.1 : 0.3,
-            scale: isDark ? 1 : 0.8,
+            opacity: isLight ? 0.1 : 0.4,
+            scale: isLight ? 0.8 : 1,
           }}
           transition={{ duration: 0.3 }}
         >
-          <Moon className="w-3 h-3 text-primary-400" />
+          <Sun className="w-3 h-3 text-neutral-200" />
         </motion.div>
       </div>
       
       <span className="sr-only">
-        {isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+        {isLight ? 'Switch to dark mode' : 'Switch to light mode'}
       </span>
     </motion.button>
   );

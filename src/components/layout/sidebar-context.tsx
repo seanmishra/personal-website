@@ -24,7 +24,7 @@ interface SidebarProviderProps {
 }
 
 export function SidebarProvider({ children }: SidebarProviderProps) {
-  const [isCollapsed, setIsCollapsed] = useState(true); // Default to collapsed
+  const [isCollapsed, setIsCollapsed] = useState(false); // Default to collapsed
 
   const toggleSidebar = () => {
     setIsCollapsed(!isCollapsed);
