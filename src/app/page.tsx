@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { MapPin, Clock, Download, ArrowRight, MessageCircle } from 'lucide-react';
@@ -24,6 +25,35 @@ function getCurrentTimeZone() {
 }
 
 export default function Home() {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [isAnimated, setIsAnimated] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsAnimated(prev => !prev);
+          }
+        });
+      },
+      {
+        threshold: 0.5, // Trigger when 50% of the card is visible
+      }
+    );
+
+    const currentCard = cardRef.current;
+    if (currentCard) {
+      observer.observe(currentCard);
+    }
+
+    return () => {
+      if (currentCard) {
+        observer.unobserve(currentCard);
+      }
+    };
+  }, []);
+
   return (
     <>
       {/* Hero Section - Full Width */}
@@ -100,7 +130,12 @@ export default function Home() {
                 </div>
                 
                 {/* Glass card */}
-                <div className="absolute -bottom-8 -left-8 right-8 p-6 glass-card rounded-2xl shadow-xl">
+                <div 
+                  ref={cardRef}
+                  className={`absolute -bottom-8 right-8 p-6 glass-card rounded-2xl shadow-xl transition-all duration-300 ${
+                    isAnimated ? '-left-7' : '-left-8'
+                  }`}
+                >
                   <div className="flex items-center gap-4">
                     <div className="flex-1">
                       <p className="text-primary font-semibold">Sean Mishra</p>
