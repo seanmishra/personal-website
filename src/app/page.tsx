@@ -1,6 +1,27 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { MapPin, Clock } from 'lucide-react';
+
+// Helper function to determine if we're in daylight saving time
+function isDaylightSavingTime() {
+  const now = new Date();
+  const year = now.getFullYear();
+  
+  // DST starts second Sunday in March
+  const dstStart = new Date(year, 2, 1); // March 1st
+  dstStart.setDate(dstStart.getDate() + (7 - dstStart.getDay()) + 7); // Second Sunday
+  
+  // DST ends first Sunday in November
+  const dstEnd = new Date(year, 10, 1); // November 1st
+  dstEnd.setDate(dstEnd.getDate() + (7 - dstEnd.getDay())); // First Sunday
+  
+  return now >= dstStart && now < dstEnd;
+}
+
+function getCurrentTimeZone() {
+  return isDaylightSavingTime() ? 'CDT' : 'CST';
+}
 
 export default function Home() {
   return (
@@ -89,9 +110,15 @@ export default function Home() {
                       <p className="text-primary font-semibold">Sean Mishra</p>
                       <p className="text-neutral-700 dark:text-neutral-400 text-sm">Full-Stack Engineer</p>
                     </div>
-                    <div className="flex gap-2 items-center">
-                      <div className="w-3 h-3 bg-success-500 rounded-full animate-pulse" />
-                      <span className="text-neutral-900 dark:text-neutral-400 text-sm">Online</span>
+                    <div className="flex gap-3 items-center text-sm text-neutral-800 dark:text-neutral-400">
+                      <div className="flex items-center gap-1">
+                        <MapPin className="w-4 h-4" />
+                        <span>Greater St. Louis, USA</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock className="w-4 h-4" />
+                        <span>{getCurrentTimeZone()}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
