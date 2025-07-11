@@ -12,7 +12,7 @@ interface SidebarProps {
 
 export function Sidebar({ className = '' }: SidebarProps) {
   const pathname = usePathname();
-  const { isCollapsed, toggleSidebar, sidebarWidth } = useSidebar();
+  const { isCollapsed, toggleSidebar, sidebarWidth, isIconsOnly, isMobileOverlay, shouldShowOverlay } = useSidebar();
   
   // Current time and status
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -46,10 +46,10 @@ export function Sidebar({ className = '' }: SidebarProps) {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'available': return 'bg-green-500';
-      case 'busy': return 'bg-orange-500';
-      case 'away': return 'bg-neutral-500';
-      default: return 'bg-neutral-500';
+      case 'available': return 'status-available';
+      case 'busy': return 'status-busy';
+      case 'away': return 'status-away';
+      default: return 'status-away';
     }
   };
 
@@ -71,10 +71,10 @@ export function Sidebar({ className = '' }: SidebarProps) {
 
   return (
     <>
-      {/* Mobile backdrop overlay - show when sidebar is expanded on small screens */}
-      {!isCollapsed && (
+      {/* Backdrop overlay - show when expanded for both mobile and lg/xl modes */}
+      {shouldShowOverlay && (
         <div 
-          className="fixed inset-0 bg-black/60 z-40 xl:hidden backdrop-blur-sm touch-none"
+          className="fixed inset-0 bg-black/60 z-40 backdrop-blur-sm touch-none 2xl:hidden"
           onClick={toggleSidebar}
           onTouchStart={(e) => e.preventDefault()}
           aria-hidden="true"
@@ -82,38 +82,43 @@ export function Sidebar({ className = '' }: SidebarProps) {
       )}
       
       <aside
-        className={`fixed left-0 top-0 h-full z-50 bg-neutral-100/95 dark:bg-neutral-950/95 backdrop-blur-xl border-r border-neutral-300 dark:border-neutral-700 transition-all duration-300 ${sidebarWidth} ${
-          // Hide sidebar completely on small screens when collapsed
-          isCollapsed ? 'xl:block hidden' : 'block'
-        } ${className}`}
+        className={`fixed left-0 top-0 h-full z-50 bg-neutral-50/95 dark:bg-neutral-900/95 backdrop-blur-xl border-r border-default transition-all duration-300 ${sidebarWidth} ${
+          // For mobile overlay: hide when collapsed, show when expanded
+          // For lg/xl: always show but change overlay behavior
+          isMobileOverlay 
+            ? (isCollapsed ? 'translate-x-[-100%]' : 'translate-x-0')
+            : 'translate-x-0'
+        } ${shouldShowOverlay ? 'shadow-2xl' : ''} ${className}`}
       >
       <div className="flex flex-col h-full">
         {/* Navigation */}
-        <nav className="flex-1 p-4 overflow-y-auto">
+        <nav className="flex-1 p-2 2xl:p-4 overflow-y-auto">
           {/* Status Section */}
-          <div className="mb-6 p-3 bg-neutral-100 dark:bg-neutral-800 rounded-lg border border-neutral-300 dark:border-neutral-700">
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2">
-                <div className={`w-2 h-2 rounded-full ${getStatusColor(status)} animate-pulse`} />
-                {!isCollapsed && (
-                  <span className="text-xs font-medium text-neutral-600 dark:text-neutral-400">
+          {isIconsOnly ? (
+            // Icons-only mode: show just the status indicator, centered
+            <div className="mb-6 mt-3 p-4 flex flex-col justify-center items-center sidebar-status-card">
+              <div className={`w-2 h-2 rounded-full ${getStatusColor(status)} animate-pulse`} />
+            </div>
+          ) : (
+            // Full mode: show complete status card
+            <div className="mb-6 sidebar-status-card">
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2">
+                  <div className={`w-2 h-2 rounded-full ${getStatusColor(status)} animate-pulse`} />
+                  <span className="text-xs font-medium text-muted">
                     {getStatusText(status)}
                   </span>
-                )}
-              </div>
-              {!isCollapsed && (
-                <div className="flex items-center gap-1 text-xs text-neutral-500 dark:text-neutral-400 ml-auto">
+                </div>
+                <div className="flex items-center gap-1 text-xs text-muted ml-auto">
                   <Clock size={12} />
                   <span>{formatTime(currentTime)}</span>
                 </div>
-              )}
-            </div>
-            {!isCollapsed && (
-              <div className="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
+              </div>
+              <div className="mt-2 text-xs text-muted">
                 Currently building something awesome ✨
               </div>
-            )}
-          </div>
+            </div>
+          )}
 
           <ul className="space-y-2">
             {navigationItems.map((item) => {
@@ -124,21 +129,21 @@ export function Sidebar({ className = '' }: SidebarProps) {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className={`flex items-center gap-3 px-3 py-3 rounded-lg transition-all duration-200 group hover:scale-[1.02] ${
+                    className={`nav-link ${
                       isActive
-                        ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
-                        : 'hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-600 dark:text-neutral-400'
-                    }`}
-                    title={isCollapsed ? item.label : undefined}
+                        ? 'nav-link-active'
+                        : ''
+                    } ${isIconsOnly ? 'justify-center' : ''}`}
+                    title={isIconsOnly ? item.label : undefined}
                     onClick={() => {
-                      // Close sidebar on mobile after navigation
-                      if (window.innerWidth < 1280) {
+                      // Close sidebar after navigation for mobile overlay mode
+                      if (isMobileOverlay) {
                         toggleSidebar();
                       }
                     }}
                   >
                     <IconComponent size={20} className="flex-shrink-0" />
-                    {!isCollapsed && (
+                    {!isIconsOnly && (
                       <span className="text-sm font-medium transition-opacity duration-200">
                         {item.label}
                       </span>

@@ -3,6 +3,7 @@ import { Source_Code_Pro } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "@/components/providers";
+import { PostHogProvider } from "@/components/posthog-provider";
 import { Sidebar } from "@/components/layout/sidebar";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -67,21 +68,21 @@ export default function RootLayout({
         className={`${gottak.variable} ${sourceCodePro.variable} font-sans antialiased`}
       >
         <Providers>
-          <div className="min-h-screen bg-neutral-100 dark:bg-neutral-900">
-            <Sidebar />
-            
-            <ResponsiveLayout>
-              <Header />
+          <PostHogProvider>
+            <div className="min-h-screen bg-neutral-50 dark:bg-neutral-900">
+              <Sidebar />
               
-              <main className="flex-1 p-6">
-                <div className="max-w-7xl mx-auto">
+              <ResponsiveLayout>
+                <Header />
+                
+                <main className="flex-1">
                   {children}
-                </div>
-              </main>
-              
-              <Footer />
-            </ResponsiveLayout>
-          </div>
+                </main>
+                
+                <Footer />
+              </ResponsiveLayout>
+            </div>
+          </PostHogProvider>
         </Providers>
       </body>
     </html>
