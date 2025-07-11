@@ -25,7 +25,7 @@ export function Footer({ className = '' }: FooterProps) {
               </span>
             </div>
             <p className="text-md text-muted max-w-md">
-            Impact-driven full-stack software engineer shipping revenue-ready products from concept to launch.
+            Impact-driven Full-Stack Software Engineer shipping revenue-ready products from concept to launch.
             </p>
           </div>
 
