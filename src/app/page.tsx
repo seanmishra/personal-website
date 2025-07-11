@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { MapPin, Clock, Download, ArrowRight, MessageCircle } from 'lucide-react';
+import { trackEvent } from '@/lib/posthog';
 
 // Helper function to determine if we're in daylight saving time
 function isDaylightSavingTime() {
@@ -95,6 +96,7 @@ export default function Home() {
                   download="Sean_Mishra_Resume.pdf"
                   className="btn-primary-large group px-4 py-3 sm:px-10 sm:py-5"
                   aria-label="Download Sean Mishra's resume"
+                  onClick={() => trackEvent.resumeDownload()}
                 >
                   <Download className="w-4 h-4 sm:w-6 sm:h-6 mr-2 sm:mr-3 group-hover:animate-bounce" />
                   <span className="text-sm sm:text-lg">Download Resume</span>
@@ -102,6 +104,7 @@ export default function Home() {
                 <Link 
                   href="/contact"
                   className="btn-secondary-large group px-4 py-3 sm:px-10 sm:py-5"
+                  onClick={() => trackEvent.contactClick('hero')}
                 >
                   <span className="text-sm sm:text-lg">Let&apos;s Talk</span>
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 sm:ml-3 group-hover:translate-x-1 transition-transform" />
@@ -271,6 +274,7 @@ export default function Home() {
               <Link 
                 href="/projects"
                 className="btn-secondary-large group min-w-[160px] sm:min-w-[200px] px-4 py-3 sm:px-10 sm:py-5"
+                onClick={() => trackEvent.projectsClick('cta_section')}
               >
                 <span className="text-sm sm:text-lg">View My Work</span>
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 sm:ml-3 group-hover:translate-x-1 transition-transform" />
@@ -278,6 +282,7 @@ export default function Home() {
               <Link 
                 href="/contact"
                 className="btn-primary-large group min-w-[160px] sm:min-w-[200px] px-4 py-3 sm:px-10 sm:py-5"
+                onClick={() => trackEvent.contactClick('cta_section')}
               >
                 <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3" />
                 <span className="text-sm sm:text-lg">Start a Conversation</span>
