@@ -34,8 +34,6 @@ export async function POST(request: NextRequest) {
 
     // Build email content
     const emailContent = `
-New contact form submission from ${data.name}
-
 Contact Information:
 - Name: ${data.name}
 - Email: ${data.email}
@@ -51,10 +49,10 @@ This message was sent from the contact form on seanmishra.com
 
     // Send email via Resend
     const emailResponse = await resend.emails.send({
-      from: 'Contact Form <contact@seanmishra.com>',
+      from: 'Personal Website <contact@seanmishra.com>',
       to: ['hello@seanmishra.com'],
       replyTo: data.email,
-      subject: `New Contact: ${data.name} - General Inquiry`,
+      subject: `Message from ${data.name} - via Personal Website`,
       text: emailContent,
     });
 
@@ -76,8 +74,6 @@ In the meantime, feel free to:
 - Check out my work: https://seanmishra.com/projects
 - Schedule a quick call: https://cal.com/seanmishra/15min
 - Connect on LinkedIn: https://linkedin.com/in/seanmishra
-
-Looking forward to discussing your opportunity!
 
 Best regards,
 Sean Mishra
