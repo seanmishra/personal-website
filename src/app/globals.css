@@ -219,15 +219,18 @@
 }
 
 @utility status-available {
-  background-color: var(--color-success-500);
+  background-color: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
 }
 
 @utility status-busy {
-  background-color: var(--color-warning-500);
+  background-color: #f59e0b;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.4);
 }
 
 @utility status-away {
-  background-color: var(--color-neutral-500);
+  background-color: #6b7280;
+  box-shadow: 0 0 8px rgba(107, 114, 128, 0.3);
 }
 
 /* Custom component styles */
@@ -346,13 +349,22 @@
   
   /* Sidebar status card */
   .sidebar-status-card {
-    padding: 0.75rem;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-    border-radius: 0.75rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    transition: all 200ms ease;
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
     @variant dark {
-      background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
-      border-color: rgba(255, 255, 255, 0.05);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+      border-color: rgba(255, 255, 255, 0.1);
+      &:hover {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
     }
   }
   
