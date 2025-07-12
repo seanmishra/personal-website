@@ -43,5 +43,42 @@ export const trackEvent = {
         destination: '/projects'
       })
     }
+  },
+  
+  // Contact form events
+  contactFormSubmit: (data: { hasCompany: boolean; hasProjectRole?: boolean }) => {
+    if (typeof window !== 'undefined') {
+      posthog.capture('contact_form_submit', data)
+    }
+  },
+  
+  contactFormSuccess: () => {
+    if (typeof window !== 'undefined') {
+      posthog.capture('contact_form_success')
+    }
+  },
+  
+  contactFormError: (data: { error: string }) => {
+    if (typeof window !== 'undefined') {
+      posthog.capture('contact_form_error', data)
+    }
+  },
+  
+  scheduleCall: (data: { duration: string; source: string }) => {
+    if (typeof window !== 'undefined') {
+      posthog.capture('schedule_call', data)
+    }
+  },
+  
+  scrollToForm: (data: { source: string }) => {
+    if (typeof window !== 'undefined') {
+      posthog.capture('scroll_to_form', data)
+    }
+  },
+  
+  directContact: (data: { method: string }) => {
+    if (typeof window !== 'undefined') {
+      posthog.capture('direct_contact', data)
+    }
   }
 }

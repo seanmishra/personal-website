@@ -3,5 +3,9 @@
 NEXT_PUBLIC_POSTHOG_KEY=your_posthog_project_api_key_here
 NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
 
+# Resend Configuration
+# Sign up at https://resend.com and get your API key
+RESEND_API_KEY=your_resend_api_key_here
+
 # Set to 'development' for debugging
 NODE_ENV=development

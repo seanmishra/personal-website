@@ -32,7 +32,7 @@ export function Footer({ className = '' }: FooterProps) {
           {/* Connect */}
           <div className="flex flex-col gap-4">
             <h3 className="text-lg font-sans font-semibold text-primary">
-              Connect
+              Elsewhere on the web
             </h3>
             <div className="flex gap-4">
               {socialLinks.map((link) => (
