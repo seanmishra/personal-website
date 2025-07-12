@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { Home, User, Briefcase, PenTool, Clock } from 'lucide-react';
+import { Home, User, Briefcase, PenTool, Mail, Clock } from 'lucide-react';
 import { useSidebar } from './sidebar-context';
 import { useState, useEffect } from 'react';
 
@@ -16,6 +16,7 @@ export function Sidebar({ className = '' }: SidebarProps) {
   
   // Current time and status
   const [currentTime, setCurrentTime] = useState(new Date());
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [status, setStatus] = useState<'available' | 'busy' | 'away'>('available');
 
   useEffect(() => {
@@ -23,43 +24,64 @@ export function Sidebar({ className = '' }: SidebarProps) {
       setCurrentTime(new Date());
     }, 1000);
 
-    // Set status based on time (just as an example)
+    // Set status based on time and more realistic logic
     const hour = new Date().getHours();
-    if (hour >= 9 && hour <= 17) {
-      setStatus('available');
-    } else if (hour >= 18 && hour <= 22) {
-      setStatus('busy');
-    } else {
+    const dayOfWeek = new Date().getDay(); // 0 = Sunday, 6 = Saturday
+    
+    // Weekend or late night/early morning
+    if (dayOfWeek === 0 || dayOfWeek === 6 || hour < 8 || hour > 22) {
       setStatus('away');
+    } 
+    // Work hours (8 AM - 6 PM on weekdays)
+    else if (hour >= 8 && hour <= 18) {
+      setStatus('available');
+    } 
+    // Evening hours (6 PM - 10 PM on weekdays)
+    else {
+      setStatus('busy');
     }
 
     return () => clearInterval(timer);
   }, []);
 
   const formatTime = (date: Date) => {
-    return date.toLocaleTimeString('en-US', { 
+    const time = date.toLocaleTimeString('en-US', { 
       hour: '2-digit', 
       minute: '2-digit',
+      second: '2-digit',
       timeZoneName: 'short'
     });
+    return time
   };
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'available': return 'status-available';
-      case 'busy': return 'status-busy';
-      case 'away': return 'status-away';
-      default: return 'status-away';
-    }
+  const formatTimeXS = (date: Date) => {
+    const time = date.toLocaleTimeString('en-US', { 
+      hour: '2-digit', 
+      minute: '2-digit'
+    });
+    return time
   };
 
-  const getStatusText = (status: string) => {
-    switch (status) {
-      case 'available': return 'Available';
-      case 'busy': return 'Busy';
-      case 'away': return 'Away';
-      default: return 'Away';
-    }
+  // const getStatusColor = (status: string) => {
+  //   switch (status) {
+  //     case 'available': return 'status-available';
+  //     case 'busy': return 'status-busy';
+  //     case 'away': return 'status-away';
+  //     default: return 'status-away';
+  //   }
+  // };
+
+  // const getStatusText = (status: string) => {
+  //   switch (status) {
+  //     case 'available': return 'Available for work';
+  //     case 'busy': return 'Limited availability';
+  //     case 'away': return 'Currently offline';
+  //     default: return 'Status unknown';
+  //   }
+  // };
+
+  const getStatusDescription = () => {
+    return 'Building something awesome ✨';
   };
 
   const navigationItems = [
@@ -67,6 +89,7 @@ export function Sidebar({ className = '' }: SidebarProps) {
     { href: '/about', label: 'About', icon: User },
     { href: '/projects', label: 'Projects', icon: Briefcase },
     { href: '/writing', label: 'Writing', icon: PenTool },
+    { href: '/contact', label: 'Contact', icon: Mail },
   ];
 
   return (
@@ -96,26 +119,27 @@ export function Sidebar({ className = '' }: SidebarProps) {
           {/* Status Section */}
           {isIconsOnly ? (
             // Icons-only mode: show just the status indicator, centered
-            <div className="mb-6 mt-3 p-4 flex flex-col justify-center items-center sidebar-status-card">
-              <div className={`w-2 h-2 rounded-full ${getStatusColor(status)} animate-pulse`} />
+            // <div className="mb-6 mt-3 p-4 flex flex-col justify-center items-center sidebar-status-card">
+            //   <div className={`w-2 h-2 rounded-full ${getStatusColor(status)} animate-pulse shadow-lg`} />
+            // </div>
+            <div className="p-1 mb-4">
+              <span className="font-mono font-bold text-sm text-muted">{formatTimeXS(currentTime)}</span>
             </div>
           ) : (
             // Full mode: show complete status card
             <div className="mb-6 sidebar-status-card">
-              <div className="flex items-center gap-3">
-                <div className="flex items-center gap-2">
-                  <div className={`w-2 h-2 rounded-full ${getStatusColor(status)} animate-pulse`} />
-                  <span className="text-xs font-medium text-muted">
-                    {getStatusText(status)}
-                  </span>
-                </div>
-                <div className="flex items-center gap-1 text-xs text-muted ml-auto">
-                  <Clock size={12} />
-                  <span>{formatTime(currentTime)}</span>
-                </div>
+              {/* <div className="flex items-center gap-2 mb-2">
+                <div className={`w-2 h-2 rounded-full ${getStatusColor(status)} animate-pulse shadow-lg`} />
+                <span className="text-xs font-semibold text-primary">
+                  {getStatusText(status)}
+                </span>
+              </div> */}
+              <div className="flex items-center gap-1 mb-3 text-sm text-muted">
+                <Clock size={12} />
+                <span className="font-mono font-bold">{formatTime(currentTime)}</span>
               </div>
-              <div className="mt-2 text-xs text-muted">
-                Currently building something awesome ✨
+              <div className="text-xs text-muted leading-relaxed">
+                {getStatusDescription()}
               </div>
             </div>
           )}
