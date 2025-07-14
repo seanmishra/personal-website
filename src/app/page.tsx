@@ -121,7 +121,7 @@ export default function Home() {
                 
                 <div className="relative aspect-[4/5] rounded-3xl overflow-hidden hero-gradient-headshot shadow-2xl shadow-black/10">
                   <Image
-                    src="/images/sean_headshot.jpg"
+                    src="/images/seanmishra.jpg"
                     alt="Sean Mishra - Full-stack Software Engineer"
                     width={500}
                     height={625}
