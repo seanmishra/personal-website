@@ -15,14 +15,14 @@ export function Header({ className = '' }: HeaderProps) {
 
   return (
     <header
-      className={`sticky top-0 z-40 bg-neutral-50/95 dark:bg-neutral-950/95 backdrop-blur-sm border-b border-neutral-200 dark:border-neutral-800 ${className}`}
+      className={`sticky top-0 z-40 bg-neutral-100/95 dark:bg-neutral-900/95 backdrop-blur-sm border-b border-neutral-200 dark:border-neutral-800 ${className}`}
     >
       <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
         <div className="flex items-center gap-4">
           {shouldShowMenuButton && (
             <button
               onClick={toggleSidebar}
-              className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors"
+              className="p-2 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors"
               aria-label="Toggle menu"
             >
               <Menu size={16} className="text-neutral-600 dark:text-neutral-400" />

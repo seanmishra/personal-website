@@ -32,7 +32,7 @@ export function Sidebar({ className = '' }: SidebarProps) {
       )}
       
       <aside
-        className={`fixed left-0 top-0 h-full z-50 bg-neutral-50 dark:bg-neutral-950 border-r border-neutral-200 dark:border-neutral-800 transition-all duration-300 ${sidebarWidth} ${
+        className={`fixed left-0 top-0 h-full z-50 bg-neutral-100 dark:bg-neutral-900 border-r border-neutral-200 dark:border-neutral-800 transition-all duration-300 ${sidebarWidth} ${
           isMobileOverlay 
             ? (isCollapsed ? 'translate-x-[-100%]' : 'translate-x-0')
             : 'translate-x-0'
@@ -52,8 +52,8 @@ export function Sidebar({ className = '' }: SidebarProps) {
                       href={item.href}
                       className={`flex items-center gap-3 px-3 py-2 text-sm font-mono transition-colors ${
                         isActive
-                          ? 'text-neutral-900 dark:text-neutral-100 bg-neutral-100 dark:bg-neutral-900'
-                          : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-900'
+                          ? 'text-neutral-900 dark:text-neutral-100 bg-neutral-200 dark:bg-neutral-800'
+                          : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800'
                       } ${isIconsOnly ? 'justify-center' : ''}`}
                       title={isIconsOnly ? item.label : undefined}
                       onClick={() => {

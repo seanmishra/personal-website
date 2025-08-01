@@ -13,7 +13,7 @@
 @theme {
   /* Neutral Scale - Warm Slate Gray */
   --color-neutral-50: #f9fafb;
-  --color-neutral-100: #f3f4f6;
+  --color-neutral-100: #f5f6f7;
   --color-neutral-200: #e5e7eb;
   --color-neutral-300: #d1d5db;
   --color-neutral-400: #9ca3af;
@@ -21,7 +21,7 @@
   --color-neutral-600: #4b5563;
   --color-neutral-700: #374151;
   --color-neutral-800: #1f2937;
-  --color-neutral-900: #0e1422;
+  --color-neutral-900: #090f1e;
   --color-neutral-950: #050a18;
   
   /* Primary Brand Colors */
