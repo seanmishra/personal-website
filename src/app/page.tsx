@@ -1,8 +1,7 @@
 'use client';
-import React, { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
+import React from 'react';
 import Link from 'next/link';
-import { MapPin, Clock, Download, ArrowRight, MessageCircle } from 'lucide-react';
+import { Download, ArrowRight, MapPin, Clock } from 'lucide-react';
 import { trackEvent } from '@/lib/posthog';
 
 // Helper function to determine if we're in daylight saving time
@@ -26,271 +25,192 @@ function getCurrentTimeZone() {
 }
 
 export default function Home() {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [isAnimated, setIsAnimated] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsAnimated(prev => !prev);
-          }
-        });
-      },
-      {
-        threshold: 0.5, // Trigger when 50% of the card is visible
-      }
-    );
-
-    const currentCard = cardRef.current;
-    if (currentCard) {
-      observer.observe(currentCard);
-    }
-
-    return () => {
-      if (currentCard) {
-        observer.unobserve(currentCard);
-      }
-    };
-  }, []);
-
   return (
-    <>
-      {/* Hero Section - Full Width */}
-      <section className="relative px-20 xl:px-40 py-20 lg:py-32 overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-surface" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary-500/3 rounded-full blur-3xl" />
-        
-        <div className="relative max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Content */}
-            <div className="space-y-10">
-              {/* Badge */}
-              <div className="status-badge">
-                <div className="w-2 h-2 bg-primary-500 rounded-full mr-2 animate-pulse" />
-                Available for new opportunities
-              </div>
-              
-              <div className="space-y-8">
-                <h1 className="text-5xl lg:text-6xl 2xl:text-7xl font-display font-bold text-primary tracking-tight">
-                Bold ideas {' '}
-                  <span className="gradient-text-primary">
-                  belong
-                  </span>{' '}
-                  in prod, not slides.
-                </h1>
-                <p className="text-xl lg:text-2xl text-muted leading-relaxed font-light max-w-2xl">
-                  Impact-driven full-stack software engineer shipping{' '}
-                  <em className="text-primary font-medium not-italic">revenue-ready</em>{' '}
-                  products from concept to launch.
-                </p>
-              </div>
-              
-              {/* Primary CTA */}
-              <div className="flex flex-col sm:flex-row flex-wrap gap-6">
-                <a 
-                  href="/docs/sean-mishra-resume.pdf"
-                  download="Sean_Mishra_Resume.pdf"
-                  className="btn-primary-large group px-4 py-3 sm:px-10 sm:py-5"
-                  aria-label="Download Sean Mishra's resume"
-                  onClick={() => trackEvent.resumeDownload()}
-                >
-                  <Download className="w-4 h-4 sm:w-6 sm:h-6 mr-2 sm:mr-3 group-hover:animate-bounce" />
-                  <span className="text-sm sm:text-lg">Download Resume</span>
-                </a>
-                <Link 
-                  href="/contact"
-                  className="btn-secondary-large group px-4 py-3 sm:px-10 sm:py-5"
-                  onClick={() => trackEvent.contactClick('hero')}
-                >
-                  <span className="text-sm sm:text-lg">Let&apos;s Talk</span>
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 sm:ml-3 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Headshot */}
-            <div className="relative lg:order-last">
-              <div className="relative w-full max-w-lg mx-auto">
-                {/* Floating elements */}
-                <div className="absolute -top-8 -left-8 w-24 h-24 floating-decoration-primary" />
-                <div className="absolute -bottom-6 -right-6 w-32 h-32 floating-decoration-secondary" />
-                
-                <div className="relative aspect-[4/5] rounded-3xl overflow-hidden hero-gradient-headshot shadow-2xl shadow-black/10">
-                  <Image
-                    src="/images/seanmishra.jpg"
-                    alt="Sean Mishra - Full-stack Software Engineer"
-                    width={500}
-                    height={625}
-                    className="w-full h-full object-cover"
-                    priority
-                  />
-                  {/* Overlay gradient */}
-                  <div className="absolute inset-0 hero-overlay-gradient" />
-                </div>
-                
-                {/* Glass card */}
-                <div 
-                  ref={cardRef}
-                  className={`absolute -bottom-8 right-8 p-6 glass-card rounded-2xl shadow-xl transition-all duration-300 ${
-                    isAnimated ? '-left-7' : '-left-8'
-                  }`}
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="flex-1">
-                      <p className="text-primary font-semibold">Sean Mishra</p>
-                      <p className="text-neutral-700 dark:text-neutral-400 text-sm">Full-Stack Engineer</p>
-                    </div>
-                    <div className="flex gap-3 items-center text-sm text-neutral-800 dark:text-neutral-400">
-                      <div className="flex wrap items-center gap-1">
-                        <MapPin className="w-4 h-4" />
-                        <span>St. Louis, USA</span>
-                      </div>
-                      <div className="flex items-center gap-1 max-sm:hidden">
-                        <Clock className="w-4 h-4" />
-                        <span>{getCurrentTimeZone()}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="px-6 py-16 lg:px-12 lg:py-24">
+        <div className="max-w-4xl mx-auto">
+          {/* Terminal-style status line */}
+          <div className="mb-8 text-sm font-mono text-neutral-500 dark:text-neutral-400">
+            <span className="text-green-500">●</span> Available for work
+            <span className="mx-4">|</span>
+            <span className="inline-flex items-center gap-1">
+              <MapPin className="w-3 h-3" />
+              St. Louis, USA
+            </span>
+            <span className="mx-4">|</span>
+            <span className="inline-flex items-center gap-1">
+              <Clock className="w-3 h-3" />
+              {getCurrentTimeZone()}
+            </span>
           </div>
-        </div>
-      </section>
-
-      {/* About & Skills Section */}
-      <section className="py-20 px-40 lg:py-32 bg-section-subtle">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-5 gap-20 items-start">
-            {/* About Content */}
-            <div className="lg:col-span-3 space-y-12">
-              <div className="space-y-6">
-                <div className="inline-flex items-center gap-3">
-                  <div className="w-12 h-px bg-primary-500" />
-                  <span className="text-primary-500 font-medium tracking-wider uppercase text-sm">About</span>
-                </div>
-                <h2 className="text-4xl lg:text-5xl font-display font-bold text-primary leading-tight">
-                  Design, Code, Ship — {' '}
-                  <span className="text-primary-500">Repeat</span>
-                </h2>
-              </div>
-              
-              <div className="space-y-8 text-xl leading-relaxed text-muted">
-                <p>
-                {`I'm a full-stack software engineer who builds scalable, user-focused web and mobile apps. With strong product sense and an eye for clean design, I blend frontend finesse and backend architecture to ship fast and iterate even faster.`}
-                </p>
-                <p>
-                {`I've navigated startups, small businesses and indie projects, building everything from quick MVPs to robust, production-scale systems. While I center around JavaScript, React, Node.js, and modern cloud platforms, I'm always open to exploring new tech when the project calls for it.`}
-                </p>
-                <p>
-                {`Beyond coding, I care deeply about good UX, thoughtful design, and the meaningful impact of the products I create. I'm always shipping, always iterating, and always on the hunt for problems worth solving.`}
-                </p>
-              </div>
-
-              {/* Achievement Stats */}
-              <div className="grid grid-cols-3 gap-8 pt-8 border-t border-default">
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-500">50+</div>
-                  <div className="text-muted text-sm">Projects Shipped</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-500">12+</div>
-                  <div className="text-muted text-sm">Years Experience</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary-500">∞</div>
-                  <div className="text-muted text-sm">Coffee Consumed</div>
-                </div>
-              </div>
+          
+          {/* Main content */}
+          <div className="space-y-8">
+            <div>
+              <h1 className="text-4xl lg:text-6xl font-sans font-medium mb-4">
+                Sean Mishra
+              </h1>
+              <h2 className="text-xl lg:text-2xl text-neutral-600 dark:text-neutral-300">
+                Full-stack Software Engineer
+              </h2>
             </div>
             
-            {/* Skills Grid */}
-            <div className="lg:col-span-2 space-y-8 lg:mt-16">
-              <div className="space-y-6">
-                <h3 className="text-2xl font-display font-bold text-primary">
-                  Tech Stack
-                </h3>
-                <div className="space-y-6">
-                    {[
-                    { category: 'Frontend', skills: ['React', 'Next.js', 'JavaScript', 'TypeScript', 'Tailwind', 'D3', 'Motion', 'GSAP', 'Lottie', 'Storybook'] },
-                    { category: 'Backend', skills: ['Node.js', 'Express', 'MongoDB', 'MySQL', 'Redis', 'Supabase', 'Clerk', 'OAuth2', 'Jest', 'Testing Library'] },
-                    { category: 'DevOps', skills: ['Docker', 'GH Actions', 'CI/CD pipelines', 'Vercel', 'Railway', 'Firebase', 'Heroku', 'AWS (S3, Lambda)'] },
-                    { category: 'Tooling', skills: ['Git', 'VSCode', 'Linear', 'Jira', 'Postman', 'Warp', 'Figma'] }
-                    ].map((group) => (
-                    <div key={group.category} className="space-y-3">
-                      <h4 className="text-sm font-semibold text-primary-500 uppercase tracking-wider">
-                      {group.category}
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                      {group.skills.map((skill) => (
-                        <span
-                        key={skill}
-                        className="skill-tag"
-                        >
-                        {skill}
-                        </span>
-                      ))}
-                      </div>
-                    </div>
-                    ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action Section */}
-      <section className="py-20 lg:py-32 relative overflow-hidden px-6">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 bg-gradient-accent-subtle" />
-        <div className="absolute inset-0 bg-pattern-dots" />
-        
-        <div className="relative max-w-4xl mx-auto text-center">
-          <div className="space-y-12">
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-3 mb-4">
-                <div className="w-12 h-px bg-primary-500" />
-                <span className="text-primary-500 font-medium tracking-wider uppercase text-sm">Let&apos;s Connect</span>
-                <div className="w-12 h-px bg-primary-500" />
-              </div>
-              <h2 className="text-4xl lg:text-6xl font-display font-bold text-primary leading-tight">
-                Ready to turn your roadmap into{' '}
-                <span className="gradient-text-primary">
-                  release notes
-                </span>
-                ?
-              </h2>
-              <p className="text-xl lg:text-2xl text-muted max-w-3xl mx-auto leading-relaxed">
-                {`I'm always excited to discuss new opportunities, challenging projects, and ways to create meaningful digital experiences that make a real impact.`}
+            <div className="max-w-2xl">
+              <p className="text-lg leading-relaxed text-neutral-700 dark:text-neutral-300">
+                I build scalable web applications and ship production-ready code. 
+                Focused on clean architecture, user experience, and meaningful impact.
               </p>
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <Link 
-                href="/projects"
-                className="btn-secondary-large group min-w-[160px] sm:min-w-[200px] px-4 py-3 sm:px-10 sm:py-5"
-                onClick={() => trackEvent.projectsClick('cta_section')}
+            {/* Actions */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a 
+                href="/docs/sean-mishra-resume.pdf"
+                download="Sean_Mishra_Resume.pdf"
+                className="inline-flex items-center px-6 py-3 rounded bg-neutral-900 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-900 font-mono text-sm hover:opacity-80 transition-opacity"
+                onClick={() => trackEvent.resumeDownload()}
               >
-                <span className="text-sm sm:text-lg">View My Work</span>
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 sm:ml-3 group-hover:translate-x-1 transition-transform" />
-              </Link>
+                <Download className="w-4 h-4 mr-2" />
+                Download Resume
+              </a>
               <Link 
                 href="/contact"
-                className="btn-primary-large group min-w-[160px] sm:min-w-[200px] px-4 py-3 sm:px-10 sm:py-5"
-                onClick={() => trackEvent.contactClick('cta_section')}
+                className="inline-flex items-center px-6 py-3 rounded border border-neutral-300 dark:border-neutral-700 font-mono text-sm hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors"
+                onClick={() => trackEvent.contactClick('hero')}
               >
-                <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3" />
-                <span className="text-sm sm:text-lg">Start a Conversation</span>
+                Contact Me
+                <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </div>
           </div>
         </div>
       </section>
-    </>
+
+      {/* Divider */}
+      <div className="border-t border-neutral-200 dark:border-neutral-800"></div>
+
+      {/* About Section */}
+      <section className="px-6 py-16 lg:px-12 lg:py-24">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid lg:grid-cols-3 gap-12">
+            {/* About content */}
+            <div className="lg:col-span-2 space-y-8">
+              <div>
+                <h2 className="text-2xl font-mono font-bold mb-6">
+                  {`ABOUT //`}
+                </h2>
+                <div className="space-y-4 text-neutral-700 dark:text-neutral-300 leading-relaxed">
+                  <p>
+                    Full-stack engineer with 12+ years building web and mobile applications. 
+                    I work across the entire development lifecycle — from initial concept 
+                    and architecture to deployment and maintenance.
+                  </p>
+                  <p>
+                    Experienced with startups, small teams, and independent projects. 
+                    I focus on shipping fast, iterating quickly, and solving real problems 
+                    with clean, maintainable code.
+                  </p>
+                  <p>
+                    Currently working with React, Node.js, TypeScript, and modern cloud platforms. 
+                    Always learning new technologies when the project demands it.
+                  </p>
+                </div>
+              </div>
+
+              {/* Stats */}
+              <div className="grid grid-cols-3 gap-8 py-8 border-t border-neutral-200 dark:border-neutral-800">
+                <div>
+                  <div className="text-2xl font-mono font-bold">50+</div>
+                  <div className="text-sm text-neutral-500">Projects</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-mono font-bold">12+</div>
+                  <div className="text-sm text-neutral-500">Years</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-mono font-bold">∞</div>
+                  <div className="text-sm text-neutral-500">Coffee</div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Tech stack */}
+            <div className="space-y-8">
+              <h3 className="text-xl font-mono font-bold">
+                {`STACK //`}
+              </h3>
+              <div className="space-y-6 text-sm">
+                {[
+                  { 
+                    category: 'Frontend', 
+                    skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'] 
+                  },
+                  { 
+                    category: 'Backend', 
+                    skills: ['Node.js', 'Express', 'MongoDB', 'PostgreSQL'] 
+                  },
+                  { 
+                    category: 'Tools', 
+                    skills: ['Docker', 'Git', 'AWS', 'Vercel'] 
+                  }
+                ].map((group) => (
+                  <div key={group.category}>
+                    <div className="font-mono font-semibold text-neutral-900 dark:text-neutral-100 mb-2">
+                      {group.category}
+                    </div>
+                    <div className="space-y-1">
+                      {group.skills.map((skill) => (
+                        <div key={skill} className="text-neutral-600 dark:text-neutral-400">
+                          {skill}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Divider */}
+      <div className="border-t border-neutral-200 dark:border-neutral-800"></div>
+
+      {/* CTA Section */}
+      <section className="px-6 py-16 lg:px-12 lg:py-24">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-3xl lg:text-4xl font-sans font-bold mb-4">
+                Let&apos;s build something together
+              </h2>
+              <p className="text-lg text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto">
+                Looking for new opportunities and interesting projects. 
+                Always excited to discuss technical challenges and potential collaborations.
+              </p>
+            </div>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                href="/projects"
+                className="inline-flex items-center px-6 py-3 border rounded border-neutral-300 dark:border-neutral-700 font-mono text-sm hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors"
+                onClick={() => trackEvent.projectsClick('cta_section')}
+              >
+                View Projects
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Link>
+              <Link 
+                href="/contact"
+                className="inline-flex items-center px-6 py-3 rounded bg-neutral-900 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-900 font-mono text-sm hover:opacity-80 transition-opacity"
+                onClick={() => trackEvent.contactClick('cta_section')}
+              >
+                Get In Touch
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

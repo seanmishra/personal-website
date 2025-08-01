@@ -5,8 +5,8 @@
 
 /* Font Variables */
 @theme inline {
-  --font-sans: var(--font-gottak), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-mono: var(--font-source-code-pro), ui-monospace, "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+  --font-mono: var(--font-nudicamono), ui-monospace, "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+  --font-sans: var(--font-nudica), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 /* Custom Theme - Clean Design System */
