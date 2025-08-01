@@ -6,9 +6,9 @@ export function Footer({ className = '' }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { href: 'https://github.com', label: 'GitHub' },
-    { href: 'https://linkedin.com', label: 'LinkedIn' },
-    { href: 'https://x.com', label: 'X' },
+    { href: 'https://github.com', label: 'GitHub [seanmishra]' },
+    { href: 'https://linkedin.com', label: 'LinkedIn [seanmishra]' },
+    { href: 'https://x.com', label: 'X [seansapiens]' },
   ];
 
   return (
@@ -22,8 +22,8 @@ export function Footer({ className = '' }: FooterProps) {
             <div className="font-mono font-bold text-neutral-900 dark:text-neutral-100 mb-2">
               Sean Mishra
             </div>
-            <p className="text-sm text-neutral-600 dark:text-neutral-400 max-w-md">
-              Full-stack Software Engineer building scalable web applications.
+            <p className="text-sm text-neutral-600 dark:text-neutral-400 max-w-xs">
+              Impact-driven full-stack engineer shipping revenue-ready products from concept to launch.
             </p>
           </div>
 
@@ -52,7 +52,7 @@ export function Footer({ className = '' }: FooterProps) {
                 Location
               </div>
               <div className="text-sm text-neutral-600 dark:text-neutral-400">
-                St. Louis, USA
+                Greater St. Louis, USA
               </div>
             </div>
           </div>

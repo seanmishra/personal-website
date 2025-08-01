@@ -36,7 +36,7 @@ export default function Home() {
             <span className="mx-4">|</span>
             <span className="inline-flex items-center gap-1">
               <MapPin className="w-3 h-3" />
-              St. Louis, USA
+              Greater St. Louis, USA
             </span>
             <span className="mx-4">|</span>
             <span className="inline-flex items-center gap-1">
@@ -58,8 +58,7 @@ export default function Home() {
             
             <div className="max-w-2xl">
               <p className="text-lg leading-relaxed text-neutral-700 dark:text-neutral-300">
-                I build scalable web applications and ship production-ready code. 
-                Focused on clean architecture, user experience, and meaningful impact.
+                Impact-driven full-stack engineer shipping revenue-ready products from concept to launch.
               </p>
             </div>
             
