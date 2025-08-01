@@ -11,34 +11,30 @@ interface HeaderProps {
 export function Header({ className = '' }: HeaderProps) {
   const { toggleSidebar, isMobileOverlay, screenMode } = useSidebar();
 
-  // Show menu button for mobile or desktop-icons mode (lg/xl breakpoints)
   const shouldShowMenuButton = isMobileOverlay || screenMode === 'desktop-icons';
 
   return (
     <header
-      className={`sticky top-0 z-40 bg-neutral-50/80 dark:bg-neutral-900/80 backdrop-blur-xl border-b border-default ${className}`}
+      className={`sticky top-0 z-40 bg-neutral-50/95 dark:bg-neutral-950/95 backdrop-blur-sm border-b border-neutral-200 dark:border-neutral-800 ${className}`}
     >
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Navigation breadcrumb or title */}
+      <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
         <div className="flex items-center gap-4">
-          {/* Mobile menu button - visible when in mobile overlay mode or desktop-icons mode */}
           {shouldShowMenuButton && (
             <button
               onClick={toggleSidebar}
-              className="p-2 rounded-md hover-surface transition-colors"
+              className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors"
               aria-label="Toggle menu"
             >
-              <Menu size={20} className="text-muted" />
+              <Menu size={16} className="text-neutral-600 dark:text-neutral-400" />
             </button>
           )}
           
-          <h1 className="text-lg font-sans font-semibold text-primary">
-            Sean Mishra
+          <h1 className="text-sm font-mono font-semibold text-neutral-900 dark:text-neutral-100">
+            SEAN MISHRA //
           </h1>
         </div>
         
-        {/* Header actions */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
           <ThemeToggle />
         </div>
       </div>
