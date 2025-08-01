@@ -101,18 +101,13 @@ export default function Home() {
                 </h2>
                 <div className="space-y-4 text-neutral-700 dark:text-neutral-300 leading-relaxed">
                   <p>
-                    Full-stack engineer with 12+ years building web and mobile applications. 
-                    I work across the entire development lifecycle — from initial concept 
-                    and architecture to deployment and maintenance.
+                    {`I'm a full-stack software engineer who builds scalable, user-focused web and mobile apps. With strong product sense and an eye for clean design, I blend frontend finesse and backend architecture to ship fast and iterate even faster.`}
                   </p>
                   <p>
-                    Experienced with startups, small teams, and independent projects. 
-                    I focus on shipping fast, iterating quickly, and solving real problems 
-                    with clean, maintainable code.
+                    {`I've navigated startups, small businesses and indie projects, building everything from quick MVPs to robust, production-scale systems. While I center around JavaScript, React, Node.js, and modern cloud platforms, I'm always open to exploring new tech when the project calls for it.`}
                   </p>
                   <p>
-                    Currently working with React, Node.js, TypeScript, and modern cloud platforms. 
-                    Always learning new technologies when the project demands it.
+                    {`Beyond coding, I care deeply about good UX, thoughtful design, and the meaningful impact of the products I create. I'm always shipping, always iterating, and always on the hunt for problems worth solving.`}
                   </p>
                 </div>
               </div>
