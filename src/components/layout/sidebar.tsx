@@ -50,7 +50,7 @@ export function Sidebar({ className = '' }: SidebarProps) {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className={`flex items-center gap-3 px-3 py-2 text-sm font-mono transition-colors ${
+                      className={`flex rounded items-center gap-3 px-3 py-2 text-sm font-mono transition-colors ${
                         isActive
                           ? 'text-neutral-900 dark:text-neutral-100 bg-neutral-200 dark:bg-neutral-800'
                           : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800'
@@ -72,19 +72,6 @@ export function Sidebar({ className = '' }: SidebarProps) {
               })}
             </ul>
           </nav>
-
-          {/* Footer */}
-          {!isIconsOnly && (
-            <div className="p-4 border-t border-neutral-200 dark:border-neutral-800">
-              <div className="text-xs text-neutral-500 dark:text-neutral-400">
-                <div className="flex items-center gap-1 mb-1">
-                  <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                  Available for work
-                </div>
-                <div>St. Louis, USA</div>
-              </div>
-            </div>
-          )}
         </div>
       </aside>
     </>
