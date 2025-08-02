@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Source_Code_Pro } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "@/components/providers";
@@ -9,47 +8,138 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { ResponsiveLayout } from "@/components/layout/responsive-layout";
 
-const gottak = localFont({
+const nudicamono = localFont({
   src: [
     {
-      path: '../assets/fonts/Gottak/Gottak-Thin.woff2',
+      path: '../assets/fonts/nudicamono/nudicamono-thin-webfont.woff2',
       weight: '100',
       style: 'normal',
     },
     {
-      path: '../assets/fonts/Gottak/Gottak-ExtraLight.woff2',
+      path: '../assets/fonts/nudicamono/nudicamono-thinitalic-webfont.woff2',
+      weight: '100',
+      style: 'italic',
+    },
+    {
+      path: '../assets/fonts/nudicamono/nudicamono-ultralight-webfont.woff2',
       weight: '200',
       style: 'normal',
     },
     {
-      path: '../assets/fonts/Gottak/Gottak-Light.woff2',
+      path: '../assets/fonts/nudicamono/nudicamono-ultralightitalic-webfont.woff2',
+      weight: '200',
+      style: 'italic',
+    },
+    {
+      path: '../assets/fonts/nudicamono/nudicamono-light-webfont.woff2',
       weight: '300',
       style: 'normal',
     },
     {
-      path: '../assets/fonts/Gottak/Gottak-Regular.woff2',
+      path: '../assets/fonts/nudicamono/nudicamono-lightitalic-webfont.woff2',
+      weight: '300',
+      style: 'italic',
+    },
+    {
+      path: '../assets/fonts/nudicamono/nudicamono-regular-webfont.woff2',
       weight: '400',
       style: 'normal',
     },
     {
-      path: '../assets/fonts/Gottak/Gottak-SemiBold.woff2',
-      weight: '600',
+      path: '../assets/fonts/nudicamono/nudicamono-regularitalic-webfont.woff2',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: '../assets/fonts/nudicamono/nudicamono-medium-webfont.woff2',
+      weight: '500',
       style: 'normal',
     },
     {
-      path: '../assets/fonts/Gottak/Gottak-Bold.woff2',
+      path: '../assets/fonts/nudicamono/nudicamono-mediumitalic-webfont.woff2',
+      weight: '500',
+      style: 'italic',
+    },
+    {
+      path: '../assets/fonts/nudicamono/nudicamono-bold-webfont.woff2',
       weight: '700',
       style: 'normal',
     },
+    {
+      path: '../assets/fonts/nudicamono/nudicamono-bolditalic-webfont.woff2',
+      weight: '700',
+      style: 'italic',
+    },
   ],
-  variable: '--font-gottak',
+  variable: '--font-nudicamono',
   display: 'swap',
 });
 
-const sourceCodePro = Source_Code_Pro({
-  variable: "--font-source-code-pro",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+const nudica = localFont({
+  src: [
+    {
+      path: '../assets/fonts/nudica/nudica-thin-webfont.woff2',
+      weight: '100',
+      style: 'normal',
+    },
+    {
+      path: '../assets/fonts/nudica/nudica-thinitalic-webfont.woff2',
+      weight: '100',
+      style: 'italic',
+    },
+    {
+      path: '../assets/fonts/nudica/nudica-ultralight-webfont.woff2',
+      weight: '200',
+      style: 'normal',
+    },
+    {
+      path: '../assets/fonts/nudica/nudica-ultralightitalic-webfont.woff2',
+      weight: '200',
+      style: 'italic',
+    },
+    {
+      path: '../assets/fonts/nudica/nudica-light-webfont.woff2',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: '../assets/fonts/nudica/nudica-lightitalic-webfont.woff2',
+      weight: '300',
+      style: 'italic',
+    },
+    {
+      path: '../assets/fonts/nudica/nudica-regular-webfont.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../assets/fonts/nudica/nudica-regularitalic-webfont.woff2',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: '../assets/fonts/nudica/nudica-medium-webfont.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../assets/fonts/nudica/nudica-mediumitalic-webfont.woff2',
+      weight: '500',
+      style: 'italic',
+    },
+    {
+      path: '../assets/fonts/nudica/nudica-bold-webfont.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../assets/fonts/nudica/nudica-bolditalic-webfont.woff2',
+      weight: '700',
+      style: 'italic',
+    },
+  ],
+  variable: '--font-nudica',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -65,11 +155,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body
-        className={`${gottak.variable} ${sourceCodePro.variable} font-sans antialiased`}
+        className={`${nudicamono.variable} ${nudica.variable} font-mono antialiased`}
       >
         <Providers>
           <PostHogProvider>
-            <div className="min-h-screen bg-neutral-50 dark:bg-neutral-900">
+            <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950 text-neutral-600 dark:text-neutral-400">
               <Sidebar />
               
               <ResponsiveLayout>

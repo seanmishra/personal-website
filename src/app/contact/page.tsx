@@ -117,79 +117,98 @@ export default function Contact() {
   }, []);
 
   return (
-    <>
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="px-20 xl:px-40 py-20 lg:py-32">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center space-y-8">
-            <div className="space-y-6">
-              <h1 className="text-5xl lg:text-7xl font-display font-bold text-primary leading-tight">
-                Let&apos;s work{' '}
-                <span className="gradient-text-primary">together</span>
+      <section className="px-6 py-16 lg:px-12 lg:py-24">
+        <div className="max-w-6xl mx-auto">
+          <div className="space-y-8">
+            <div>
+              <h1 className="text-2xl font-bold mb-6 text-neutral-900 dark:text-neutral-100">
+                {`CONTACT //`}
               </h1>
-              <p className="text-xl lg:text-2xl text-muted leading-relaxed max-w-3xl mx-auto">
-                I&apos;m available for new opportunities and exciting projects.
-              </p>
+              <div className="space-y-4">
+                <p className="text-lg max-w-3xl">
+                  {`I'm always open to discussing new opportunities, collaborations, or projects. Whether you have something specific in mind or just want to connect, feel free to reach out.`}
+                </p>
+              </div>
             </div>
-            
-            <div className="flex items-center justify-center gap-3 pt-4">
-              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-              <span className="text-lg font-medium text-primary">Currently available</span>
+            <div className="space-y-2">
+              <p className="text-neutral-600 dark:text-neutral-400 mb-4">Currently available for:</p>
+              <div className="flex items-center gap-2 text-sm">
+                <div className="w-2 h-2 bg-success-500 rounded-full" />
+                <span className="text-neutral-600 dark:text-neutral-400">Full-time & Contract roles</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <div className="w-2 h-2 bg-success-500 rounded-full" />
+                <span className="text-neutral-600 dark:text-neutral-400">Projects & Consulting</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <div className="w-2 h-2 bg-success-500 rounded-full" />
+                <span className="text-neutral-600 dark:text-neutral-400">Content Collaborations</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <div className="w-2 h-2 bg-warning-500 rounded-full" />
+                <span className="text-neutral-600 dark:text-neutral-400">Mentorship (Slots full for 2025)</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <div className="w-2 h-2 bg-success-500 rounded-full" />
+                <span className="text-neutral-600 dark:text-neutral-400">Speaking & Debate</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="border-t border-neutral-200 dark:border-neutral-800"></div>
+
       {/* Contact Options */}
-      <section className="py-20 lg:py-32 bg-section-subtle">
-        <div className="max-w-4xl mx-auto px-20 xl:px-40">
+      <section className="px-6 py-16 lg:px-12 lg:py-24">
+        <div className="max-w-6xl mx-auto">
           <div className="space-y-12">
-            <div className="text-center space-y-4">
-              <h2 className="text-2xl lg:text-3xl font-display font-bold text-primary">
-                How would you like to{' '}
-                <span className="gradient-text-primary">connect?</span>
+            <div className="space-y-4">
+              <h2 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
+                {`OPTIONS //`}
               </h2>
-              <p className="text-lg text-muted">
+              <p className="text-lg">
                 Choose what works best for you
               </p>
             </div>
             
-            <div className="space-y-4">
+            <div className="grid md:grid-cols-3 gap-6">
               {/* Quick Call */}
               <button
                 data-cal-link="seanmishra/15min"
-                className="group block w-full p-6 rounded-xl bg-background border border-default hover:border-primary-500/30 transition-all hover:shadow-md text-left"
+                className="group p-6 rounded border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors text-left"
               >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-primary-500/10 text-primary-500 rounded-lg flex items-center justify-center group-hover:bg-primary-500/20 transition-colors">
-                      <Clock className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-primary">Quick 15-min call</h3>
-                      <p className="text-muted">Perfect for initial discussions and quick questions</p>
-                    </div>
+                <div className="space-y-4 cursor-pointer">
+                  <div className="w-12 h-12 bg-neutral-200 dark:bg-neutral-800 rounded flex items-center justify-center">
+                    <Clock className="w-6 h-6 text-neutral-600 dark:text-neutral-400" />
                   </div>
-                  <MessageCircle className="w-5 h-5 text-muted group-hover:text-primary-500 group-hover:scale-110 transition-all" />
+                  <div>
+                    <h3 className="font-sans font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Quick Chat (15 mins)</h3>
+                    <p className="text-sm">
+                      {`Perfect for initial introductions, quick questions, or brief check-ins. Great for getting to know each other and seeing if there's mutual interest in exploring opportunities further.`}
+                    </p>
+                  </div>
                 </div>
               </button>
 
               {/* Deep Dive */}
               <button
                 data-cal-link="seanmishra/30min"
-                className="group block w-full p-6 rounded-xl bg-background border border-default hover:border-primary-500/30 transition-all hover:shadow-md text-left"
+                className="group p-6 rounded border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors text-left"
               >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-secondary-500/10 text-secondary-500 rounded-lg flex items-center justify-center group-hover:bg-secondary-500/20 transition-colors">
-                      <MessageCircle className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-primary">30-min deep dive</h3>
-                      <p className="text-muted">In-depth discussion about opportunities and technical requirements</p>
-                    </div>
+                <div className="space-y-4 cursor-pointer">
+                  <div className="w-12 h-12 bg-neutral-200 dark:bg-neutral-800 rounded flex items-center justify-center">
+                    <MessageCircle className="w-6 h-6 text-neutral-600 dark:text-neutral-400" />
                   </div>
-                  <MessageCircle className="w-5 h-5 text-muted group-hover:text-secondary-500 group-hover:scale-110 transition-all" />
+                  <div>
+                    <h3 className="font-sans font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Conversation (30 mins)</h3>
+                    <p className="text-sm">
+                      {`Ideal for discussing projects or opportunities, and sharing backgrounds. We'll have time to explore potential synergies, answer questions on both sides, and discuss next steps.`}
+                    </p>
+                  </div>
                 </div>
               </button>
 
@@ -199,19 +218,18 @@ export default function Contact() {
                   document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
                   trackEvent.scrollToForm({ source: 'contact_options' });
                 }}
-                className="group block w-full p-6 rounded-xl bg-background border border-default hover:border-primary-500/30 transition-all hover:shadow-md text-left"
+                className="group p-6 rounded border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors text-left"
               >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-primary-500/10 text-primary-500 rounded-lg flex items-center justify-center group-hover:bg-primary-500/20 transition-colors">
-                      <Mail className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-primary">Send a message</h3>
-                      <p className="text-muted">Prefer to write? Share details about your opportunity below</p>
-                    </div>
+                <div className="space-y-4 cursor-pointer">
+                  <div className="w-12 h-12 bg-neutral-200 dark:bg-neutral-800 rounded flex items-center justify-center">
+                    <Mail className="w-6 h-6 text-neutral-600 dark:text-neutral-400" />
                   </div>
-                  <ExternalLink className="w-5 h-5 text-muted group-hover:text-primary-500 group-hover:translate-x-1 transition-all" />
+                  <div>
+                    <h3 className="font-sans font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Send a message</h3>
+                    <p className="text-sm ">
+                      {`Prefer text communication? Share details about your opportunity below and I'll get back to you as soon as possible.`}
+                    </p>
+                  </div>
                 </div>
               </button>
             </div>
@@ -219,28 +237,30 @@ export default function Contact() {
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="border-t border-neutral-200 dark:border-neutral-800"></div>
+
       {/* Contact Form */}
-      <section id="contact-form" className="py-20 lg:py-32">
-        <div className="max-w-6xl mx-auto px-20 xl:px-40">
-          <div className="space-y-16">
-            <div className="text-center space-y-6">
-              <h2 className="text-3xl lg:text-4xl font-display font-bold text-primary">
-                Tell me about your{' '}
-                <span className="gradient-text-primary">opportunity</span>
+      <section id="contact-form" className="px-6 py-16 lg:px-12 lg:py-24">
+        <div className="max-w-6xl mx-auto">
+          <div className="space-y-12 max-w-4xl">
+            <div className="space-y-4">
+              <h2 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
+                {`MESSAGE //`}
               </h2>
-              <p className="text-lg text-muted max-w-2xl mx-auto">
+              <p className="text-lg">
                 Share details about the role, project, or collaboration you have in mind.
               </p>
             </div>
 
             {/* Success Message */}
             {submitStatus === 'success' && (
-              <div className="p-8 rounded-2xl bg-green-500/10 border border-green-500/20 text-center">
-                <div className="flex items-center justify-center gap-3 mb-6">
-                  <CheckCircle className="w-8 h-8 text-green-500" />
-                  <h3 className="text-xl font-semibold text-green-700 dark:text-green-400">Message Sent!</h3>
+              <div className="p-6 rounded border border-success-500/20 bg-success-50 dark:bg-success-900/10">
+                <div className="flex items-center gap-3 mb-3">
+                  <CheckCircle className="w-6 h-6 text-success-600 dark:text-success-400" />
+                  <h3 className="font-sans font-semibold text-success-800 dark:text-success-300">Message Sent!</h3>
                 </div>
-                <p className="text-green-600 dark:text-green-300 text-lg">
+                <p className="text-success-700 dark:text-success-300">
                   Thanks for reaching out! I&apos;ll get back to you within 24 hours.
                 </p>
               </div>
@@ -248,12 +268,12 @@ export default function Contact() {
 
             {/* Error Message */}
             {submitStatus === 'error' && (
-              <div className="p-8 rounded-2xl bg-red-500/10 border border-red-500/20 text-center">
-                <div className="flex items-center justify-center gap-3 mb-6">
-                  <AlertCircle className="w-8 h-8 text-red-500" />
-                  <h3 className="text-xl font-semibold text-red-700 dark:text-red-400">Something went wrong</h3>
+              <div className="p-6 rounded border border-error-500/20 bg-error-50 dark:bg-error-900/10">
+                <div className="flex items-center gap-3 mb-3">
+                  <AlertCircle className="w-6 h-6 text-error-600 dark:text-error-400" />
+                  <h3 className="font-sans font-semibold text-error-800 dark:text-error-300">Something went wrong</h3>
                 </div>
-                <p className="text-red-600 dark:text-red-300 text-lg">
+                <p className="text-error-700 dark:text-error-300">
                   There was an issue sending your message. Please try again or reach out directly at{' '}
                   <a href="mailto:hello@seanmishra.com" className="underline hover:no-underline">
                     hello@seanmishra.com
@@ -263,16 +283,16 @@ export default function Contact() {
             )}
 
             {/* Contact Form */}
-            <form onSubmit={handleSubmit} className="space-y-10">
-              <div className="grid md:grid-cols-2 gap-8">
+            <form onSubmit={handleSubmit} className="space-y-8">
+              <div className="grid md:grid-cols-2 gap-6">
                 {/* Name */}
-                <div className="space-y-3">
-                  <label htmlFor="name" className="block text-lg font-medium text-primary">
+                <div className="space-y-2">
+                  <label htmlFor="name" className="block font-mono text-sm font-medium text-neutral-700 dark:text-neutral-300">
                     Name *
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <User className="w-5 h-5 text-muted" />
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <User className="w-4 h-4 text-neutral-400" />
                     </div>
                     <input
                       type="text"
@@ -280,24 +300,24 @@ export default function Contact() {
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className={`block w-full pl-12 pr-4 py-4 text-lg border rounded-xl bg-background text-primary placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors ${
-                        errors.name ? 'border-red-500' : 'border-default hover:border-primary-500/30'
+                      className={`block w-full pl-10 pr-3 py-3 border rounded font-mono text-sm bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-700 focus:outline-none focus:ring-1 focus:ring-neutral-500 focus:border-neutral-500 transition-colors ${
+                        errors.name ? 'border-error-500' : 'border-neutral-300 dark:border-neutral-700'
                       }`}
                       placeholder="Your full name"
                       required
                     />
                   </div>
-                  {errors.name && <p className="text-red-500">{errors.name}</p>}
+                  {errors.name && <p className="text-error-500 text-sm">{errors.name}</p>}
                 </div>
 
                 {/* Email */}
-                <div className="space-y-3">
-                  <label htmlFor="email" className="block text-lg font-medium text-primary">
+                <div className="space-y-2">
+                  <label htmlFor="email" className="block font-mono text-sm font-medium text-neutral-700 dark:text-neutral-300">
                     Email *
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <Mail className="w-5 h-5 text-muted" />
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <Mail className="w-4 h-4 text-neutral-400" />
                     </div>
                     <input
                       type="email"
@@ -305,26 +325,26 @@ export default function Contact() {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className={`block w-full pl-12 pr-4 py-4 text-lg border rounded-xl bg-background text-primary placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors ${
-                        errors.email ? 'border-red-500' : 'border-default hover:border-primary-500/30'
+                      className={`block w-full pl-10 pr-3 py-3 border rounded font-mono text-sm bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-700 focus:outline-none focus:ring-1 focus:ring-neutral-500 focus:border-neutral-500 transition-colors ${
+                        errors.email ? 'border-error-500' : 'border-neutral-300 dark:border-neutral-700'
                       }`}
                       placeholder="your.email@company.com"
-                      required
+                      required  
                     />
                   </div>
-                  {errors.email && <p className="text-red-500">{errors.email}</p>}
+                  {errors.email && <p className="text-error-500 text-sm">{errors.email}</p>}
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="grid md:grid-cols-2 gap-6">
                 {/* Company */}
-                <div className="space-y-3">
-                  <label htmlFor="company" className="block text-lg font-medium text-primary">
+                <div className="space-y-2">
+                  <label htmlFor="company" className="block font-mono text-sm font-medium text-neutral-700 dark:text-neutral-300">
                     Company
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <Building className="w-5 h-5 text-muted" />
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <Building className="w-4 h-4 text-neutral-400" />
                     </div>
                     <input
                       type="text"
@@ -332,20 +352,20 @@ export default function Contact() {
                       name="company"
                       value={formData.company}
                       onChange={handleInputChange}
-                      className="block w-full pl-12 pr-4 py-4 text-lg border border-default rounded-xl bg-background text-primary placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent hover:border-primary-500/30 transition-colors"
+                      className="block w-full pl-10 pr-3 py-3 border border-neutral-300 dark:border-neutral-700 rounded font-mono text-sm bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-700 focus:outline-none focus:ring-1 focus:ring-neutral-500 focus:border-neutral-500 transition-colors"
                       placeholder="Your company name (optional)"
                     />
                   </div>
                 </div>
 
                 {/* Project/Role */}
-                <div className="space-y-3">
-                  <label htmlFor="projectRole" className="block text-lg font-medium text-primary">
+                <div className="space-y-2">
+                  <label htmlFor="projectRole" className="block font-mono text-sm font-medium text-neutral-700 dark:text-neutral-300">
                     Project/Role
                   </label>
                   <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <MessageCircle className="w-5 h-5 text-muted" />
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <MessageCircle className="w-4 h-4 text-neutral-400" />
                     </div>
                     <input
                       type="text"
@@ -353,7 +373,7 @@ export default function Contact() {
                       name="projectRole"
                       value={formData.projectRole}
                       onChange={handleInputChange}
-                      className="block w-full pl-12 pr-4 py-4 text-lg border border-default rounded-xl bg-background text-primary placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent hover:border-primary-500/30 transition-colors"
+                      className="block w-full pl-10 pr-3 py-3 border border-neutral-300 dark:border-neutral-700 rounded font-mono text-sm bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-700 focus:outline-none focus:ring-1 focus:ring-neutral-500 focus:border-neutral-500 transition-colors"
                       placeholder="Role title or project name (optional)"
                     />
                   </div>
@@ -361,8 +381,8 @@ export default function Contact() {
               </div>
 
               {/* Message */}
-              <div className="space-y-3">
-                <label htmlFor="message" className="block text-lg font-medium text-primary">
+              <div className="space-y-2">
+                <label htmlFor="message" className="block font-mono text-sm font-medium text-neutral-700 dark:text-neutral-300">
                   Message *
                 </label>
                 <textarea
@@ -370,34 +390,34 @@ export default function Contact() {
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  rows={8}
-                  className={`block w-full px-4 py-4 text-lg border rounded-xl bg-background text-primary placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors resize-none ${
-                    errors.message ? 'border-red-500' : 'border-default hover:border-primary-500/30'
+                  rows={10}
+                  className={`block w-full px-3 py-3 border rounded font-mono text-sm bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-700 focus:outline-none focus:ring-1 focus:ring-neutral-500 focus:border-neutral-500 transition-colors resize-none ${
+                    errors.message ? 'border-error-500' : 'border-neutral-300 dark:border-neutral-700'
                   }`}
                   placeholder="Tell me about the opportunity, role, or project you have in mind. What are you looking for in an ideal candidate or collaborator?"
-                  required
+                  required  
                 />
-                {errors.message && <p className="text-red-500">{errors.message}</p>}
-                <p className="text-muted">
+                {errors.message && <p className="text-error-500 text-sm">{errors.message}</p>}
+                <p className="text-neutral-500 text-xs font-mono">
                   Minimum 10 characters · Current: {formData.message.length}
                 </p>
               </div>
 
               {/* Submit Button */}
-              <div className="text-center pt-8">
+              <div className="pt-6">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="btn-primary-large group min-w-[250px] px-12 py-6 text-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="inline-flex items-center px-6 py-3 rounded bg-neutral-900 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-900 font-mono text-sm hover:opacity-80 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin mr-3" />
+                      <div className="w-4 h-4 border-2 border-neutral-50/30 border-t-neutral-50 rounded-full animate-spin mr-2" />
                       <span>Sending...</span>
                     </>
                   ) : (
                     <>
-                      <Send className="w-6 h-6 mr-3 group-hover:translate-x-1 transition-transform" />
+                      <Send className="w-4 h-4 mr-2" />
                       <span>Send Message</span>
                     </>
                   )}
@@ -408,21 +428,29 @@ export default function Contact() {
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="border-t border-neutral-200 dark:border-neutral-800"></div>
+
       {/* Alternative Contact */}
-      <section className="py-20 lg:py-32 bg-section-subtle">
-        <div className="max-w-4xl mx-auto px-20 xl:px-40 text-center">
+      <section className="px-6 py-16 lg:px-12 lg:py-24">
+        <div className="max-w-6xl mx-auto">
           <div className="space-y-8">
-            <h2 className="text-2xl lg:text-3xl font-display font-bold text-primary">
-              Prefer direct contact?
-            </h2>
+            <div className="space-y-4">
+              <h2 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
+                {`DIRECT CONTACT //`}
+              </h2>
+              <p>
+                You can also reach out directly via email or LinkedIn.
+              </p>
+            </div>
             
-            <div className="flex flex-wrap gap-4 justify-center">
+            <div className="flex flex-wrap gap-4">
               <a
                 href="mailto:hello@seanmishra.com"
-                className="btn-secondary-large group"
+                className="inline-flex items-center px-4 py-2 rounded border border-neutral-300 dark:border-neutral-700 font-mono text-sm hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors"
                 onClick={() => trackEvent.directContact({ method: 'email' })}
               >
-                <Mail className="w-5 h-5 mr-3" />
+                <Mail className="w-4 h-4 mr-2" />
                 <span>hello@seanmishra.com</span>
               </a>
               
@@ -430,16 +458,16 @@ export default function Contact() {
                 href="https://linkedin.com/in/seanmishra"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary-large group"
+                className="inline-flex items-center px-4 py-2 rounded border border-neutral-300 dark:border-neutral-700 font-mono text-sm hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors"
                 onClick={() => trackEvent.directContact({ method: 'linkedin' })}
               >
                 <span>LinkedIn</span>
-                <ExternalLink className="w-5 h-5 ml-3 group-hover:translate-x-1 transition-transform" />
+                <ExternalLink className="w-4 h-4 ml-2" />
               </a>
             </div>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

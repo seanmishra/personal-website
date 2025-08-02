@@ -5,23 +5,23 @@
 
 /* Font Variables */
 @theme inline {
-  --font-sans: var(--font-gottak), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-mono: var(--font-source-code-pro), ui-monospace, "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+  --font-mono: var(--font-nudicamono), ui-monospace, "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+  --font-sans: var(--font-nudica), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 /* Custom Theme - Clean Design System */
 @theme {
   /* Neutral Scale - Warm Slate Gray */
   --color-neutral-50: #f9fafb;
-  --color-neutral-100: #f3f4f6;
-  --color-neutral-200: #e5e7eb;
-  --color-neutral-300: #d1d5db;
-  --color-neutral-400: #9ca3af;
-  --color-neutral-500: #6b7280;
-  --color-neutral-600: #4b5563;
-  --color-neutral-700: #374151;
-  --color-neutral-800: #1f2937;
-  --color-neutral-900: #0e1422;
+  --color-neutral-100: #f5f6f7;
+  --color-neutral-200: #e8eaed;
+  --color-neutral-300: #d3d6db;
+  --color-neutral-400: #9ea5b2;
+  --color-neutral-500: #6c7485;
+  --color-neutral-600: #4d5568;
+  --color-neutral-700: #384252;
+  --color-neutral-800: #212938;
+  --color-neutral-900: #090f1e;
   --color-neutral-950: #050a18;
   
   /* Primary Brand Colors */
