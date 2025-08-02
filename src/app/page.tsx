@@ -29,19 +29,21 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="px-6 py-16 lg:px-12 lg:py-24">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {/* Terminal-style status line */}
           <div className="mb-8 text-sm font-mono text-neutral-500 dark:text-neutral-400">
             <span className="text-green-500">●</span> Available for work
-            <span className="mx-4">|</span>
-            <span className="inline-flex items-center gap-1">
-              <MapPin className="w-3 h-3" />
-              Greater St. Louis, USA
-            </span>
-            <span className="mx-4">|</span>
-            <span className="inline-flex items-center gap-1">
-              <Clock className="w-3 h-3" />
-              {getCurrentTimeZone()}
+            <span className="hidden sm:inline-block">
+              <span className="mx-4">|</span>
+              <span className="inline-flex items-center gap-1">
+                <MapPin className="w-3 h-3" />
+                Greater St. Louis, USA
+              </span>
+              <span className="mx-4">|</span>
+              <span className="inline-flex items-center gap-1">
+                <Clock className="w-3 h-3" />
+                {getCurrentTimeZone()}
+              </span>
             </span>
           </div>
           
@@ -91,7 +93,7 @@ export default function Home() {
 
       {/* About Section */}
       <section className="px-6 py-16 lg:px-12 lg:py-24">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-12">
             {/* About content */}
             <div className="lg:col-span-2 space-y-8">
@@ -173,7 +175,7 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="px-6 py-16 lg:px-12 lg:py-24">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto text-center">
           <div className="space-y-8">
             <div>
               <h2 className="text-3xl lg:text-4xl font-sans font-bold mb-4">
