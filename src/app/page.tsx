@@ -31,7 +31,7 @@ export default function Home() {
       <section className="px-6 py-16 lg:px-12 lg:py-24">
         <div className="max-w-6xl mx-auto">
           {/* Terminal-style status line */}
-          <div className="mb-8 text-sm text-neutral-500">
+          <div className="mb-8 text-sm">
             <span className="text-green-500">●</span> Available for work
             <span className="hidden sm:inline-block">
               <span className="mx-4">|</span>
