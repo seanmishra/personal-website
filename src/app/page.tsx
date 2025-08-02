@@ -31,7 +31,7 @@ export default function Home() {
       <section className="px-6 py-16 lg:px-12 lg:py-24">
         <div className="max-w-6xl mx-auto">
           {/* Terminal-style status line */}
-          <div className="mb-8 text-sm font-mono text-neutral-500 dark:text-neutral-400">
+          <div className="mb-8 text-sm text-neutral-500">
             <span className="text-green-500">●</span> Available for work
             <span className="hidden sm:inline-block">
               <span className="mx-4">|</span>
@@ -50,10 +50,10 @@ export default function Home() {
           {/* Main content */}
           <div className="space-y-8">
             <div>
-              <h1 className="text-4xl lg:text-6xl font-sans font-medium mb-4">
+              <h1 className="text-4xl lg:text-6xl font-sans font-bold mb-4 text-neutral-900 dark:text-neutral-100">
                 Sean Mishra
               </h1>
-              <h2 className="text-xl lg:text-2xl text-neutral-600 dark:text-neutral-300">
+              <h2 className="text-xl lg:text-2xl tracking-tighter text-neutral-700 dark:text-primary-300">
                 Full-stack Software Engineer
               </h2>
             </div>
@@ -98,10 +98,10 @@ export default function Home() {
             {/* About content */}
             <div className="lg:col-span-2 space-y-8">
               <div>
-                <h2 className="text-2xl font-mono font-bold mb-6">
+                <h2 className="text-xl font-bold mb-6 text-neutral-900 dark:text-neutral-100">
                   {`ABOUT //`}
                 </h2>
-                <div className="space-y-4 text-neutral-700 dark:text-neutral-300 leading-relaxed">
+                <div className="space-y-4 leading-relaxed">
                   <p>
                     {`I'm a full-stack software engineer who builds scalable, user-focused web and mobile apps. With strong product sense and an eye for clean design, I blend frontend finesse and backend architecture to ship fast and iterate even faster.`}
                   </p>
@@ -117,15 +117,15 @@ export default function Home() {
               {/* Stats */}
               <div className="grid grid-cols-3 gap-8 py-8 border-t border-neutral-200 dark:border-neutral-800">
                 <div>
-                  <div className="text-2xl font-mono font-bold">50+</div>
+                  <div className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">50+</div>
                   <div className="text-sm text-neutral-500">Projects</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-mono font-bold">12+</div>
+                  <div className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">12+</div>
                   <div className="text-sm text-neutral-500">Years</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-mono font-bold">∞</div>
+                  <div className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">∞</div>
                   <div className="text-sm text-neutral-500">Coffee</div>
                 </div>
               </div>
@@ -133,7 +133,7 @@ export default function Home() {
             
             {/* Tech stack */}
             <div className="space-y-8">
-              <h3 className="text-xl font-mono font-bold">
+              <h3 className="text-xl font-bold text-neutral-900 dark:text-neutral-100">
                 {`STACK //`}
               </h3>
               <div className="space-y-6 text-sm">
@@ -157,7 +157,7 @@ export default function Home() {
                     </div>
                     <div className="space-y-1">
                       {group.skills.map((skill) => (
-                        <div key={skill} className="text-neutral-600 dark:text-neutral-400">
+                        <div key={skill}>
                           {skill}
                         </div>
                       ))}
@@ -178,10 +178,10 @@ export default function Home() {
         <div className="max-w-6xl mx-auto text-center">
           <div className="space-y-8">
             <div>
-              <h2 className="text-3xl lg:text-4xl font-sans font-bold mb-4">
+              <h2 className="text-3xl lg:text-4xl font-sans font-bold mb-4 text-neutral-900 dark:text-neutral-100">
                 Let&apos;s build something together
               </h2>
-              <p className="text-lg text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto">
+              <p className="text-lg max-w-2xl mx-auto">
                 Looking for new opportunities and interesting projects. 
                 Always excited to discuss technical challenges and potential collaborations.
               </p>

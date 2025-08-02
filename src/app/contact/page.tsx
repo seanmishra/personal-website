@@ -123,22 +123,37 @@ export default function Contact() {
         <div className="max-w-6xl mx-auto">
           <div className="space-y-8">
             <div>
-              <h1 className="text-2xl font-mono font-bold mb-6">
+              <h1 className="text-2xl font-bold mb-6 text-neutral-900 dark:text-neutral-100">
                 {`CONTACT //`}
               </h1>
               <div className="space-y-4">
-                <h2 className="text-4xl lg:text-6xl font-sans font-medium">
-                  Let&apos;s work together
-                </h2>
-                <p className="text-lg text-neutral-700 dark:text-neutral-300 max-w-3xl">
-                  I&apos;m available for new opportunities and exciting projects.
+                <p className="text-lg max-w-3xl">
+                  {`I'm always open to discussing new opportunities, collaborations, or projects. Whether you have something specific in mind or just want to connect, feel free to reach out.`}
                 </p>
               </div>
             </div>
-            
-            <div className="flex items-center gap-2 text-sm">
-              <div className="w-2 h-2 bg-green-500 rounded-full" />
-              <span className="text-neutral-600 dark:text-neutral-400">Currently available</span>
+            <div className="space-y-2">
+              <p className="text-neutral-600 dark:text-neutral-400 mb-4">Currently available for:</p>
+              <div className="flex items-center gap-2 text-sm">
+                <div className="w-2 h-2 bg-success-500 rounded-full" />
+                <span className="text-neutral-600 dark:text-neutral-400">Full-time & Contract roles</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <div className="w-2 h-2 bg-success-500 rounded-full" />
+                <span className="text-neutral-600 dark:text-neutral-400">Projects & Consulting</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <div className="w-2 h-2 bg-success-500 rounded-full" />
+                <span className="text-neutral-600 dark:text-neutral-400">Content Collaborations</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <div className="w-2 h-2 bg-warning-500 rounded-full" />
+                <span className="text-neutral-600 dark:text-neutral-400">Mentorship (Slots full for 2025)</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <div className="w-2 h-2 bg-success-500 rounded-full" />
+                <span className="text-neutral-600 dark:text-neutral-400">Speaking & Debate</span>
+              </div>
             </div>
           </div>
         </div>
@@ -152,10 +167,10 @@ export default function Contact() {
         <div className="max-w-6xl mx-auto">
           <div className="space-y-12">
             <div className="space-y-4">
-              <h2 className="text-2xl font-mono font-bold">
+              <h2 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
                 {`OPTIONS //`}
               </h2>
-              <p className="text-lg text-neutral-700 dark:text-neutral-300">
+              <p className="text-lg">
                 Choose what works best for you
               </p>
             </div>
@@ -172,7 +187,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-sans font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Quick Chat (15 mins)</h3>
-                    <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                    <p className="text-sm">
                       {`Perfect for initial introductions, quick questions, or brief check-ins. Great for getting to know each other and seeing if there's mutual interest in exploring opportunities further.`}
                     </p>
                   </div>
@@ -190,7 +205,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-sans font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Conversation (30 mins)</h3>
-                    <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                    <p className="text-sm">
                       {`Ideal for discussing projects or opportunities, and sharing backgrounds. We'll have time to explore potential synergies, answer questions on both sides, and discuss next steps.`}
                     </p>
                   </div>
@@ -211,7 +226,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-sans font-semibold text-neutral-900 dark:text-neutral-100 mb-2">Send a message</h3>
-                    <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                    <p className="text-sm ">
                       {`Prefer text communication? Share details about your opportunity below and I'll get back to you as soon as possible.`}
                     </p>
                   </div>
@@ -230,22 +245,22 @@ export default function Contact() {
         <div className="max-w-6xl mx-auto">
           <div className="space-y-12 max-w-4xl">
             <div className="space-y-4">
-              <h2 className="text-2xl font-mono font-bold">
+              <h2 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
                 {`MESSAGE //`}
               </h2>
-              <p className="text-lg text-neutral-700 dark:text-neutral-400">
+              <p className="text-lg">
                 Share details about the role, project, or collaboration you have in mind.
               </p>
             </div>
 
             {/* Success Message */}
             {submitStatus === 'success' && (
-              <div className="p-6 rounded border border-green-500/20 bg-green-50 dark:bg-green-900/10">
+              <div className="p-6 rounded border border-success-500/20 bg-success-50 dark:bg-success-900/10">
                 <div className="flex items-center gap-3 mb-3">
-                  <CheckCircle className="w-6 h-6 text-green-600 dark:text-green-400" />
-                  <h3 className="font-sans font-semibold text-green-800 dark:text-green-300">Message Sent!</h3>
+                  <CheckCircle className="w-6 h-6 text-success-600 dark:text-success-400" />
+                  <h3 className="font-sans font-semibold text-success-800 dark:text-success-300">Message Sent!</h3>
                 </div>
-                <p className="text-green-700 dark:text-green-300">
+                <p className="text-success-700 dark:text-success-300">
                   Thanks for reaching out! I&apos;ll get back to you within 24 hours.
                 </p>
               </div>
@@ -253,12 +268,12 @@ export default function Contact() {
 
             {/* Error Message */}
             {submitStatus === 'error' && (
-              <div className="p-6 rounded border border-red-500/20 bg-red-50 dark:bg-red-900/10">
+              <div className="p-6 rounded border border-error-500/20 bg-error-50 dark:bg-error-900/10">
                 <div className="flex items-center gap-3 mb-3">
-                  <AlertCircle className="w-6 h-6 text-red-600 dark:text-red-400" />
-                  <h3 className="font-sans font-semibold text-red-800 dark:text-red-300">Something went wrong</h3>
+                  <AlertCircle className="w-6 h-6 text-error-600 dark:text-error-400" />
+                  <h3 className="font-sans font-semibold text-error-800 dark:text-error-300">Something went wrong</h3>
                 </div>
-                <p className="text-red-700 dark:text-red-300">
+                <p className="text-error-700 dark:text-error-300">
                   There was an issue sending your message. Please try again or reach out directly at{' '}
                   <a href="mailto:hello@seanmishra.com" className="underline hover:no-underline">
                     hello@seanmishra.com
@@ -286,13 +301,13 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleInputChange}
                       className={`block w-full pl-10 pr-3 py-3 border rounded font-mono text-sm bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-700 focus:outline-none focus:ring-1 focus:ring-neutral-500 focus:border-neutral-500 transition-colors ${
-                        errors.name ? 'border-red-500' : 'border-neutral-300 dark:border-neutral-700'
+                        errors.name ? 'border-error-500' : 'border-neutral-300 dark:border-neutral-700'
                       }`}
                       placeholder="Your full name"
                       required
                     />
                   </div>
-                  {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+                  {errors.name && <p className="text-error-500 text-sm">{errors.name}</p>}
                 </div>
 
                 {/* Email */}
@@ -311,13 +326,13 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleInputChange}
                       className={`block w-full pl-10 pr-3 py-3 border rounded font-mono text-sm bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-700 focus:outline-none focus:ring-1 focus:ring-neutral-500 focus:border-neutral-500 transition-colors ${
-                        errors.email ? 'border-red-500' : 'border-neutral-300 dark:border-neutral-700'
+                        errors.email ? 'border-error-500' : 'border-neutral-300 dark:border-neutral-700'
                       }`}
                       placeholder="your.email@company.com"
-                      required
+                      required  
                     />
                   </div>
-                  {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+                  {errors.email && <p className="text-error-500 text-sm">{errors.email}</p>}
                 </div>
               </div>
 
@@ -376,13 +391,13 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={10}
-                  className={`block w-full px-3 py-3 border rounded font-mono text-sm bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-700 focus:outline-none focus:ring-1 focus:ring-neutral-500 focus:border-neutral-500 transition-colors resize-none ${
-                    errors.message ? 'border-red-500' : 'border-neutral-300 dark:border-neutral-700'
+                  className={`block w-full px-3 py-3 border rounded font-mono text-sm bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 placeholder-neutral-400 dark:placeholder-neutral-700 focus:outline-none focus:ring-1 focus:ring-neutral-500 focus:border-neutral-500 transition-colors resize-none ${
+                    errors.message ? 'border-error-500' : 'border-neutral-300 dark:border-neutral-700'
                   }`}
                   placeholder="Tell me about the opportunity, role, or project you have in mind. What are you looking for in an ideal candidate or collaborator?"
-                  required
+                  required  
                 />
-                {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
+                {errors.message && <p className="text-error-500 text-sm">{errors.message}</p>}
                 <p className="text-neutral-500 text-xs font-mono">
                   Minimum 10 characters · Current: {formData.message.length}
                 </p>
@@ -397,7 +412,7 @@ export default function Contact() {
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
+                      <div className="w-4 h-4 border-2 border-neutral-50/30 border-t-neutral-50 rounded-full animate-spin mr-2" />
                       <span>Sending...</span>
                     </>
                   ) : (
@@ -421,10 +436,10 @@ export default function Contact() {
         <div className="max-w-6xl mx-auto">
           <div className="space-y-8">
             <div className="space-y-4">
-              <h2 className="text-2xl font-mono font-bold">
+              <h2 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
                 {`DIRECT CONTACT //`}
               </h2>
-              <p className="text-neutral-700 dark:text-neutral-300">
+              <p>
                 You can also reach out directly via email or LinkedIn.
               </p>
             </div>

@@ -25,12 +25,12 @@ export default function About() {
             {/* Content */}
             <div className="lg:col-span-2 space-y-8">
               <div>
-                <h1 className="text-2xl font-mono font-bold mb-6">
+                <h1 className="text-2xl font-mono font-bold mb-6 text-neutral-900 dark:text-neutral-100">
                   {`ABOUT //`}
                 </h1>
-                <div className="space-y-4 text-neutral-700 dark:text-neutral-300 leading-relaxed">
+                <div className="space-y-4 leading-relaxed">
                   <p>
-                    {`My name is Santak "Sean" Mishra. I was born in India, studied Computer Science in the US and am currently residing in Greater St. Louis, Missouri, US. I am a Full-Stack Software Engineer with extensive experience in developing complex web applications, RESTful web services, and mobile applications. I have also dabbled in AI/ML, IoT, UI/UX design, Software Architecture, Cloud Computing and Information Security.`}
+                    {`My name is Santak "Sean" Mishra. I was born in India, studied Computer Science in the US and am currently residing in Greater St. Louis, Missouri. I am a Full-Stack Software Engineer with extensive experience in developing complex web applications, RESTful web services, and mobile applications. I have also dabbled in AI/ML, IoT, UI/UX design, Software Architecture, Cloud Computing and Information Security.`}
                   </p>
                   <p>
                     {`I started down this path as a curious high school student building small games and websites once I discovered my love and talent for building software. Over the years, I've evolved into a professional developer who thrives on solving real-world problems with technology. My journey has taken me through startups, small businesses, and indie projects, where I've built everything from quick MVPs to robust, production-scale systems.`}
@@ -58,9 +58,9 @@ export default function About() {
                 </div>
                 
                 <div className="text-center lg:text-left space-y-4">
-                  <div>
-                    <h2 className="text-xl font-sans font-medium text-neutral-900 dark:text-neutral-100">Sean Mishra</h2>
-                    <p className="text-neutral-600 dark:text-neutral-300">Full-Stack Software Engineer</p>
+                  <div className="space-y-1">
+                    <h2 className="text-2xl font-sans font-medium text-neutral-900 dark:text-neutral-100">Sean Mishra</h2>
+                    <p className="text-primary-300 tracking-tight">Full-Stack Software Engineer</p>
                   </div>
                   
                   <div className="flex items-center gap-2 text-neutral-500 dark:text-neutral-400 justify-center lg:justify-start text-sm">
@@ -103,7 +103,7 @@ export default function About() {
         <div className="max-w-6xl mx-auto">
           <div className="space-y-12">
             <div>
-              <h2 className="text-2xl font-mono font-bold mb-6">
+              <h2 className="text-2xl font-bold mb-6 text-neutral-900 dark:text-neutral-100">
                 {`EXPERIENCE //`}
               </h2>
             </div>
@@ -216,11 +216,9 @@ export default function About() {
                 return (
                 <div key={index} className="space-y-4 pb-8">
                   <div className="space-y-2">
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-                      <span className="text-sm font-mono text-neutral-500 dark:text-neutral-400">
-                        {item.year}
-                      </span>
-                      <span className="text-sm text-neutral-600 dark:text-neutral-400">{item.company}</span>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
+                      <span>{item.year}</span> |
+                      <span>{item.company}</span>
                     </div>
                     <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">{item.title}</h3>
                     <p className="text-neutral-700 dark:text-neutral-300">{item.description}</p>
@@ -236,7 +234,7 @@ export default function About() {
                   {item.detailedAchievements.length > item.shortAchievements.length && (
                     <button
                       onClick={() => toggleRole(index)}
-                      className="flex items-center gap-2 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors text-sm font-mono"
+                      className="flex items-center gap-2 text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors text-sm cursor-pointer"
                     >
                       {isExpanded ? (
                         <>
@@ -312,7 +310,7 @@ export default function About() {
                     </div>
                     <div className="space-y-2">
                       <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">{principle.title}</h3>
-                      <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed">{principle.description}</p>
+                      <p className="leading-relaxed">{principle.description}</p>
                     </div>
                   </div>
                 </div>
@@ -330,10 +328,10 @@ export default function About() {
         <div className="max-w-6xl mx-auto">
           <div className="space-y-12">
             <div>
-              <h2 className="text-2xl font-mono font-bold mb-6">
+              <h2 className="text-2xl font-bold mb-6 text-neutral-900 dark:text-neutral-100">
                 {`STACK //`}
               </h2>
-              <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              <p className="leading-relaxed">
                 I believe in using the right tool for the job. Here are the technologies I&apos;ve mastered and rely on to build exceptional software.
               </p>
             </div>
@@ -472,7 +470,6 @@ export default function About() {
                   </h4>
                   <div className="space-y-2">
                     {[
-                      { name: "PHP", url: "https://www.php.net" },
                       { name: "Express", url: "https://expressjs.com" },
                       { name: "MySQL", url: "https://www.mysql.com" },
                       { name: "PostgreSQL", url: "https://www.postgresql.org" },
@@ -576,10 +573,10 @@ export default function About() {
         <div className="max-w-6xl mx-auto">
           <div className="space-y-12">
             <div className="text-center lg:text-left">
-              <h2 className="text-2xl font-mono font-bold mb-4">
+              <h2 className="text-2xl font-bold mb-4 text-neutral-900 dark:text-neutral-100">
                 {`BEYOND CODE //`}
               </h2>
-              <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-3xl">
+              <p className="leading-relaxed max-w-3xl">
                 Outside of software development, here are some of my interests and activities that help shape my perspective and make me a more well-rounded developer.
               </p>
             </div>
@@ -625,10 +622,10 @@ export default function About() {
         <div className="max-w-6xl mx-auto text-center">
           <div className="space-y-8">
             <div>
-              <h2 className="text-3xl lg:text-4xl font-sans font-bold mb-4">
+              <h2 className="text-3xl lg:text-4xl font-sans font-bold mb-4 text-neutral-900 dark:text-neutral-100">
                 Let&apos;s build something together
               </h2>
-              <p className="text-lg text-neutral-600 dark:text-neutral-300 max-w-2xl mx-auto">
+              <p className="text-lg max-w-2xl mx-auto">
                 Looking for new opportunities and interesting projects. 
                 Always excited to discuss technical challenges and potential collaborations.
               </p>
