@@ -53,7 +53,7 @@ export default function Home() {
               <h1 className="text-4xl lg:text-6xl font-sans font-bold mb-4 text-neutral-900 dark:text-neutral-100">
                 Sean Mishra
               </h1>
-              <h2 className="text-xl lg:text-2xl tracking-tighter text-neutral-700 dark:text-primary-300">
+              <h2 className="text-xl lg:text-2xl tracking-tighter text-neutral-700 dark:text-neutral-300">
                 Full-stack Software Engineer
               </h2>
             </div>
@@ -77,7 +77,7 @@ export default function Home() {
               </a>
               <Link 
                 href="/contact"
-                className="inline-flex items-center px-6 py-3 rounded border border-neutral-300 dark:border-neutral-700 font-mono text-sm hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors"
+                className="inline-flex items-center px-6 py-3 rounded border border-neutral-300 dark:border-neutral-700 font-mono text-sm hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors"
                 onClick={() => trackEvent.contactClick('hero')}
               >
                 Contact Me
@@ -190,7 +190,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 href="/projects"
-                className="inline-flex items-center px-6 py-3 border rounded border-neutral-300 dark:border-neutral-700 font-mono text-sm hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors"
+                className="inline-flex items-center px-6 py-3 border rounded border-neutral-300 dark:border-neutral-700 font-mono text-sm hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors"
                 onClick={() => trackEvent.projectsClick('cta_section')}
               >
                 View Projects

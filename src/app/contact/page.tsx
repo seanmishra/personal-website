@@ -179,10 +179,10 @@ export default function Contact() {
               {/* Quick Call */}
               <button
                 data-cal-link="seanmishra/15min"
-                className="group p-6 rounded border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors text-left"
+                className="group p-6 rounded border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors text-left"
               >
                 <div className="space-y-4 cursor-pointer">
-                  <div className="w-12 h-12 bg-neutral-100 dark:bg-neutral-800 rounded flex items-center justify-center">
+                  <div className="w-12 h-12 bg-neutral-200 dark:bg-neutral-800 rounded flex items-center justify-center">
                     <Clock className="w-6 h-6 text-neutral-600 dark:text-neutral-400" />
                   </div>
                   <div>
@@ -197,10 +197,10 @@ export default function Contact() {
               {/* Deep Dive */}
               <button
                 data-cal-link="seanmishra/30min"
-                className="group p-6 rounded border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors text-left"
+                className="group p-6 rounded border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors text-left"
               >
                 <div className="space-y-4 cursor-pointer">
-                  <div className="w-12 h-12 bg-neutral-100 dark:bg-neutral-800 rounded flex items-center justify-center">
+                  <div className="w-12 h-12 bg-neutral-200 dark:bg-neutral-800 rounded flex items-center justify-center">
                     <MessageCircle className="w-6 h-6 text-neutral-600 dark:text-neutral-400" />
                   </div>
                   <div>
@@ -218,10 +218,10 @@ export default function Contact() {
                   document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' });
                   trackEvent.scrollToForm({ source: 'contact_options' });
                 }}
-                className="group p-6 rounded border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors text-left"
+                className="group p-6 rounded border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors text-left"
               >
-                <div className="space-y-4">
-                  <div className="w-12 h-12 bg-neutral-100 dark:bg-neutral-800 rounded flex items-center justify-center">
+                <div className="space-y-4 cursor-pointer">
+                  <div className="w-12 h-12 bg-neutral-200 dark:bg-neutral-800 rounded flex items-center justify-center">
                     <Mail className="w-6 h-6 text-neutral-600 dark:text-neutral-400" />
                   </div>
                   <div>
@@ -447,7 +447,7 @@ export default function Contact() {
             <div className="flex flex-wrap gap-4">
               <a
                 href="mailto:hello@seanmishra.com"
-                className="inline-flex items-center px-4 py-2 rounded border border-neutral-300 dark:border-neutral-700 font-mono text-sm hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors"
+                className="inline-flex items-center px-4 py-2 rounded border border-neutral-300 dark:border-neutral-700 font-mono text-sm hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors"
                 onClick={() => trackEvent.directContact({ method: 'email' })}
               >
                 <Mail className="w-4 h-4 mr-2" />
@@ -458,7 +458,7 @@ export default function Contact() {
                 href="https://linkedin.com/in/seanmishra"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-4 py-2 rounded border border-neutral-300 dark:border-neutral-700 font-mono text-sm hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors"
+                className="inline-flex items-center px-4 py-2 rounded border border-neutral-300 dark:border-neutral-700 font-mono text-sm hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors"
                 onClick={() => trackEvent.directContact({ method: 'linkedin' })}
               >
                 <span>LinkedIn</span>

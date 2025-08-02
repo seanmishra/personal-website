@@ -60,7 +60,7 @@ export default function About() {
                 <div className="text-center lg:text-left space-y-4">
                   <div className="space-y-1">
                     <h2 className="text-2xl font-sans font-medium text-neutral-900 dark:text-neutral-100">Sean Mishra</h2>
-                    <p className="text-primary-300 tracking-tight">Full-Stack Software Engineer</p>
+                    <p className="tracking-tight">Full-Stack Software Engineer</p>
                   </div>
                   
                   <div className="flex items-center gap-2 text-neutral-500 dark:text-neutral-400 justify-center lg:justify-start text-sm">
@@ -82,7 +82,7 @@ export default function About() {
                       href="https://linkedin.com/in/seanmishra" 
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 rounded border border-neutral-300 dark:border-neutral-700 font-mono text-sm hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors"
+                      className="inline-flex items-center px-4 py-2 rounded border border-neutral-300 dark:border-neutral-700 font-mono text-sm hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors"
                     >
                       LinkedIn
                       <ExternalLink className="w-4 h-4 ml-2" />
@@ -114,7 +114,8 @@ export default function About() {
                   year: "May 2020 - Present",
                   title: "Software Engineer",
                   company: "Morrowcraft (Remote)",
-                  description: "Leading development at a software development agency offering design, development, branding and digital marketing services to domestic and international clients.",
+                  description: "Spearheaded full-stack development and DevOps for diverse client projects at Morrowcraft, delivering scalable web and mobile solutions, custom platforms, and automation tools under tight deadlines.",
+                  companyOverview: "Morrowcraft is a software development agency based in India that offers design, development, branding and digital marketing services to domestic and international clients.",
                   shortAchievements: [
                     "Built scalable web apps & APIs with Node.js, React, MongoDB",
                     "Led cross-platform mobile development with React Native",
@@ -136,7 +137,8 @@ export default function About() {
                   year: "May 2018 - Apr 2020",
                   title: "Software Engineer",
                   company: "Noonlight (St. Louis, MO)",
-                  description: "Developed safety platform solutions trusted by over 1M users, focusing on connected safety technology and emergency response systems.",
+                  description: "Accelerated the evolution of Noonlight's safety platform by modernizing core APIs, enhancing mobile experiences, and building robust developer tools — directly supporting millions of users, emergency services, and high-profile partner integrations in life-critical scenarios.",
+                  companyOverview: "Noonlight is a U.S.-based connected safety platform and mobile app trusted by over 1 million users since 2013.",
                   shortAchievements: [
                     "Built RESTful APIs & microservices with Node.js, TypeScript",
                     "Migrated legacy CoffeeScript to modern JSON Schema architecture",
@@ -160,7 +162,8 @@ export default function About() {
                   year: "Oct 2014 - Jul 2016",
                   title: "Software Developer",
                   company: "Lyfsoft (Bhubaneswar, India)",
-                  description: "Full-stack development for web and mobile applications, specializing in e-commerce solutions and client project delivery.",
+                  description: "Delivered full-cycle solutions at Lyfsoft across development, deployment, and client enablement — building custom platforms and tools while improving internal workflows and supporting global client success.",
+                  companyOverview: "Lyfsoft was a Web Development, Digital Marketing, Data Processing, Technical Partnership, Training and Live-Chat Support services provider based in India.",
                   shortAchievements: [
                     "Developed custom web & mobile apps with PHP, JavaScript",
                     "Built e-commerce platforms using OpenCart & Magento",
@@ -178,16 +181,17 @@ export default function About() {
                   year: "Aug 2013 - Sep 2014",
                   title: "Web Developer",
                   company: "Void Informatics (Bhubaneswar, India)",
-                  description: "Developed websites and web applications for local and domestic clients using modern web technologies and CMS platforms.",
+                  description: "Supported end-to-end web development at Void Informatics, delivering CMS-driven websites and custom applications while resolving production issues and tailoring solutions for local clients.",
+                  companyOverview: "Void Informatics was a Bhubaneswar-based web agency that caters to local and domestic clients.",
                   shortAchievements: [
                     "Built static, dynamic & CMS websites with PHP, MySQL",
                     "Created custom WordPress & Joomla solutions",
                     "Developed two custom web applications for local clients"
                   ],
                   detailedAchievements: [
+                    "Involved in the full development lifecycle, from requirement gathering to deployment",
                     "Developed static, dynamic, and CMS-based websites using PHP, MySQL, WordPress, and Joomla",
                     "Created two custom web applications tailored to local client needs, improving operational efficiency",
-                    "Involved in the full development lifecycle, from requirement gathering to deployment",
                     "Enhanced existing WordPress and Joomla websites by implementing custom features",
                     "Resolved bugs and optimized performance for clients' production websites and web applications"
                   ]
@@ -196,17 +200,18 @@ export default function About() {
                   year: "Jan 2012 - Jul 2013",
                   title: "Junior Web Developer (Part-time)",
                   company: "Void Informatics (Bhubaneswar, India)",
-                  description: "Started career building websites and learning web development fundamentals while pursuing education.",
+                  description: "Began my development journey at Void Informatics, where I gained foundational experience in web technologies, CMS platforms, and client work—learning industry practices hands-on while contributing to real projects.",
+                  companyOverview: "Void Informatics was a Bhubaneswar-based web agency that caters to local and domestic clients.",
                   shortAchievements: [
-                    "Built responsive WordPress & Joomla websites",
-                    "Created custom static websites from mockups",
-                    "Implemented SEO strategies"
+                    "Worked on several websites using WordPress & Joomla",
+                    "Developed responsive website templates from mockups",
+                    "Created custom static websites for local clients"
                   ],
                   detailedAchievements: [
-                    "Built and customized websites using WordPress and Joomla for diverse client needs",
-                    "Developed responsive website templates from mockups to deliver mobile-friendly user experiences",
-                    "Created custom static websites for local clients, aligning with their branding and requirements",
-                    "Implemented SEO strategies to improve the visibility and performance of the company website"
+                    "Worked on several websites using WordPress and Joomla",
+                    "Developed responsive website templates based on mockups",
+                    "Developed a few custom static websites for local clients",
+                    "Made Search Engine Optimizations to the company website"
                   ]
                 }
               ].map((item, index) => {
@@ -220,31 +225,36 @@ export default function About() {
                       <span>{item.year}</span> |
                       <span>{item.company}</span>
                     </div>
-                    <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">{item.title}</h3>
-                    <p className="text-neutral-700 dark:text-neutral-300">{item.description}</p>
+                    <h3 className="text-neutral-900 dark:text-neutral-100 font-bold text-lg">{item.title}</h3>
+                    <p>{item.description}</p>
                   </div>
-                  <ul className="space-y-2 text-neutral-700 dark:text-neutral-300">
+                  {isExpanded && item.companyOverview && (
+                    <div className="mb-4 p-3 bg-neutral-50 dark:bg-neutral-800/50 rounded border-l-2 border-neutral-300 dark:border-neutral-600">
+                      <p className="text-sm text-neutral-600 dark:text-neutral-400">{item.companyOverview}</p>
+                    </div>
+                  )}
+                  <ul className="space-y-2">
                     {achievementsToShow.map((achievement: string, i: number) => (
                       <li key={i} className="flex items-start gap-3">
                         <div className="w-1.5 h-1.5 bg-neutral-400 dark:bg-neutral-500 rounded-full mt-2 flex-shrink-0" />
-                        <span className="text-sm leading-relaxed">{achievement}</span>
+                        <span className="leading-relaxed text-sm">{achievement}</span>
                       </li>
                     ))}
                   </ul>
                   {item.detailedAchievements.length > item.shortAchievements.length && (
                     <button
                       onClick={() => toggleRole(index)}
-                      className="flex items-center gap-2 text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors text-sm cursor-pointer"
+                      className="flex items-center gap-2 text-secondary-400 hover:text-secondary-600 dark:text-secondary-300 dark:hover:text-secondary-400 transition-colors text-sm cursor-pointer"
                     >
                       {isExpanded ? (
                         <>
                           <ChevronUp className="w-4 h-4" />
-                          Show Less
+                          Less Details
                         </>
                       ) : (
                         <>
                           <ChevronDown className="w-4 h-4" />
-                          Show More ({item.detailedAchievements.length - item.shortAchievements.length} more)
+                          More Details
                         </>
                       )}
                     </button>
@@ -265,7 +275,7 @@ export default function About() {
         <div className="max-w-6xl mx-auto">
           <div className="space-y-12">
             <div>
-              <h2 className="text-2xl font-mono font-bold mb-6">
+              <h2 className="text-2xl font-bold mb-6 text-neutral-900 dark:text-neutral-100">
                 {`PHILOSOPHY //`}
               </h2>
             </div>
@@ -309,7 +319,7 @@ export default function About() {
                       {principle.icon}
                     </div>
                     <div className="space-y-2">
-                      <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">{principle.title}</h3>
+                      <h3 className="text-lg font-bold text-neutral-900 dark:text-neutral-100">{principle.title}</h3>
                       <p className="leading-relaxed">{principle.description}</p>
                     </div>
                   </div>
@@ -344,56 +354,56 @@ export default function About() {
                   category: "Frontend",
                   description: "My go-to for building interactive UIs. From simple components to complex state management.",
                   url: "https://react.dev",
-                  color: "bg-primary-500/10 dark:bg-primary-400/10 text-primary-600 dark:text-primary-400"
+                  color: "bg-primary-500/10 dark:bg-primary-400/10 text-primary-600 dark:text-primary-400 border border-primary-500/20 dark:border-primary-400/20"
                 },
                 {
                   name: "Next.js",
                   category: "Frontend", 
                   description: "The React framework I use for production apps. SSR, API routes, and excellent DX.",
                   url: "https://nextjs.org",
-                  color: "bg-primary-500/10 dark:bg-primary-400/10 text-primary-600 dark:text-primary-400"
+                  color: "bg-primary-500/10 dark:bg-primary-400/10 text-primary-600 dark:text-primary-400 border border-primary-500/20 dark:border-primary-400/20"
                 },
                 {
                   name: "TypeScript",
                   category: "Frontend",
                   description: "JavaScript with superpowers. Essential for maintaining large codebases and catching bugs early.",
                   url: "https://www.typescriptlang.org",
-                  color: "bg-primary-500/10 dark:bg-primary-400/10 text-primary-600 dark:text-primary-400"
+                  color: "bg-primary-500/10 dark:bg-primary-400/10 text-primary-600 dark:text-primary-400 border border-primary-500/20 dark:border-primary-400/20"
                 },
                 {
                   name: "Node.js",
                   category: "Backend",
                   description: "Server-side JavaScript that lets me build fast, scalable network applications.",
                   url: "https://nodejs.org",
-                  color: "bg-success-500/10 dark:bg-success-400/10 text-success-600 dark:text-success-500"
+                  color: "bg-success-500/10 dark:bg-success-400/10 text-success-600 dark:text-success-500 border border-success-500/20 dark:border-success-400/20"
                 },
                 {
                   name: "MongoDB",
                   category: "Backend",
                   description: "Flexible NoSQL database perfect for rapid development and scaling modern applications.",
                   url: "https://mongodb.com",
-                  color: "bg-success-500/10 dark:bg-success-400/10 text-success-600 dark:text-success-500"
+                  color: "bg-success-500/10 dark:bg-success-400/10 text-success-600 dark:text-success-500 border border-success-500/20 dark:border-success-400/20"
                 },
                 {
                   name: "Docker",
                   category: "DevOps",
                   description: "Containerization that ensures 'it works on my machine' works everywhere.",
                   url: "https://docker.com",
-                  color: "bg-secondary-500/10 dark:bg-secondary-400/10 text-secondary-600 dark:text-secondary-400"
+                  color: "bg-secondary-500/10 dark:bg-secondary-400/10 text-secondary-600 dark:text-secondary-400 border border-secondary-500/20 dark:border-secondary-400/20"
                 },
                 {
                   name: "Tailwind CSS",
                   category: "Frontend",
                   description: "Utility-first CSS that makes styling fast and consistent. Perfect for rapid prototyping.",
                   url: "https://tailwindcss.com",
-                  color: "bg-primary-500/10 dark:bg-primary-400/10 text-primary-600 dark:text-primary-400"
+                  color: "bg-primary-500/10 dark:bg-primary-400/10 text-primary-600 dark:text-primary-400 border border-primary-500/20 dark:border-primary-400/20"
                 },
                 {
                   name: "Railway",
                   category: "DevOps",
                   description: "Modern deployment platform for effortless infrastructure management and scaling.",
                   url: "https://railway.app",
-                  color: "bg-secondary-500/10 dark:bg-secondary-400/10 text-secondary-600 dark:text-secondary-400"
+                  color: "bg-secondary-500/10 dark:bg-secondary-400/10 text-secondary-600 dark:text-secondary-400 border border-secondary-500/20 dark:border-secondary-400/20"
                 }
               ].map((tool, index) => (
                 <a
@@ -409,13 +419,13 @@ export default function About() {
                         <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors">
                           {tool.name}
                         </h3>
-                        <span className={`text-xs px-2 py-1 rounded-full ${tool.color}`}>
+                        <span className={`text-xs px-2 py-0.5 rounded-lg ${tool.color}`}>
                           {tool.category}
                         </span>
                       </div>
                       <ExternalLink className="w-4 h-4 text-neutral-400 dark:text-neutral-500 group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors opacity-0 group-hover:opacity-100" />
                     </div>
-                    <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed text-sm">{tool.description}</p>
+                    <p className="leading-relaxed text-sm">{tool.description}</p>
                   </div>
                 </a>
               ))}
@@ -605,7 +615,7 @@ export default function About() {
                   </div>
                   <div className="space-y-3">
                     <h3 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">{interest.title}</h3>
-                    <p className="text-neutral-700 dark:text-neutral-300 leading-relaxed text-sm">{interest.description}</p>
+                    <p className="leading-relaxed text-sm">{interest.description}</p>
                   </div>
                 </div>
               ))}
@@ -634,7 +644,7 @@ export default function About() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 href="/projects"
-                className="inline-flex items-center px-6 py-3 border rounded border-neutral-300 dark:border-neutral-700 font-mono text-sm hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors"
+                className="inline-flex items-center px-6 py-3 border rounded border-neutral-300 dark:border-neutral-700 font-mono text-sm hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors"
                 onClick={() => trackEvent.projectsClick('cta_section')}
               >
                 View Projects
