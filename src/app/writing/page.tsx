@@ -1,92 +1,32 @@
 'use client';
 import React, { useState } from 'react';
-import { ExternalLink, Calendar, Clock, TrendingUp, BookOpen, Users, MessageSquare, Eye } from 'lucide-react';
+import { Calendar, Clock, TrendingUp, BookOpen, Users, MessageSquare, Eye } from 'lucide-react';
+import { allPosts } from '../../../.contentlayer/generated';
+import { compareDesc } from 'date-fns';
 
 export default function Writing() {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const articles = [
-    {
-      title: 'Building Scalable React Applications: Lessons from Production',
-      description: 'A deep dive into architectural patterns and best practices for large-scale React applications.',
-      excerpt: 'After building several production React apps serving millions of users, I\'ve learned that scalability isn\'t just about performance—it\'s about maintainability, developer experience, and sustainable growth.',
-      category: 'Engineering',
-      date: '2024-07-15',
-      readTime: '8 min read',
-      views: '12,400',
-      featured: true,
-      published: true,
-      link: 'https://medium.com/@seanmishra/building-scalable-react-applications',
-      tags: ['React', 'Architecture', 'Performance', 'Best Practices'],
-    },
-    {
-      title: 'The Art of API Design: Creating Developer-Friendly Interfaces',
-      description: 'Principles and patterns for designing APIs that developers actually want to use.',
-      excerpt: 'Great APIs feel intuitive, but that intuition is carefully crafted. Here\'s how to design APIs that are both powerful and pleasant to work with.',
-      category: 'Engineering',
-      date: '2024-06-28',
-      readTime: '12 min read',
-      views: '8,750',
-      featured: true,
-      published: true,
-      link: 'https://dev.to/seanmishra/api-design-principles',
-      tags: ['API Design', 'Backend', 'Developer Experience', 'REST'],
-    },
-    {
-      title: 'From Idea to MVP: A 30-Day Product Building Journey',
-      description: 'How I built and launched a SaaS product from scratch in 30 days.',
-      excerpt: 'Building an MVP doesn\'t have to take months. Here\'s my framework for rapid product development and the tools that made it possible.',
-      category: 'Product',
-      date: '2024-05-20',
-      readTime: '15 min read',
-      views: '15,200',
-      featured: false,
-      published: true,
-      link: 'https://seanmishra.com/blog/idea-to-mvp',
-      tags: ['Product Development', 'MVP', 'Startup', 'SaaS'],
-    },
-    {
-      title: 'The Psychology of Code Reviews: Building Better Engineering Culture',
-      description: 'How to transform code reviews from a chore into a catalyst for team growth.',
-      excerpt: 'Code reviews aren\'t just about catching bugs—they\'re about building shared understanding, improving skills, and creating psychological safety.',
-      category: 'Leadership',
-      date: '2024-04-12',
-      readTime: '10 min read',
-      views: '6,890',
-      featured: false,
-      published: true,
-      link: 'https://hashnode.com/@seanmishra/psychology-of-code-reviews',
-      tags: ['Leadership', 'Code Review', 'Team Culture', 'Engineering Management'],
-    },
-    {
-      title: 'TypeScript in 2024: Advanced Patterns for React Developers',
-      description: 'Modern TypeScript patterns that will make your React code more robust and maintainable.',
-      excerpt: 'TypeScript has evolved significantly. Here are the advanced patterns every React developer should know to write type-safe, maintainable code.',
-      category: 'Engineering',
-      date: '2024-03-08',
-      readTime: '18 min read',
-      views: '22,100',
-      featured: true,
-      published: true,
-      link: 'https://typescript-react-patterns.dev',
-      tags: ['TypeScript', 'React', 'Advanced Patterns', 'Type Safety'],
-    },
-    {
-      title: 'Building in Public: My First Year as an Indie Hacker',
-      description: 'Lessons learned from building and shipping products as a solo developer.',
-      excerpt: 'One year ago, I decided to build products independently. Here\'s what I learned about product-market fit, marketing, and the reality of indie hacking.',
-      category: 'Career',
-      date: '2024-01-15',
-      readTime: '14 min read',
-      views: '9,450',
-      featured: false,
-      published: true,
-      link: 'https://indiehackers.com/post/building-in-public-year-one',
-      tags: ['Indie Hacking', 'Career', 'Building in Public', 'Entrepreneurship'],
-    },
-  ];
+  // Sort posts by date and convert Contentlayer data to match original format
+  const sortedPosts = allPosts
+    .filter(post => post.published)
+    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
-  const categories = ['All', 'Engineering', 'Product', 'Leadership', 'Career'];
+  const articles = sortedPosts.map(post => ({
+    title: post.title,
+    description: post.description,
+    excerpt: post.description, // Using description as excerpt for now
+    category: post.category,
+    date: post.date,
+    readTime: post.readingTime.text,
+    views: '1,200', // Mock view count for now since not in Contentlayer data
+    featured: post.featured || false,
+    published: post.published,
+    link: post.url, // Using internal URL instead of external link
+    tags: post.tags || [],
+  }));
+
+  const categories = ['All', ...Array.from(new Set(articles.map(article => article.category)))];
 
   const getCategoryColor = (category: string) => {
     switch (category) {
@@ -231,8 +171,6 @@ export default function Writing() {
                 <a
                   key={index}
                   href={article.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="group p-8 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all hover:shadow-sm flex flex-col h-full"
                 >
                   <div className="flex flex-col h-full">
@@ -249,7 +187,6 @@ export default function Writing() {
                             {article.title}
                           </h3>
                         </div>
-                        <ExternalLink className="w-4 h-4 text-neutral-400 dark:text-neutral-500 group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors opacity-0 group-hover:opacity-100" />
                       </div>
 
                       <p className="leading-relaxed">
@@ -269,7 +206,7 @@ export default function Writing() {
                         ))}
                       </div>
 
-                      <div className="flex items-center justify-between text-sm text-neutral-400 dark:text-neutral-600">
+                      <div className="flex items-center justify-between text-sm text-neutral-500">
                         <div className="flex items-center gap-4">
                           <div className="flex items-center gap-1">
                             <Calendar className="w-4 h-4" />
@@ -329,8 +266,6 @@ export default function Writing() {
                 <a
                   key={index}
                   href={article.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="group block p-6 rounded-lg border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 transition-all hover:shadow-sm"
                 >
                   <div className="space-y-4">
@@ -352,11 +287,10 @@ export default function Writing() {
                           </p>
                         </div>
                       </div>
-                      <ExternalLink className="w-5 h-5 text-neutral-400 dark:text-neutral-500 group-hover:text-neutral-600 dark:group-hover:text-neutral-400 transition-colors opacity-0 group-hover:opacity-100 flex-shrink-0 ml-4" />
                     </div>
 
                     <div className="flex flex-wrap items-center justify-between gap-4">
-                      <div className="flex items-center gap-4 text-sm text-neutral-400 dark:text-neutral-600">
+                      <div className="flex items-center gap-4 text-sm text-neutral-500">
                         <div className="flex items-center gap-1">
                           <Calendar className="w-4 h-4" />
                           <span>{formatDate(article.date)}</span>

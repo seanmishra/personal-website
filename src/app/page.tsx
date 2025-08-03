@@ -29,7 +29,7 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="px-6 py-16 lg:px-12 lg:py-24">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           {/* Terminal-style status line */}
           <div className="mb-8 text-sm">
             <span className="text-green-500">●</span> Available for work
@@ -93,10 +93,10 @@ export default function Home() {
 
       {/* About Section */}
       <section className="px-6 py-16 lg:px-12 lg:py-24">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-12">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-4 gap-12">
             {/* About content */}
-            <div className="lg:col-span-2 space-y-8">
+            <div className="lg:col-span-3 space-y-8">
               <div>
                 <h2 className="text-xl font-bold mb-6 text-neutral-900 dark:text-neutral-100">
                   {`ABOUT //`}
@@ -175,7 +175,7 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="px-6 py-16 lg:px-12 lg:py-24">
-        <div className="max-w-6xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center">
           <div className="space-y-8">
             <div>
               <h2 className="text-3xl lg:text-4xl font-sans font-bold mb-4 text-neutral-900 dark:text-neutral-100">
