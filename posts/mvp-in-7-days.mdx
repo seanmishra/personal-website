@@ -1,0 +1,261 @@
+---
+title: "Shipping MVPs in Seven Days"
+description: "A practical framework for building and launching minimum viable products in a week, based on real experiences shipping multiple successful MVPs."
+date: "2024-07-15"
+category: "Product"
+tags: ["MVP", "Product Development", "Startup", "Lean", "Agile"]
+featured: true
+published: true
+author: "Sean Mishra"
+---
+
+Building a minimum viable product doesn't have to take months. In fact, some of the most successful products started as weekend projects that were shipped within days. Over the past few years, I've successfully launched multiple MVPs in seven days or less, and I've developed a framework that consistently works.
+
+## The Seven-Day Framework
+
+The key to shipping fast isn't cutting corners—it's being ruthlessly focused on what truly matters. Here's the framework I use:
+
+### Day 1: Define and Validate
+
+Before writing a single line of code, you need crystal clarity on what you're building and why. This isn't about perfect market research; it's about having a clear hypothesis you can test.
+
+**Morning: Problem Definition (2-3 hours)**
+- Write down the exact problem you're solving
+- Define your target user in one sentence
+- Identify the core action your MVP needs to enable
+
+**Afternoon: Competitive Research (2-3 hours)**
+- Find 3-5 existing solutions
+- Identify what's missing or could be done better
+- Document your unique angle in one paragraph
+
+**Evening: Landing Page (2-3 hours)**
+- Create a simple landing page explaining your solution
+- Include an email signup or "notify me" button
+- Share it with 10 people and gather feedback
+
+### Day 2: Technical Planning
+
+With validation out of the way, it's time to plan your technical approach. The goal is to find the simplest possible implementation that delivers value.
+
+**Architecture Decisions**
+Choose tools you know well. This isn't the time to learn new technologies. My go-to stack for MVPs:
+
+- **Frontend**: Next.js with Tailwind CSS
+- **Backend**: API routes or simple Express server
+- **Database**: PostgreSQL with Prisma for complex data, JSON files for simple needs
+- **Authentication**: Auth0 or NextAuth.js
+- **Hosting**: Vercel, Railway, or DigitalOcean App Platform
+
+**Feature Prioritization**
+List every feature you think you need, then cut 80% of them. Your MVP should do one thing exceptionally well rather than many things poorly.
+
+Create three lists:
+1. **Must-have**: Core functionality that solves the primary problem
+2. **Should-have**: Features that enhance the experience but aren't critical
+3. **Could-have**: Nice-to-have features for future iterations
+
+Focus only on the "must-have" list for your seven-day sprint.
+
+### Days 3-5: Build Phase
+
+This is where the magic happens. Three days might seem tight, but with proper planning, it's entirely achievable.
+
+**Day 3: Core Infrastructure**
+- Set up your project structure
+- Implement authentication if needed
+- Create your database schema
+- Build the basic UI layout
+
+**Day 4: Main Features**
+- Implement your core functionality
+- Focus on the happy path first
+- Don't worry about edge cases yet
+- Make it work, don't make it perfect
+
+**Day 5: Polish and Edge Cases**
+- Handle error states
+- Add loading states
+- Implement basic responsive design
+- Test the core user journey
+
+## Technical Best Practices for Speed
+
+### Use What You Know
+Resist the urge to try new technologies during your seven-day sprint. Stick with tools and frameworks you're already proficient in. You can always refactor later.
+
+### Embrace No-Code/Low-Code Tools
+Don't build everything from scratch. Use existing services:
+
+- **Forms**: Typeform, Google Forms
+- **Payments**: Stripe Checkout (hosted)
+- **Email**: EmailJS or simple SMTP
+- **Analytics**: Google Analytics, Mixpanel
+- **Notifications**: Email for now, push notifications later
+
+### Database Decisions
+For most MVPs, you don't need a complex database setup:
+
+- **Simple data**: JSON files or localStorage
+- **User data**: Firebase or Supabase
+- **Complex relationships**: PostgreSQL with Prisma
+
+### API Design
+Keep your APIs simple:
+
+```javascript
+// Good for MVP
+GET /api/users/me
+POST /api/projects
+DELETE /api/projects/:id
+
+// Overkill for MVP
+GET /api/v1/users/profile?include=projects,settings&fields=name,email
+```
+
+### Day 6: Testing and Feedback
+
+Don't skip testing, but be smart about it. You're not aiming for perfection; you're aiming for a working product that real users can interact with.
+
+**Manual Testing (Morning)**
+- Test the core user journey from start to finish
+- Check responsive design on mobile and desktop
+- Verify all forms work correctly
+- Ensure authentication flows properly
+
+**User Testing (Afternoon)**
+- Give access to 5-10 trusted users
+- Watch them use your product (screen sharing works great)
+- Take notes on where they get confused
+- Ask specific questions about value and usability
+
+**Bug Fixes (Evening)**
+- Fix critical bugs that prevent core functionality
+- Don't fix minor UI issues unless they're confusing
+- Prioritize bugs that affect the main user journey
+
+### Day 7: Launch Preparation
+
+The final day is about getting your MVP ready for the world and planning your launch strategy.
+
+**Technical Preparation (Morning)**
+- Set up error monitoring (Sentry is great for this)
+- Implement basic analytics
+- Add social sharing meta tags
+- Check performance basics (lighthouse score)
+- Set up uptime monitoring
+
+**Content and Communication (Afternoon)**
+- Write your launch announcement
+- Prepare social media posts
+- Update your landing page with the working product
+- Draft email to your early subscribers
+
+**Launch (Evening)**
+- Deploy to production
+- Announce on your chosen platforms
+- Send emails to early subscribers
+- Monitor for issues and feedback
+
+## Real Examples from My Experience
+
+### Example 1: Task Management Tool
+**Problem**: Developers needed a simple way to track code review tasks
+**Solution**: A minimal kanban board specifically for code reviews
+**Tech Stack**: Next.js, Supabase, Tailwind CSS
+**Launch Result**: 50 users in the first week, $500 MRR within a month
+
+### Example 2: Meeting Scheduler
+**Problem**: Coordinating meetings across time zones was painful
+**Solution**: Simple scheduling tool with timezone auto-detection
+**Tech Stack**: React, Firebase, Stripe
+**Launch Result**: 200 users in the first week, acquired by a larger company 6 months later
+
+### Example 3: Content Idea Generator
+**Problem**: Content creators struggled with consistent idea generation
+**Solution**: AI-powered idea generator with saved lists
+**Tech Stack**: Next.js, OpenAI API, PostgreSQL
+**Launch Result**: 1000 users in the first month, $2000 MRR within 3 months
+
+## Common Pitfalls and How to Avoid Them
+
+### Perfectionism Paralysis
+The biggest enemy of shipping fast is perfectionism. Remember: your MVP is supposed to be minimal. If you're not slightly embarrassed by version 1, you waited too long to ship.
+
+**Solution**: Set a hard deadline and stick to it. Better to ship something imperfect than to never ship at all.
+
+### Feature Creep
+It's tempting to add "just one more feature" that you think users will love. Resist this urge during your seven-day sprint.
+
+**Solution**: Keep a separate list of feature ideas for v2. Focus on solving one problem really well.
+
+### Over-Engineering
+Building for scale you don't have yet is a waste of time. Your MVP needs to handle 10-100 users, not 10,000.
+
+**Solution**: Choose simple solutions. You can always optimize later when you have real usage data.
+
+### Ignoring User Feedback
+Building in isolation is dangerous. Get feedback early and often.
+
+**Solution**: Share your work-in-progress with users starting from day 2. Their input will guide your decisions.
+
+## Post-Launch Strategy
+
+Shipping your MVP in seven days is just the beginning. Here's what to focus on in the weeks following your launch:
+
+### Week 1: Monitor and Fix
+- Watch user behavior analytics
+- Fix critical bugs quickly
+- Respond to user feedback
+- Document feature requests for later
+
+### Week 2-4: Iterate Based on Data
+- Analyze usage patterns
+- Identify drop-off points
+- A/B test key elements
+- Ship small improvements weekly
+
+### Month 2+: Plan Major Features
+- Use real usage data to prioritize features
+- Consider user feedback for roadmap planning
+- Start thinking about monetization if you haven't already
+
+## Tools and Resources
+
+### Development Tools
+- **Code Editor**: VS Code with essential extensions
+- **Version Control**: Git with GitHub or GitLab
+- **API Testing**: Postman or Insomnia
+- **Design**: Figma for quick mockups
+
+### No-Code Solutions
+- **Landing Pages**: Framer, Webflow, or Carrd
+- **Analytics**: Google Analytics, Mixpanel, or Amplitude
+- **User Feedback**: Typeform, Google Forms, or Airtable
+- **Email Marketing**: ConvertKit, Mailchimp, or Buttondown
+
+### Hosting and Infrastructure
+- **Frontend**: Vercel, Netlify
+- **Full-Stack**: Railway, Render, DigitalOcean App Platform
+- **Database**: Supabase, PlanetScale, or Railway PostgreSQL
+- **File Storage**: Cloudinary, AWS S3, or Supabase Storage
+
+## Conclusion
+
+Shipping an MVP in seven days isn't about rushing or cutting corners—it's about focus, discipline, and understanding what truly matters to your users. The framework I've shared has helped me launch multiple successful products, but remember to adapt it to your specific situation.
+
+The key insights to remember:
+
+1. **Start with validation, not code**
+2. **Use tools you already know**
+3. **Build the simplest solution that works**
+4. **Get user feedback early and often**
+5. **Ship imperfect but functional products**
+
+Your first version doesn't need to be perfect. It needs to be useful. Focus on solving one problem really well, ship it quickly, and then iterate based on real user feedback.
+
+The best time to start was yesterday. The second best time is now. Pick a problem you're passionate about solving, follow this framework, and ship your MVP in seven days. You might be surprised at what you can accomplish when you focus on what really matters.
+
+---
+
+*Want to share your seven-day MVP story? I'd love to hear about your experience. Connect with me on Twitter [@seanmishra](https://twitter.com/seanmishra) and let's discuss your journey.*
