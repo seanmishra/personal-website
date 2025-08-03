@@ -179,7 +179,7 @@ export default function Writing() {
                         <div className="space-y-2">
                           <div className="flex items-center gap-2">
                             {getCategoryIcon(article.category)}
-                            <span className="text-xs text-neutral-500 dark:text-neutral-400 font-mono">
+                            <span className={`text-xs px-2 py-1 rounded-lg font-mono ${getCategoryColor(article.category)}`}>
                               {article.category}
                             </span>
                           </div>

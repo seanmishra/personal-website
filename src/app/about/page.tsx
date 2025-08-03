@@ -200,7 +200,7 @@ export default function About() {
                   year: "Jan 2012 - Jul 2013",
                   title: "Junior Web Developer (Part-time)",
                   company: "Void Informatics (Bhubaneswar, India)",
-                  description: "Began my development journey at Void Informatics, where I gained foundational experience in web technologies, CMS platforms, and client work—learning industry practices hands-on while contributing to real projects.",
+                  description: "Began my development journey at Void Informatics, where I gained foundational experience in web technologies, CMS platforms, and client work — learning industry practices hands-on while contributing to real projects.",
                   companyOverview: "Void Informatics was a Bhubaneswar-based web agency that caters to local and domestic clients.",
                   shortAchievements: [
                     "Worked on several websites using WordPress & Joomla",
