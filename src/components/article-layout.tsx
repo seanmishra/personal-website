@@ -107,13 +107,12 @@ export const ArticleLayout: React.FC<ArticleLayoutProps> = ({
 
             {/* Cover Image */}
             {image && (
-              <div className="mb-8">
+              <div className="relative mb-8 aspect-[1200/630]">
                 <Image
                   src={image}
                   alt={title}
-                  width={1200}
-                  height={630}
-                  className="w-full h-64 md:h-80 lg:h-96 object-cover rounded-lg border border-neutral-200 dark:border-neutral-800"
+                  fill
+                  className="w-full object-cover rounded-lg border border-neutral-200 dark:border-neutral-800"
                   priority
                 />
               </div>
@@ -150,10 +149,8 @@ export const ArticleLayout: React.FC<ArticleLayoutProps> = ({
 
         {/* Article Content */}
         <div className="max-w-4xl">
-          <div className="prose prose-lg dark:prose-invert prose-neutral max-w-none">
-            <div className="article-content">
-              {children}
-            </div>
+          <div className="article-content">
+            {children}
           </div>
 
           {/* Bottom Share Buttons */}
