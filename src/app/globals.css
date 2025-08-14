@@ -449,6 +449,7 @@
 .article-content h4,
 .article-content h5,
 .article-content h6 {
+  font-family: var(--font-nudica);
   font-weight: bold;
   line-height: 1.4;
   margin-top: 2rem;

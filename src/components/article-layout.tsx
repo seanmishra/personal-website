@@ -97,7 +97,7 @@ export const ArticleLayout: React.FC<ArticleLayoutProps> = ({
               </div>
             </div>
             
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight text-neutral-900 dark:text-neutral-100 mb-6 leading-tight">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium text-neutral-900 dark:text-neutral-100 mb-6 leading-tight font-sans">
               {title}
             </h1>
             

@@ -19,7 +19,7 @@ export default function Writing() {
     category: post.category,
     date: post.date,
     readTime: post.readingTime.text,
-    views: '1,200', // Mock view count for now since not in Contentlayer data
+    views: 1200, // Mock view count for now since not in Contentlayer data
     featured: post.featured || false,
     published: post.published,
     link: post.url, // Using internal URL instead of external link
@@ -67,10 +67,9 @@ export default function Writing() {
     });
   };
 
-  const formatViews = (views: string) => {
-    const num = parseInt(views.replace(/,/g, ''));
-    if (num >= 1000) {
-      return `${(num / 1000).toFixed(1)}k`;
+  const formatViews = (views: number) => {
+    if (views >= 1000) {
+      return `${(views / 1000).toFixed(1)}k`;
     }
     return views;
   };
@@ -83,7 +82,7 @@ export default function Writing() {
 
   const stats = {
     totalArticles: articles.length,
-    totalViews: articles.reduce((sum, article) => sum + parseInt(article.views.replace(/,/g, '')), 0),
+    totalViews: articles.reduce((sum, article) => sum + article.views, 0),
     avgReadTime: Math.round(articles.reduce((sum, article) => sum + parseInt(article.readTime), 0) / articles.length),
   };
 
@@ -183,7 +182,7 @@ export default function Writing() {
                               {article.category}
                             </span>
                           </div>
-                          <h3 className="text-xl font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors">
+                          <h3 className="text-xl font-sans font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors">
                             {article.title}
                           </h3>
                         </div>
@@ -279,7 +278,7 @@ export default function Writing() {
                         </div>
                         
                         <div className="space-y-2">
-                          <h3 className="text-lg font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors">
+                          <h3 className="text-xl font-sans font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-neutral-700 dark:group-hover:text-neutral-200 transition-colors">
                             {article.title}
                           </h3>
                           <p className="leading-relaxed">
