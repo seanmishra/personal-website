@@ -11,15 +11,19 @@ interface CodeBlockProps {
 export const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => {
   const preRef = useRef<HTMLPreElement>(null);
 
-  // Extract text content from the code block
-  const getTextContent = (): string => {
+  // Extract text content from the code block at copy time
+  const handleCopy = (): string => {
     if (preRef.current) {
-      // Get the code element inside the pre element
+      // First try to get the code element inside the pre element
       const codeElement = preRef.current.querySelector('code');
       if (codeElement) {
-        return codeElement.textContent || '';
+        // For syntax-highlighted code, we need to get the text content
+        // and clean up any extra whitespace
+        return codeElement.textContent || codeElement.innerText || '';
       }
-      return preRef.current.textContent || '';
+      
+      // Fallback to pre element text content
+      return preRef.current.textContent || preRef.current.innerText || '';
     }
     return '';
   };
@@ -31,7 +35,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ children, className }) => 
       </pre>
       <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 group-focus-within:translate-y-0">
         <CopyButton 
-          text={getTextContent()}
+          getText={handleCopy}
         />
       </div>
     </div>
