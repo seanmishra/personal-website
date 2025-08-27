@@ -521,13 +521,13 @@
   background-color: rgba(0, 122, 255, 0.05);
 }
 
-.article-content code[data-theme*=" "],
-.article-content code[data-theme*=" "] span {
+.article-content code,
+.article-content code span {
   color: var(--shiki-light);
 }
  
-.dark .article-content code[data-theme*=" "],
-.dark .article-content code[data-theme*=" "] span {
+.dark .article-content code,
+.dark .article-content code span {
   color: var(--shiki-dark);
 }
 

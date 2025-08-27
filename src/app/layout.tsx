@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Suspense } from "react";
 import { Providers } from "@/components/providers";
 import { PostHogProvider } from "@/components/posthog-provider";
 import { Sidebar } from "@/components/layout/sidebar";
@@ -158,21 +159,23 @@ export default function RootLayout({
         className={`${nudicamono.variable} ${nudica.variable} font-mono antialiased`}
       >
         <Providers>
-          <PostHogProvider>
-            <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950 text-neutral-600 dark:text-neutral-400">
-              <Sidebar />
-              
-              <ResponsiveLayout>
-                <Header />
+          <Suspense fallback={null}>
+            <PostHogProvider>
+              <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950 text-neutral-600 dark:text-neutral-400">
+                <Sidebar />
                 
-                <main className="flex-1">
-                  {children}
-                </main>
-                
-                <Footer />
-              </ResponsiveLayout>
-            </div>
-          </PostHogProvider>
+                <ResponsiveLayout>
+                  <Header />
+                  
+                  <main className="flex-1">
+                    {children}
+                  </main>
+                  
+                  <Footer />
+                </ResponsiveLayout>
+              </div>
+            </PostHogProvider>
+          </Suspense>
         </Providers>
       </body>
     </html>
