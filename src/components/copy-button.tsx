@@ -4,16 +4,38 @@ import React, { useState } from 'react';
 import { Copy, Check } from 'lucide-react';
 
 interface CopyButtonProps {
-  text: string;
+  text?: string;
+  getText?: () => string;
   className?: string;
 }
 
-export const CopyButton: React.FC<CopyButtonProps> = ({ text, className = '' }) => {
+export const CopyButton: React.FC<CopyButtonProps> = ({ text, getText, className = '' }) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(text);
+      const textToCopy = getText ? getText() : text || '';
+      if (!textToCopy) {
+        return;
+      }
+      
+      // Try the modern Clipboard API first
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(textToCopy);
+      } else {
+        // Fallback for older browsers
+        const textArea = document.createElement('textarea');
+        textArea.value = textToCopy;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-999999px';
+        textArea.style.top = '-999999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+      }
+      
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
