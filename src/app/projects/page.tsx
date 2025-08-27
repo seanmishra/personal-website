@@ -14,6 +14,7 @@ export default function Projects() {
       status: 'Live',
       year: '2025',
       link: 'https://beenawhile.app/',
+      github: null,
       featured: true,
     },
   ];
