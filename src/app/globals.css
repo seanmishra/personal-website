@@ -540,10 +540,21 @@
   line-height: 1.6;
   border: 1px solid var(--color-neutral-200);
   font-family: var(--font-nudicamono);
+  position: relative;
 }
 
 .dark .article-content pre {
   border-color: var(--color-neutral-700);
+}
+
+/* Ensure code blocks have proper spacing for the copy button */
+.article-content .group pre {
+  padding-right: 3.5rem;
+}
+
+/* Make sure the code block wrapper doesn't interfere with text selection */
+.article-content .group {
+  position: relative;
 }
 
 .article-content code {

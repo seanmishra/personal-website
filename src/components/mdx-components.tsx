@@ -2,6 +2,7 @@ import { useMDXComponent } from 'next-contentlayer2/hooks';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { CodeBlock } from './code-block';
 
 interface MDXComponentProps {
   children?: React.ReactNode;
@@ -69,9 +70,9 @@ const mdxComponents = {
     </code>
   ),
   pre: ({ children, ...props }: MDXComponentProps) => (
-    <pre {...props}>
+    <CodeBlock {...props}>
       {children}
-    </pre>
+    </CodeBlock>
   ),
   a: ({ children, href, ...props }: AnchorProps) => (
     <Link 
