@@ -19,7 +19,7 @@ export default function Writing() {
     category: post.category,
     date: post.date,
     readTime: post.readingTime.text,
-    views: 1200, // Mock view count for now since not in Contentlayer data
+    views: 228, // Mock view count for now since not in Contentlayer data
     featured: post.featured || false,
     published: post.published,
     link: post.url, // Using internal URL instead of external link
