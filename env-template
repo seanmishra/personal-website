@@ -7,5 +7,11 @@ NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
 # Sign up at https://resend.com and get your API key
 RESEND_API_KEY=your_resend_api_key_here
 
+# Redis Configuration
+# Redis URL for storing view counts and other cached data
+# For local development: redis://localhost:6379
+# For production: your Redis provider URL (e.g., Redis Cloud, Upstash, etc.)
+REDIS_URL=redis://localhost:6379
+
 # Set to 'development' for debugging
 NODE_ENV=development

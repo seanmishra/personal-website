@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { ArticleLayout } from '@/components/article-layout';
 import { Metadata } from 'next';
 import { Mdx } from '@/components/mdx-components';
+import ViewTracker from '@/components/view-tracker';
 
 interface ArticlePageProps {
   params: Promise<{
@@ -68,18 +69,21 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const fullUrl = `${baseUrl}/writing/${slug}`;
 
   return (
-    <ArticleLayout
-      title={post.title}
-      description={post.description}
-      date={post.date}
-      author={post.author}
-      category={post.category}
-      tags={post.tags || []}
-      image={post.image}
-      url={fullUrl}
-      readingTime={post.readingTime}
-    >
-      <Mdx code={post.body.code} />
-    </ArticleLayout>
+    <>
+      <ViewTracker slug={slug} />
+      <ArticleLayout
+        title={post.title}
+        description={post.description}
+        date={post.date}
+        author={post.author}
+        category={post.category}
+        tags={post.tags || []}
+        image={post.image}
+        url={fullUrl}
+        readingTime={post.readingTime}
+      >
+        <Mdx code={post.body.code} />
+      </ArticleLayout>
+    </>
   );
 }

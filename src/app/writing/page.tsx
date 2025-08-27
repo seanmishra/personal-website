@@ -1,16 +1,26 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Calendar, Clock, TrendingUp, BookOpen, Users, MessageSquare, Eye } from 'lucide-react';
 import { allPosts } from '../../../.contentlayer/generated';
 import { compareDesc } from 'date-fns';
+import { useViewCounts } from '@/lib/hooks/use-view-counts';
 
 export default function Writing() {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  // Sort posts by date and convert Contentlayer data to match original format
-  const sortedPosts = allPosts
-    .filter(post => post.published)
-    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+  // Memoize sorted posts since allPosts is static
+  const sortedPosts = useMemo(() => 
+    allPosts
+      .filter(post => post.published)
+      .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date))),
+    []
+  );
+
+  // Memoize slugs to prevent unnecessary API calls
+  const allSlugs = useMemo(() => sortedPosts.map(post => post.slug), [sortedPosts]);
+  
+  // Use the view counts hook
+  const { viewCounts } = useViewCounts(allSlugs);
 
   const articles = sortedPosts.map(post => ({
     title: post.title,
@@ -19,7 +29,7 @@ export default function Writing() {
     category: post.category,
     date: post.date,
     readTime: post.readingTime.text,
-    views: 228, // Mock view count for now since not in Contentlayer data
+    views: viewCounts[post.slug] || 112, // Use Redis data with fallback to base count
     featured: post.featured || false,
     published: post.published,
     link: post.url, // Using internal URL instead of external link
@@ -128,7 +138,10 @@ export default function Writing() {
                   </div>
                   <div className="p-4 rounded-lg border border-neutral-200 dark:border-neutral-800">
                     <div className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
-                      {(stats.totalViews / 1000).toFixed(0)}k+
+                      {stats.totalViews >= 1000 
+                        ? `${(stats.totalViews / 1000).toFixed(1)}k+` 
+                        : stats.totalViews
+                      }
                     </div>
                     <div className="text-sm">
                       Total Views

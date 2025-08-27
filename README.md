@@ -52,8 +52,20 @@ public/
 - **Blog/Writing** - MDX-powered content management
 - **Contact Form** - Email integration with Resend
 - **Analytics** - User tracking with PostHog
+- **View Tracking** - Redis-powered article view counting with base count of 112
 - **SEO Optimized** - Meta tags, Open Graph, and structured data
 
-## 📝 License
+## � API Endpoints
+
+### View Tracking
+- `GET /api/views?slug=article-slug` - Get view count for a specific article
+- `GET /api/views?slugs=slug1,slug2,slug3` - Get view counts for multiple articles
+- `GET /api/views?total=true` - Get total views across all articles
+- `POST /api/views` - Increment view count for an article (body: `{ slug: "article-slug" }`)
+
+### Contact Form
+- `POST /api/contact` - Send contact form email (requires name, email, message)
+
+## �📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
