@@ -6,9 +6,9 @@ export function Footer({ className = '' }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { href: 'https://github.com', label: 'GitHub [seanmishra]' },
-    { href: 'https://linkedin.com', label: 'LinkedIn [seanmishra]' },
-    { href: 'https://x.com', label: 'X [seansapiens]' },
+    { href: 'https://github.com/seanmishra', label: 'GitHub [seanmishra]' },
+    { href: 'https://linkedin.com/in/seanmishra', label: 'LinkedIn [seanmishra]' },
+    { href: 'https://x.com/seansapiens', label: 'X [seansapiens]' },
   ];
 
   return (
