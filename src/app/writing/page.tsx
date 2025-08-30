@@ -224,7 +224,7 @@ export default function Writing() {
                             <Calendar className="w-4 h-4" />
                             <span>{formatDate(article.date)}</span>
                           </div>
-                          <div className="flex items-center gap-1">
+                          <div className="hidden sm:flex items-center gap-1">
                             <Clock className="w-4 h-4" />
                             <span>{article.readTime}</span>
                           </div>
@@ -307,7 +307,7 @@ export default function Writing() {
                           <Calendar className="w-4 h-4" />
                           <span>{formatDate(article.date)}</span>
                         </div>
-                        <div className="flex items-center gap-1">
+                        <div className="hidden sm:flex items-center gap-1">
                           <Clock className="w-4 h-4" />
                           <span>{article.readTime}</span>
                         </div>
