@@ -47,12 +47,10 @@ public/
 
 - **Responsive Design** - Works on all devices and screen sizes
 - **Dark/Light Mode** - Theme switching with persistence
-- **Glass Effects** - Modern UI with backdrop blur effects
-- **Smooth Animations** - Powered by Motion (formerly Framer Motion)
 - **Blog/Writing** - MDX-powered content management
 - **Contact Form** - Email integration with Resend
 - **Analytics** - User tracking with PostHog
-- **View Tracking** - Redis-powered article view counting with base count of 112
+- **View Tracking** - Redis-powered article view counting
 - **SEO Optimized** - Meta tags, Open Graph, and structured data
 
 ## � API Endpoints
