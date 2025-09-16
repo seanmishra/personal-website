@@ -145,7 +145,7 @@ const nudica = localFont({
 
 export const metadata: Metadata = {
   title: "Sean Mishra",
-  description: "Designer & Developer crafting digital experiences",
+  description: "Impact-driven full-stack engineer shipping revenue-ready products from concept to launch.",
 };
 
 export default function RootLayout({
