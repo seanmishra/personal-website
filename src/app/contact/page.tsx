@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Send, Clock, CheckCircle, AlertCircle, Mail, MessageCircle, User, Building, ExternalLink } from 'lucide-react';
 import { getCalApi } from '@calcom/embed-react';
 import { trackEvent } from '@/lib/posthog';
@@ -10,6 +10,7 @@ interface FormData {
   company: string;
   projectRole: string;
   message: string;
+  honeypot: string;
 }
 
 interface FormErrors {
@@ -25,12 +26,17 @@ export default function Contact() {
     email: '',
     company: '',
     projectRole: '',
-    message: ''
+    message: '',
+    honeypot: ''
   });
   
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [isHolding, setIsHolding] = useState(false);
+  const [holdProgress, setHoldProgress] = useState(0);
+  const [canSubmit, setCanSubmit] = useState(false);
+  const holdIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -47,8 +53,8 @@ export default function Contact() {
     
     if (!formData.message.trim()) {
       newErrors.message = 'Message is required';
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Message should be at least 10 characters';
+    } else if (formData.message.trim().length < 50) {
+      newErrors.message = 'Message should be at least 50 characters';
     }
     
     setErrors(newErrors);
@@ -58,7 +64,19 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!validateForm()) return;
+    if (!validateForm() || !canSubmit) return;
+    if (formData.honeypot.trim() !== '') {
+      setSubmitStatus('success');
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        projectRole: '',
+        message: '',
+        honeypot: ''
+      });
+      return;
+    }
     
     setIsSubmitting(true);
     setSubmitStatus('idle');
@@ -75,7 +93,13 @@ export default function Contact() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          projectRole: formData.projectRole,
+          message: formData.message
+        }),
       });
       
       if (response.ok) {
@@ -85,7 +109,8 @@ export default function Contact() {
           email: '',
           company: '',
           projectRole: '',
-          message: ''
+          message: '',
+          honeypot: ''
         });
         trackEvent.contactFormSuccess();
       } else {
@@ -97,6 +122,8 @@ export default function Contact() {
       trackEvent.contactFormError({ error: 'Network error' });
     } finally {
       setIsSubmitting(false);
+      setCanSubmit(false);
+      setHoldProgress(0);
     }
   };
 
@@ -110,10 +137,68 @@ export default function Contact() {
     }
   };
 
+  // Hold-to-send functionality
+  const handleMouseDown = () => {
+    if (!validateForm() || isSubmitting) return;
+    
+    setIsHolding(true);
+    setHoldProgress(0);
+    
+    const interval = setInterval(() => {
+      setHoldProgress(prev => {
+        const newProgress = prev + 2;
+        
+        if (newProgress >= 100) {
+          clearInterval(interval);
+          setIsHolding(false);
+          setCanSubmit(true);
+          
+          setTimeout(() => {
+            const form = document.getElementById('contact-form-element') as HTMLFormElement;
+            if (form) {
+              form.requestSubmit();
+            }
+          }, 100);
+          
+          return 100;
+        }
+        return newProgress;
+      });
+    }, 50);
+    
+    holdIntervalRef.current = interval;
+  };
+
+  const handleMouseUp = () => {
+    if (holdIntervalRef.current) {
+      clearInterval(holdIntervalRef.current);
+      holdIntervalRef.current = null;
+    }
+    
+    // Only reset if hold wasn't completed
+    if (holdProgress < 100) {
+      setIsHolding(false);
+      setHoldProgress(0);
+      setCanSubmit(false);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    handleMouseUp();
+  };
+
   useEffect(() => {
     (async function () {
       await getCalApi();
     })();
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (holdIntervalRef.current) {
+        clearInterval(holdIntervalRef.current);
+      }
+    };
   }, []);
 
   return (
@@ -283,7 +368,7 @@ export default function Contact() {
             )}
 
             {/* Contact Form */}
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form id="contact-form-element" onSubmit={handleSubmit} className="space-y-8">
               <div className="grid md:grid-cols-2 gap-6">
                 {/* Name */}
                 <div className="space-y-2">
@@ -399,29 +484,63 @@ export default function Contact() {
                 />
                 {errors.message && <p className="text-error-500 text-sm">{errors.message}</p>}
                 <p className="text-neutral-500 text-xs font-mono">
-                  Minimum 10 characters · Current: {formData.message.length}
+                  Minimum 50 characters · Current: {formData.message.length}
                 </p>
+              </div>
+
+              <div className="hidden">
+                <label htmlFor="honeypot">Leave this field empty</label>
+                <input
+                  type="text"
+                  id="honeypot"
+                  name="honeypot"
+                  value={formData.honeypot}
+                  onChange={handleInputChange}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
               </div>
 
               {/* Submit Button */}
               <div className="pt-6">
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="inline-flex items-center px-6 py-3 rounded bg-neutral-900 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-900 font-mono text-sm hover:opacity-80 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="w-4 h-4 border-2 border-neutral-50/30 border-t-neutral-50 rounded-full animate-spin mr-2" />
-                      <span>Sending...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4 mr-2" />
-                      <span>Send Message</span>
-                    </>
+                <div className="space-y-2">
+                  {!canSubmit && !isSubmitting && (
+                    <p className="text-neutral-500 text-sm font-mono">
+                      Hold the button below to send your message
+                    </p>
                   )}
-                </button>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    onMouseDown={handleMouseDown}
+                    onMouseUp={handleMouseUp}
+                    onMouseLeave={handleMouseLeave}
+                    onTouchStart={handleMouseDown}
+                    onTouchEnd={handleMouseUp}
+                    className="relative inline-flex items-center px-6 py-3 rounded bg-neutral-900 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-900 font-mono text-sm hover:opacity-80 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden"
+                  >
+                    {/* Progress bar background */}
+                    <div 
+                      className="absolute inset-0 bg-neutral-700 dark:bg-neutral-300 transition-all duration-75"
+                      style={{ width: `${holdProgress}%` }}
+                    />
+                    
+                    {/* Button content */}
+                    <div className="relative z-10 flex items-center">
+                      {isSubmitting ? (
+                        <>
+                          <div className="w-4 h-4 border-2 border-neutral-50/30 border-t-neutral-50 dark:border-neutral-900/30 dark:border-t-neutral-900 rounded-full animate-spin mr-2" />
+                          <span>Sending...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Send className="w-4 h-4 mr-2" />
+                          <span>{isHolding ? 'Keep holding...' : 'Hold to Send'}</span>
+                        </>
+                      )}
+                    </div>
+                  </button>
+                </div>
               </div>
             </form>
           </div>

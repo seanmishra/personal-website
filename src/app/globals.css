@@ -53,9 +53,12 @@
   /* Semantic Colors */
   --color-success-50: #f0fdf4;
   --color-success-100: #dcfce7;
+  --color-success-300: #86efac;
   --color-success-500: #30d158;
   --color-success-600: #16a34a;
   --color-success-700: #15803d;
+  --color-success-800: #166534;
+  --color-success-900: #14532d;
   
   --color-warning-50: #fffbeb;
   --color-warning-100: #fef3c7;
@@ -65,9 +68,12 @@
   
   --color-error-50: #fef2f2;
   --color-error-100: #fee2e2;
+  --color-error-300: #fca5a5;
   --color-error-500: #ff3b30;
   --color-error-600: #dc2626;
   --color-error-700: #b91c1c;
+  --color-error-800: #991b1b;
+  --color-error-900: #7f1d1d;
   
   /* Enhanced Shadows */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
